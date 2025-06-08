@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -44,8 +43,8 @@ const CompanyDashboard = () => {
   const getStatusColor = (status: string) => {
     switch (status) {
       case "Completo": return "success";
-      case "Em andamento": return "warning";
-      case "Recrutando": return "primary";
+      case "Em andamento": return "secondary";
+      case "Recrutando": return "default";
       default: return "secondary";
     }
   };
@@ -53,22 +52,31 @@ const CompanyDashboard = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-primary/5 via-background to-secondary/5">
       {/* Header */}
-      <header className="bg-white/80 backdrop-blur-sm border-b sticky top-0 z-50">
+      <header className="bg-white/90 backdrop-blur-sm border-b sticky top-0 z-50 shadow-sm">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
-                <Zap className="h-6 w-6 text-white" />
+            <div className="flex items-center space-x-4">
+              <div className="flex items-center space-x-3">
+                <div className="w-12 h-12 bg-gradient-to-r from-primary to-secondary rounded-xl flex items-center justify-center shadow-lg">
+                  <Zap className="h-7 w-7 text-white" />
+                </div>
+                <div>
+                  <h1 className="text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+                    Job Flash
+                  </h1>
+                  <p className="text-sm text-muted-foreground">Conectando talentos</p>
+                </div>
               </div>
-              <div>
-                <h1 className="text-xl font-bold">FoodBrand Ltda</h1>
+              <div className="hidden md:block h-8 w-px bg-border"></div>
+              <div className="hidden md:block">
+                <h2 className="text-lg font-semibold">FoodBrand Ltda</h2>
                 <p className="text-sm text-muted-foreground">Gerencie suas ações promocionais</p>
               </div>
             </div>
             
             <div className="flex items-center space-x-2">
               <Button 
-                className="bg-primary hover:bg-primary/90"
+                className="bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 shadow-lg"
                 onClick={() => navigate('/create-job')}
               >
                 <Plus className="h-4 w-4 mr-2" />
@@ -88,10 +96,12 @@ const CompanyDashboard = () => {
       <div className="container mx-auto px-4 py-6">
         {/* Stats Overview */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-          <Card>
+          <Card className="hover:shadow-lg transition-shadow">
             <CardContent className="p-4">
               <div className="flex items-center space-x-2">
-                <Users className="h-5 w-5 text-primary" />
+                <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center">
+                  <Users className="h-5 w-5 text-primary" />
+                </div>
                 <div>
                   <p className="text-2xl font-bold">45</p>
                   <p className="text-xs text-muted-foreground">Candidatos ativos</p>
@@ -100,10 +110,12 @@ const CompanyDashboard = () => {
             </CardContent>
           </Card>
           
-          <Card>
+          <Card className="hover:shadow-lg transition-shadow">
             <CardContent className="p-4">
               <div className="flex items-center space-x-2">
-                <CheckCircle className="h-5 w-5 text-success" />
+                <div className="w-10 h-10 bg-success/10 rounded-lg flex items-center justify-center">
+                  <CheckCircle className="h-5 w-5 text-success" />
+                </div>
                 <div>
                   <p className="text-2xl font-bold">23</p>
                   <p className="text-xs text-muted-foreground">Vagas preenchidas</p>
@@ -112,10 +124,12 @@ const CompanyDashboard = () => {
             </CardContent>
           </Card>
           
-          <Card>
+          <Card className="hover:shadow-lg transition-shadow">
             <CardContent className="p-4">
               <div className="flex items-center space-x-2">
-                <Clock className="h-5 w-5 text-orange-500" />
+                <div className="w-10 h-10 bg-orange-500/10 rounded-lg flex items-center justify-center">
+                  <Clock className="h-5 w-5 text-orange-500" />
+                </div>
                 <div>
                   <p className="text-2xl font-bold">3</p>
                   <p className="text-xs text-muted-foreground">Ações pendentes</p>
@@ -124,10 +138,12 @@ const CompanyDashboard = () => {
             </CardContent>
           </Card>
           
-          <Card>
+          <Card className="hover:shadow-lg transition-shadow">
             <CardContent className="p-4">
               <div className="flex items-center space-x-2">
-                <TrendingUp className="h-5 w-5 text-secondary" />
+                <div className="w-10 h-10 bg-secondary/10 rounded-lg flex items-center justify-center">
+                  <TrendingUp className="h-5 w-5 text-secondary" />
+                </div>
                 <div>
                   <p className="text-2xl font-bold">92%</p>
                   <p className="text-xs text-muted-foreground">Taxa de sucesso</p>
@@ -191,7 +207,7 @@ const CompanyDashboard = () => {
                       </div>
                       <div className="w-full bg-muted rounded-full h-2">
                         <div 
-                          className="bg-primary h-2 rounded-full transition-all"
+                          className="bg-gradient-to-r from-primary to-secondary h-2 rounded-full transition-all"
                           style={{ width: `${(job.filled / job.total) * 100}%` }}
                         ></div>
                       </div>
