@@ -6,7 +6,7 @@ import { Label } from "@/components/ui/label";
 import { Badge } from "@/components/ui/badge";
 import { Textarea } from "@/components/ui/textarea";
 import { useNavigate } from "react-router-dom";
-import { ArrowLeft, Star, MapPin, Clock, Edit3, Camera, Award } from "lucide-react";
+import { ArrowLeft, Star, MapPin, Clock, Edit3, Camera, Award, Bot } from "lucide-react";
 import { UserType } from "@/App";
 
 interface ProfileProps {
@@ -46,9 +46,9 @@ const Profile = ({ userType }: ProfileProps) => {
   const profile = userType === 'freelancer' ? freelancerProfile : companyProfile;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-primary/5 via-background to-secondary/5">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
       {/* Header */}
-      <header className="bg-white/80 backdrop-blur-sm border-b sticky top-0 z-50">
+      <header className="bg-black/20 backdrop-blur-xl border-b border-white/10 sticky top-0 z-50">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-4">
@@ -56,18 +56,26 @@ const Profile = ({ userType }: ProfileProps) => {
                 variant="ghost" 
                 size="icon"
                 onClick={() => navigate('/dashboard')}
+                className="text-white/80 hover:text-white hover:bg-white/10"
               >
                 <ArrowLeft className="h-5 w-5" />
               </Button>
-              <div>
-                <h1 className="text-xl font-bold">Meu Perfil</h1>
-                <p className="text-sm text-muted-foreground">
-                  {userType === 'freelancer' ? 'Freelancer' : 'Empresa'}
-                </p>
+              <div className="flex items-center space-x-3">
+                <img 
+                  src="/lovable-uploads/e172e5ba-c278-4674-bb50-c1cccacbb507.png" 
+                  alt="Supera Flash Logo" 
+                  className="h-10 w-auto logo-animate"
+                />
+                <div>
+                  <h1 className="text-xl font-bold text-white">Meu Perfil</h1>
+                  <p className="text-sm text-white/60">
+                    {userType === 'freelancer' ? 'Freelancer' : 'Empresa'}
+                  </p>
+                </div>
               </div>
             </div>
             
-            <Button variant="outline">
+            <Button variant="outline" className="border-white/20 text-white/80 hover:bg-white/10 hover:text-white">
               <Edit3 className="h-4 w-4 mr-2" />
               Editar Perfil
             </Button>
@@ -80,7 +88,7 @@ const Profile = ({ userType }: ProfileProps) => {
           {/* Main Profile Info */}
           <div className="lg:col-span-2 space-y-6">
             {/* Profile Header */}
-            <Card>
+            <Card className="bg-white/10 backdrop-blur-sm border-white/20 hover:bg-white/15 transition-all">
               <CardContent className="p-6">
                 <div className="flex items-start space-x-6">
                   {/* Avatar */}
@@ -90,7 +98,7 @@ const Profile = ({ userType }: ProfileProps) => {
                     </div>
                     <Button 
                       size="icon" 
-                      className="absolute -bottom-2 -right-2 w-8 h-8 rounded-full"
+                      className="absolute -bottom-2 -right-2 w-8 h-8 rounded-full bg-gradient-to-r from-primary to-secondary"
                       variant="secondary"
                     >
                       <Camera className="h-4 w-4" />
@@ -99,35 +107,35 @@ const Profile = ({ userType }: ProfileProps) => {
                   
                   {/* Profile Info */}
                   <div className="flex-1">
-                    <h2 className="text-2xl font-bold mb-2">{profile.name}</h2>
+                    <h2 className="text-2xl font-bold mb-2 text-white">{profile.name}</h2>
                     
                     <div className="flex items-center space-x-4 mb-4">
                       <div className="flex items-center space-x-1">
                         <Star className="h-4 w-4 text-yellow-500 fill-current" />
-                        <span className="font-medium">{profile.rating}</span>
+                        <span className="font-medium text-white">{profile.rating}</span>
                       </div>
                       
                       {userType === 'freelancer' ? (
                         <div className="flex items-center space-x-1">
                           <Award className="h-4 w-4 text-primary" />
-                          <span>{(profile as any).completedJobs} jobs realizados</span>
+                          <span className="text-white/80">{(profile as any).completedJobs} jobs realizados</span>
                         </div>
                       ) : (
                         <div className="flex items-center space-x-1">
                           <Clock className="h-4 w-4 text-primary" />
-                          <span>{(profile as any).activeJobs} ações ativas</span>
+                          <span className="text-white/80">{(profile as any).activeJobs} ações ativas</span>
                         </div>
                       )}
                     </div>
                     
                     {userType === 'freelancer' && (
-                      <div className="flex items-center space-x-2 text-muted-foreground mb-4">
+                      <div className="flex items-center space-x-2 text-white/60 mb-4">
                         <MapPin className="h-4 w-4" />
                         <span>{(profile as any).location}</span>
                       </div>
                     )}
                     
-                    <p className="text-muted-foreground">
+                    <p className="text-white/70">
                       {userType === 'freelancer' ? (profile as any).bio : (profile as any).about}
                     </p>
                   </div>
@@ -136,37 +144,38 @@ const Profile = ({ userType }: ProfileProps) => {
             </Card>
 
             {/* Contact Information */}
-            <Card>
+            <Card className="bg-white/10 backdrop-blur-sm border-white/20 hover:bg-white/15 transition-all">
               <CardHeader>
-                <CardTitle>Informações de Contato</CardTitle>
+                <CardTitle className="text-white">Informações de Contato</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="space-y-2">
-                    <Label htmlFor="email">E-mail</Label>
-                    <Input id="email" value={profile.email} readOnly />
+                    <Label htmlFor="email" className="text-white/80">E-mail</Label>
+                    <Input id="email" value={profile.email} readOnly className="bg-white/5 border-white/20 text-white" />
                   </div>
                   
                   <div className="space-y-2">
-                    <Label htmlFor="phone">Telefone</Label>
-                    <Input id="phone" value={profile.phone} readOnly />
+                    <Label htmlFor="phone" className="text-white/80">Telefone</Label>
+                    <Input id="phone" value={profile.phone} readOnly className="bg-white/5 border-white/20 text-white" />
                   </div>
                   
                   <div className="space-y-2">
-                    <Label htmlFor="document">
+                    <Label htmlFor="document" className="text-white/80">
                       {userType === 'freelancer' ? 'CPF' : 'CNPJ'}
                     </Label>
                     <Input 
                       id="document" 
                       value={userType === 'freelancer' ? (profile as any).cpf : (profile as any).cnpj} 
                       readOnly 
+                      className="bg-white/5 border-white/20 text-white"
                     />
                   </div>
                   
                   {userType === 'company' && (
                     <div className="space-y-2">
-                      <Label htmlFor="established">Fundada em</Label>
-                      <Input id="established" value={(profile as any).established} readOnly />
+                      <Label htmlFor="established" className="text-white/80">Fundada em</Label>
+                      <Input id="established" value={(profile as any).established} readOnly className="bg-white/5 border-white/20 text-white" />
                     </div>
                   )}
                 </div>
@@ -174,20 +183,20 @@ const Profile = ({ userType }: ProfileProps) => {
             </Card>
 
             {/* Skills/Sectors */}
-            <Card>
+            <Card className="bg-white/10 backdrop-blur-sm border-white/20 hover:bg-white/15 transition-all">
               <CardHeader>
-                <CardTitle>
+                <CardTitle className="text-white">
                   {userType === 'freelancer' ? 'Habilidades e Experiências' : 'Setores de Atuação'}
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div>
-                  <Label className="text-sm font-medium">
+                  <Label className="text-sm font-medium text-white/80">
                     {userType === 'freelancer' ? 'Habilidades' : 'Setores'}
                   </Label>
                   <div className="flex flex-wrap gap-2 mt-2">
                     {(userType === 'freelancer' ? (profile as any).skills : (profile as any).sectors).map((item: string, index: number) => (
-                      <Badge key={index} variant="secondary">
+                      <Badge key={index} variant="secondary" className="bg-secondary/20 text-secondary border-secondary/30">
                         {item}
                       </Badge>
                     ))}
@@ -197,10 +206,10 @@ const Profile = ({ userType }: ProfileProps) => {
                 {userType === 'freelancer' && (
                   <>
                     <div>
-                      <Label className="text-sm font-medium">Disponibilidade</Label>
+                      <Label className="text-sm font-medium text-white/80">Disponibilidade</Label>
                       <div className="flex flex-wrap gap-2 mt-2">
                         {(profile as any).availability.map((time: string, index: number) => (
-                          <Badge key={index} variant="outline">
+                          <Badge key={index} variant="outline" className="border-white/30 text-white/70">
                             {time}
                           </Badge>
                         ))}
@@ -208,18 +217,18 @@ const Profile = ({ userType }: ProfileProps) => {
                     </div>
                     
                     <div>
-                      <Label className="text-sm font-medium">Transporte</Label>
-                      <p className="text-muted-foreground mt-1">{(profile as any).transport}</p>
+                      <Label className="text-sm font-medium text-white/80">Transporte</Label>
+                      <p className="text-white/60 mt-1">{(profile as any).transport}</p>
                     </div>
                   </>
                 )}
                 
                 {userType === 'company' && (
                   <div>
-                    <Label className="text-sm font-medium">Regiões de Atuação</Label>
+                    <Label className="text-sm font-medium text-white/80">Regiões de Atuação</Label>
                     <div className="flex flex-wrap gap-2 mt-2">
                       {(profile as any).regions.map((region: string, index: number) => (
-                        <Badge key={index} variant="outline">
+                        <Badge key={index} variant="outline" className="border-white/30 text-white/70">
                           {region}
                         </Badge>
                       ))}
@@ -233,16 +242,16 @@ const Profile = ({ userType }: ProfileProps) => {
           {/* Sidebar */}
           <div className="space-y-6">
             {/* Quick Stats */}
-            <Card>
+            <Card className="bg-white/10 backdrop-blur-sm border-white/20 hover:bg-white/15 transition-all">
               <CardHeader>
-                <CardTitle className="text-lg">Estatísticas</CardTitle>
+                <CardTitle className="text-lg text-white">Estatísticas</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="text-center">
                   <div className="text-3xl font-bold text-success">
                     {userType === 'freelancer' ? 'R$ 1.250' : 'R$ 25.400'}
                   </div>
-                  <div className="text-sm text-muted-foreground">
+                  <div className="text-sm text-white/60">
                     {userType === 'freelancer' ? 'Ganhos este mês' : 'Investido este mês'}
                   </div>
                 </div>
@@ -252,7 +261,7 @@ const Profile = ({ userType }: ProfileProps) => {
                     <div className="text-xl font-bold text-primary">
                       {userType === 'freelancer' ? '95%' : '92%'}
                     </div>
-                    <div className="text-xs text-muted-foreground">
+                    <div className="text-xs text-white/60">
                       Taxa de {userType === 'freelancer' ? 'conclusão' : 'sucesso'}
                     </div>
                   </div>
@@ -261,46 +270,46 @@ const Profile = ({ userType }: ProfileProps) => {
                     <div className="text-xl font-bold text-secondary">
                       {userType === 'freelancer' ? '4.8' : '4.9'}
                     </div>
-                    <div className="text-xs text-muted-foreground">Avaliação média</div>
+                    <div className="text-xs text-white/60">Avaliação média</div>
                   </div>
                 </div>
               </CardContent>
             </Card>
 
             {/* Recent Activity */}
-            <Card>
+            <Card className="bg-white/10 backdrop-blur-sm border-white/20 hover:bg-white/15 transition-all">
               <CardHeader>
-                <CardTitle className="text-lg">Atividade Recente</CardTitle>
+                <CardTitle className="text-lg text-white">Atividade Recente</CardTitle>
               </CardHeader>
               <CardContent className="space-y-3">
                 {userType === 'freelancer' ? (
                   <>
                     <div className="text-sm">
-                      <p className="font-medium">Job concluído</p>
-                      <p className="text-muted-foreground text-xs">Degustação no Shopping • Há 2 dias</p>
+                      <p className="font-medium text-white">Job concluído</p>
+                      <p className="text-white/60 text-xs">Degustação no Shopping • Há 2 dias</p>
                     </div>
                     <div className="text-sm">
-                      <p className="font-medium">Nova avaliação</p>
-                      <p className="text-muted-foreground text-xs">5 estrelas da FoodBrand • Há 3 dias</p>
+                      <p className="font-medium text-white">Nova avaliação</p>
+                      <p className="text-white/60 text-xs">5 estrelas da FoodBrand • Há 3 dias</p>
                     </div>
                     <div className="text-sm">
-                      <p className="font-medium">Perfil atualizado</p>
-                      <p className="text-muted-foreground text-xs">Novas habilidades adicionadas • Há 1 semana</p>
+                      <p className="font-medium text-white">Perfil atualizado</p>
+                      <p className="text-white/60 text-xs">Novas habilidades adicionadas • Há 1 semana</p>
                     </div>
                   </>
                 ) : (
                   <>
                     <div className="text-sm">
-                      <p className="font-medium">Vaga preenchida</p>
-                      <p className="text-muted-foreground text-xs">Evento Shopping Norte • Há 1 dia</p>
+                      <p className="font-medium text-white">Vaga preenchida</p>
+                      <p className="text-white/60 text-xs">Evento Shopping Norte • Há 1 dia</p>
                     </div>
                     <div className="text-sm">
-                      <p className="font-medium">5 novos candidatos</p>
-                      <p className="text-muted-foreground text-xs">Reposição SuperMax • Há 2 dias</p>
+                      <p className="font-medium text-white">5 novos candidatos</p>
+                      <p className="text-white/60 text-xs">Reposição SuperMax • Há 2 dias</p>
                     </div>
                     <div className="text-sm">
-                      <p className="font-medium">Avaliação enviada</p>
-                      <p className="text-muted-foreground text-xs">Promotor Maria Silva • Há 3 dias</p>
+                      <p className="font-medium text-white">Avaliação enviada</p>
+                      <p className="text-white/60 text-xs">Promotor Maria Silva • Há 3 dias</p>
                     </div>
                   </>
                 )}
@@ -308,26 +317,36 @@ const Profile = ({ userType }: ProfileProps) => {
             </Card>
 
             {/* Actions */}
-            <Card>
+            <Card className="bg-white/10 backdrop-blur-sm border-white/20 hover:bg-white/15 transition-all">
               <CardHeader>
-                <CardTitle className="text-lg">Ações</CardTitle>
+                <CardTitle className="text-lg text-white">Ações</CardTitle>
               </CardHeader>
               <CardContent className="space-y-3">
-                <Button variant="outline" className="w-full justify-start">
+                <Button variant="outline" className="w-full justify-start border-white/20 text-white/80 hover:bg-white/10 hover:text-white">
                   <Edit3 className="h-4 w-4 mr-2" />
                   Editar Perfil
                 </Button>
-                <Button variant="outline" className="w-full justify-start">
+                <Button variant="outline" className="w-full justify-start border-white/20 text-white/80 hover:bg-white/10 hover:text-white">
                   <Star className="h-4 w-4 mr-2" />
                   Ver Avaliações
                 </Button>
-                <Button variant="outline" className="w-full justify-start">
+                <Button variant="outline" className="w-full justify-start border-white/20 text-white/80 hover:bg-white/10 hover:text-white">
                   <Clock className="h-4 w-4 mr-2" />
                   Histórico
                 </Button>
               </CardContent>
             </Card>
           </div>
+        </div>
+
+        {/* Sury Assistant FAB */}
+        <div className="fixed bottom-6 right-6">
+          <Button 
+            size="lg" 
+            className="rounded-full w-16 h-16 bg-gradient-to-r from-primary to-secondary shadow-2xl hover:shadow-3xl transition-all duration-300 hover:scale-110 group"
+          >
+            <Bot className="h-7 w-7" />
+          </Button>
         </div>
       </div>
     </div>
