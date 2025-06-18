@@ -41,15 +41,6 @@ const CompanyDashboard = () => {
     }
   ];
 
-  const getStatusColor = (status: string) => {
-    switch (status) {
-      case "Completo": return "success";
-      case "Em andamento": return "secondary";
-      case "Recrutando": return "default";
-      default: return "secondary";
-    }
-  };
-
   const getStatusBadgeClass = (status: string) => {
     switch (status) {
       case "Completo": return "bg-success/30 text-success border-success/50";
@@ -116,7 +107,7 @@ const CompanyDashboard = () => {
                 </div>
                 <div>
                   <p className="text-2xl font-bold text-white">45</p>
-                  <p className="text-xs text-white/80">Candidatos ativos</p>
+                  <p className="text-xs text-white">Candidatos ativos</p>
                 </div>
               </div>
             </CardContent>
@@ -130,7 +121,7 @@ const CompanyDashboard = () => {
                 </div>
                 <div>
                   <p className="text-2xl font-bold text-white">23</p>
-                  <p className="text-xs text-white/80">Vagas preenchidas</p>
+                  <p className="text-xs text-white">Vagas preenchidas</p>
                 </div>
               </div>
             </CardContent>
@@ -144,7 +135,7 @@ const CompanyDashboard = () => {
                 </div>
                 <div>
                   <p className="text-2xl font-bold text-white">3</p>
-                  <p className="text-xs text-white/80">Ações pendentes</p>
+                  <p className="text-xs text-white">Ações pendentes</p>
                 </div>
               </div>
             </CardContent>
@@ -158,7 +149,7 @@ const CompanyDashboard = () => {
                 </div>
                 <div>
                   <p className="text-2xl font-bold text-white">92%</p>
-                  <p className="text-xs text-white/80">Taxa de sucesso</p>
+                  <p className="text-xs text-white">Taxa de sucesso</p>
                 </div>
               </div>
             </CardContent>

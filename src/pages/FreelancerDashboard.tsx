@@ -107,7 +107,7 @@ const FreelancerDashboard = () => {
                 </div>
                 <div>
                   <p className="text-2xl font-bold text-success">R$ 850</p>
-                  <p className="text-xs text-white/80">Este mês</p>
+                  <p className="text-xs text-white">Este mês</p>
                 </div>
               </div>
             </CardContent>
@@ -121,7 +121,7 @@ const FreelancerDashboard = () => {
                 </div>
                 <div>
                   <p className="text-2xl font-bold text-white">12</p>
-                  <p className="text-xs text-white/80">Jobs realizados</p>
+                  <p className="text-xs text-white">Jobs realizados</p>
                 </div>
               </div>
             </CardContent>
@@ -135,7 +135,7 @@ const FreelancerDashboard = () => {
                 </div>
                 <div>
                   <p className="text-2xl font-bold text-secondary">4.8</p>
-                  <p className="text-xs text-white/80">Avaliação</p>
+                  <p className="text-xs text-white">Avaliação</p>
                 </div>
               </div>
             </CardContent>
@@ -149,7 +149,7 @@ const FreelancerDashboard = () => {
                 </div>
                 <div>
                   <p className="text-2xl font-bold text-orange-500">3</p>
-                  <p className="text-xs text-white/80">Pendentes</p>
+                  <p className="text-xs text-white">Pendentes</p>
                 </div>
               </div>
             </CardContent>

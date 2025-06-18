@@ -164,7 +164,7 @@ const Welcome = () => {
             {/* Features Grid */}
             <div className="grid md:grid-cols-3 gap-8 mt-32">
               {/* Feature 1 */}
-              <Card className="bg-gradient-to-br from-white/10 to-white/5 border-white/20 backdrop-blur-sm hover:from-white/15 hover:to-white/10 transition-all duration-300 group">
+              <Card className="bg-black/30 border-white/20 backdrop-blur-sm hover:bg-black/40 transition-all duration-300 group">
                 <CardHeader className="text-center p-8">
                   <div className="w-16 h-16 bg-gradient-to-r from-primary to-blue-400 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
                     <Bot className="h-8 w-8 text-white" />
@@ -177,7 +177,7 @@ const Welcome = () => {
               </Card>
 
               {/* Feature 2 */}
-              <Card className="bg-gradient-to-br from-white/10 to-white/5 border-white/20 backdrop-blur-sm hover:from-white/15 hover:to-white/10 transition-all duration-300 group">
+              <Card className="bg-black/30 border-white/20 backdrop-blur-sm hover:bg-black/40 transition-all duration-300 group">
                 <CardHeader className="text-center p-8">
                   <div className="w-16 h-16 bg-gradient-to-r from-green-500 to-emerald-400 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
                     <MapPin className="h-8 w-8 text-white" />
@@ -190,7 +190,7 @@ const Welcome = () => {
               </Card>
 
               {/* Feature 3 */}
-              <Card className="bg-gradient-to-br from-white/10 to-white/5 border-white/20 backdrop-blur-sm hover:from-white/15 hover:to-white/10 transition-all duration-300 group">
+              <Card className="bg-black/30 border-white/20 backdrop-blur-sm hover:bg-black/40 transition-all duration-300 group">
                 <CardHeader className="text-center p-8">
                   <div className="w-16 h-16 bg-gradient-to-r from-orange-500 to-yellow-400 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
                     <Shield className="h-8 w-8 text-white" />

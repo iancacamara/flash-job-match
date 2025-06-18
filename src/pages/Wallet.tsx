@@ -169,7 +169,7 @@ const Wallet = () => {
         <div className="grid lg:grid-cols-3 gap-6">
           {/* Transaction History with updated design */}
           <div className="lg:col-span-2 space-y-6">
-            <Card className="bg-white/10 backdrop-blur-xl border-white/20">
+            <Card className="bg-black/30 backdrop-blur-xl border-white/20">
               <CardHeader>
                 <CardTitle className="flex items-center justify-between text-white">
                   <span>Histórico SuperaBank</span>
@@ -206,7 +206,7 @@ const Wallet = () => {
                         <div className="font-semibold text-success">
                           + R$ {transaction.amount.toFixed(2)}
                         </div>
-                        <Badge variant={getStatusColor(transaction.status) as any} className="text-xs">
+                        <Badge variant={getStatusColor(transaction.status) as any} className="text-xs bg-success/30 text-success border-success/50">
                           {transaction.status}
                         </Badge>
                       </div>
@@ -220,7 +220,7 @@ const Wallet = () => {
           {/* Sidebar with updated design */}
           <div className="space-y-6">
             {/* Pending Payments */}
-            <Card className="bg-white/10 backdrop-blur-xl border-white/20">
+            <Card className="bg-black/30 backdrop-blur-xl border-white/20">
               <CardHeader>
                 <CardTitle className="text-lg text-white">Pagamentos Pendentes</CardTitle>
                 <CardDescription className="text-white/70">Jobs concluídos aguardando pagamento</CardDescription>
@@ -239,7 +239,7 @@ const Wallet = () => {
             </Card>
 
             {/* Payment Methods */}
-            <Card className="bg-white/10 backdrop-blur-xl border-white/20">
+            <Card className="bg-black/30 backdrop-blur-xl border-white/20">
               <CardHeader>
                 <CardTitle className="text-lg text-white">Forma de Pagamento</CardTitle>
               </CardHeader>
@@ -261,7 +261,7 @@ const Wallet = () => {
             </Card>
 
             {/* Monthly Stats */}
-            <Card className="bg-white/10 backdrop-blur-xl border-white/20">
+            <Card className="bg-black/30 backdrop-blur-xl border-white/20">
               <CardHeader>
                 <CardTitle className="text-lg text-white">Estatísticas do Mês</CardTitle>
               </CardHeader>
