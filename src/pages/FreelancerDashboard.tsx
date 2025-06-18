@@ -1,10 +1,9 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { useNavigate } from "react-router-dom";
-import { MapPin, Clock, DollarSign, Zap, Calendar, User, Bell, CreditCard, Filter, Map } from "lucide-react";
+import { MapPin, Clock, DollarSign, Zap, Calendar, User, Bell, CreditCard, Filter, Map, Bot } from "lucide-react";
 import MapView from "@/components/MapView";
 
 const FreelancerDashboard = () => {
@@ -55,38 +54,40 @@ const FreelancerDashboard = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-primary/5 via-background to-secondary/5">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
       {/* Header */}
-      <header className="bg-white/90 backdrop-blur-sm border-b sticky top-0 z-50 shadow-sm">
+      <header className="bg-black/20 backdrop-blur-xl border-b border-white/10 sticky top-0 z-50">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-4">
               <div className="flex items-center space-x-3">
-                <div className="w-12 h-12 bg-gradient-to-r from-primary to-secondary rounded-xl flex items-center justify-center shadow-lg">
-                  <Zap className="h-7 w-7 text-white" />
-                </div>
+                <img 
+                  src="/lovable-uploads/e172e5ba-c278-4674-bb50-c1cccacbb507.png" 
+                  alt="Supera Flash Logo" 
+                  className="h-12 w-auto logo-animate"
+                />
                 <div>
-                  <h1 className="text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-                    Job Flash
+                  <h1 className="text-xl font-bold text-white">
+                    Supera Flash
                   </h1>
-                  <p className="text-sm text-muted-foreground">Conectando talentos</p>
+                  <p className="text-sm text-white/60">Conectando talentos</p>
                 </div>
               </div>
-              <div className="hidden md:block h-8 w-px bg-border"></div>
+              <div className="hidden md:block h-8 w-px bg-white/20"></div>
               <div className="hidden md:block">
-                <h2 className="text-lg font-semibold">Olá, Maria!</h2>
-                <p className="text-sm text-muted-foreground">3 vagas disponíveis para você</p>
+                <h2 className="text-lg font-semibold text-white">Olá, Maria!</h2>
+                <p className="text-sm text-white/60">3 vagas disponíveis para você</p>
               </div>
             </div>
             
             <div className="flex items-center space-x-2">
-              <Button variant="ghost" size="icon" onClick={() => navigate('/wallet')}>
+              <Button variant="ghost" size="icon" onClick={() => navigate('/wallet')} className="text-white/80 hover:text-white hover:bg-white/10">
                 <CreditCard className="h-5 w-5" />
               </Button>
-              <Button variant="ghost" size="icon">
+              <Button variant="ghost" size="icon" className="text-white/80 hover:text-white hover:bg-white/10">
                 <Bell className="h-5 w-5" />
               </Button>
-              <Button variant="ghost" size="icon" onClick={() => navigate('/profile')}>
+              <Button variant="ghost" size="icon" onClick={() => navigate('/profile')} className="text-white/80 hover:text-white hover:bg-white/10">
                 <User className="h-5 w-5" />
               </Button>
             </div>
@@ -97,57 +98,57 @@ const FreelancerDashboard = () => {
       <div className="container mx-auto px-4 py-6">
         {/* Stats Cards */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-          <Card className="hover:shadow-lg transition-shadow">
+          <Card className="bg-white/10 backdrop-blur-sm border-white/20 hover:bg-white/15 transition-all">
             <CardContent className="p-4">
               <div className="flex items-center space-x-2">
-                <div className="w-10 h-10 bg-success/10 rounded-lg flex items-center justify-center">
+                <div className="w-10 h-10 bg-success/20 rounded-lg flex items-center justify-center backdrop-blur-sm">
                   <DollarSign className="h-5 w-5 text-success" />
                 </div>
                 <div>
                   <p className="text-2xl font-bold text-success">R$ 850</p>
-                  <p className="text-xs text-muted-foreground">Este mês</p>
+                  <p className="text-xs text-white/60">Este mês</p>
                 </div>
               </div>
             </CardContent>
           </Card>
           
-          <Card className="hover:shadow-lg transition-shadow">
+          <Card className="bg-white/10 backdrop-blur-sm border-white/20 hover:bg-white/15 transition-all">
             <CardContent className="p-4">
               <div className="flex items-center space-x-2">
-                <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center">
+                <div className="w-10 h-10 bg-primary/20 rounded-lg flex items-center justify-center backdrop-blur-sm">
                   <Calendar className="h-5 w-5 text-primary" />
                 </div>
                 <div>
-                  <p className="text-2xl font-bold">12</p>
-                  <p className="text-xs text-muted-foreground">Jobs realizados</p>
+                  <p className="text-2xl font-bold text-white">12</p>
+                  <p className="text-xs text-white/60">Jobs realizados</p>
                 </div>
               </div>
             </CardContent>
           </Card>
           
-          <Card className="hover:shadow-lg transition-shadow">
+          <Card className="bg-white/10 backdrop-blur-sm border-white/20 hover:bg-white/15 transition-all">
             <CardContent className="p-4">
               <div className="flex items-center space-x-2">
-                <div className="w-10 h-10 bg-secondary/10 rounded-lg flex items-center justify-center">
+                <div className="w-10 h-10 bg-secondary/20 rounded-lg flex items-center justify-center backdrop-blur-sm">
                   <Zap className="h-5 w-5 text-secondary" />
                 </div>
                 <div>
-                  <p className="text-2xl font-bold">4.8</p>
-                  <p className="text-xs text-muted-foreground">Avaliação</p>
+                  <p className="text-2xl font-bold text-secondary">4.8</p>
+                  <p className="text-xs text-white/60">Avaliação</p>
                 </div>
               </div>
             </CardContent>
           </Card>
           
-          <Card className="hover:shadow-lg transition-shadow">
+          <Card className="bg-white/10 backdrop-blur-sm border-white/20 hover:bg-white/15 transition-all">
             <CardContent className="p-4">
               <div className="flex items-center space-x-2">
-                <div className="w-10 h-10 bg-orange-500/10 rounded-lg flex items-center justify-center">
+                <div className="w-10 h-10 bg-orange-500/20 rounded-lg flex items-center justify-center backdrop-blur-sm">
                   <Clock className="h-5 w-5 text-orange-500" />
                 </div>
                 <div>
-                  <p className="text-2xl font-bold">3</p>
-                  <p className="text-xs text-muted-foreground">Pendentes</p>
+                  <p className="text-2xl font-bold text-orange-500">3</p>
+                  <p className="text-xs text-white/60">Pendentes</p>
                 </div>
               </div>
             </CardContent>
@@ -156,9 +157,9 @@ const FreelancerDashboard = () => {
 
         {/* Filter Section */}
         <div className="flex items-center justify-between mb-6">
-          <h2 className="text-2xl font-bold">Vagas Disponíveis</h2>
+          <h2 className="text-2xl font-bold text-white">Vagas Disponíveis</h2>
           <div className="flex items-center space-x-2">
-            <Button variant="outline" size="sm">
+            <Button variant="outline" size="sm" className="border-white/20 text-white/80 hover:bg-white/10">
               <Filter className="h-4 w-4 mr-2" />
               Filtros
             </Button>
@@ -166,7 +167,7 @@ const FreelancerDashboard = () => {
               variant="outline" 
               size="sm"
               onClick={() => setShowMap(true)}
-              className="bg-primary/5 border-primary/20 hover:bg-primary/10"
+              className="bg-primary/20 border-primary/40 text-primary hover:bg-primary/30"
             >
               <Map className="h-4 w-4 mr-2" />
               Ver no Mapa
@@ -177,37 +178,37 @@ const FreelancerDashboard = () => {
         {/* Jobs List */}
         <div className="space-y-4">
           {jobs.map((job) => (
-            <Card key={job.id} className="hover:shadow-lg transition-all duration-300 cursor-pointer hover:border-primary/20">
+            <Card key={job.id} className="bg-white/10 backdrop-blur-sm border-white/20 hover:bg-white/15 transition-all duration-300 cursor-pointer hover:border-primary/40">
               <CardContent className="p-6">
                 <div className="flex items-start justify-between">
                   <div className="flex-1">
                     <div className="flex items-center space-x-2 mb-2">
-                      <h3 className="text-lg font-semibold">{job.title}</h3>
+                      <h3 className="text-lg font-semibold text-white">{job.title}</h3>
                       {job.urgent && (
                         <Badge variant="destructive" className="text-xs animate-pulse">
                           <Zap className="h-3 w-3 mr-1" />
                           Urgente
                         </Badge>
                       )}
-                      <Badge variant="secondary" className="text-xs">
+                      <Badge variant="secondary" className="text-xs bg-secondary/20 text-secondary border-secondary/30">
                         {job.type}
                       </Badge>
                     </div>
                     
-                    <p className="text-muted-foreground mb-3 font-medium">{job.company}</p>
+                    <p className="text-white/70 mb-3 font-medium">{job.company}</p>
                     
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
                       <div className="flex items-center space-x-2">
-                        <MapPin className="h-4 w-4 text-muted-foreground" />
-                        <span>{job.location}</span>
-                        <Badge variant="outline" className="text-xs ml-2">
+                        <MapPin className="h-4 w-4 text-white/60" />
+                        <span className="text-white/80">{job.location}</span>
+                        <Badge variant="outline" className="text-xs ml-2 border-white/30 text-white/70">
                           {job.distance}
                         </Badge>
                       </div>
                       
                       <div className="flex items-center space-x-2">
-                        <Clock className="h-4 w-4 text-muted-foreground" />
-                        <span>{job.date}</span>
+                        <Clock className="h-4 w-4 text-white/60" />
+                        <span className="text-white/80">{job.date}</span>
                       </div>
                       
                       <div className="flex items-center space-x-2">
@@ -224,7 +225,7 @@ const FreelancerDashboard = () => {
                     >
                       Ver Detalhes
                     </Button>
-                    <Button variant="outline" size="sm" className="hover:bg-success/10 hover:border-success hover:text-success">
+                    <Button variant="outline" size="sm" className="border-success/40 text-success hover:bg-success/10 hover:border-success">
                       Aceitar Rápido
                     </Button>
                   </div>
@@ -234,13 +235,13 @@ const FreelancerDashboard = () => {
           ))}
         </div>
 
-        {/* Quick Actions */}
+        {/* Sury Assistant FAB */}
         <div className="fixed bottom-6 right-6">
           <Button 
             size="lg" 
-            className="rounded-full w-16 h-16 bg-gradient-to-r from-primary to-secondary shadow-2xl hover:shadow-3xl transition-all duration-300 hover:scale-110"
+            className="rounded-full w-16 h-16 bg-gradient-to-r from-primary to-secondary shadow-2xl hover:shadow-3xl transition-all duration-300 hover:scale-110 group"
           >
-            <Calendar className="h-7 w-7" />
+            <Bot className="h-7 w-7" />
           </Button>
         </div>
       </div>

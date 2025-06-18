@@ -1,9 +1,8 @@
-
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { useNavigate } from "react-router-dom";
-import { ArrowLeft, DollarSign, TrendingUp, TrendingDown, Clock, Download, CreditCard } from "lucide-react";
+import { ArrowLeft, DollarSign, TrendingUp, TrendingDown, Clock, Download, CreditCard, Bot } from "lucide-react";
 
 const Wallet = () => {
   const navigate = useNavigate();
@@ -84,9 +83,9 @@ const Wallet = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-primary/5 via-background to-secondary/5">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
       {/* Header */}
-      <header className="bg-white/80 backdrop-blur-sm border-b sticky top-0 z-50">
+      <header className="bg-black/20 backdrop-blur-xl border-b border-white/10 sticky top-0 z-50">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-4">
@@ -94,16 +93,22 @@ const Wallet = () => {
                 variant="ghost" 
                 size="icon"
                 onClick={() => navigate('/dashboard')}
+                className="text-white/80 hover:text-white hover:bg-white/10"
               >
                 <ArrowLeft className="h-5 w-5" />
               </Button>
+              <img 
+                src="/lovable-uploads/e172e5ba-c278-4674-bb50-c1cccacbb507.png" 
+                alt="Supera Flash Logo" 
+                className="h-10 w-auto logo-animate"
+              />
               <div>
-                <h1 className="text-xl font-bold">Carteira</h1>
-                <p className="text-sm text-muted-foreground">Gerencie seus ganhos</p>
+                <h1 className="text-xl font-bold text-white">SuperaBank</h1>
+                <p className="text-sm text-white/60">Gerencie seus ganhos</p>
               </div>
             </div>
             
-            <Button variant="outline">
+            <Button variant="outline" className="border-white/20 text-white/80 hover:bg-white/10">
               <Download className="h-4 w-4 mr-2" />
               Relatório
             </Button>
@@ -112,56 +117,62 @@ const Wallet = () => {
       </header>
 
       <div className="container mx-auto px-4 py-6 max-w-4xl">
-        {/* Balance Cards */}
+        {/* Balance Cards with futuristic design */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
-          <Card className="bg-gradient-to-r from-success to-success/80 text-white">
+          <Card className="bg-gradient-to-br from-success/20 to-success/10 border-success/30 backdrop-blur-xl">
             <CardContent className="p-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-success-foreground/80 text-sm">Ganhos Totais</p>
-                  <p className="text-3xl font-bold">R$ {totalEarnings.toFixed(2)}</p>
-                  <p className="text-success-foreground/80 text-xs">Este mês</p>
+                  <p className="text-success/80 text-sm font-medium">Ganhos Totais</p>
+                  <p className="text-3xl font-bold text-success">R$ {totalEarnings.toFixed(2)}</p>
+                  <p className="text-success/70 text-xs">Este mês</p>
                 </div>
-                <DollarSign className="h-8 w-8 text-success-foreground/80" />
+                <div className="w-12 h-12 bg-success/20 rounded-full flex items-center justify-center backdrop-blur-sm">
+                  <DollarSign className="h-6 w-6 text-success" />
+                </div>
               </div>
             </CardContent>
           </Card>
           
-          <Card className="bg-gradient-to-r from-orange-500 to-orange-400 text-white">
+          <Card className="bg-gradient-to-br from-orange-500/20 to-orange-400/10 border-orange-500/30 backdrop-blur-xl">
             <CardContent className="p-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-white/80 text-sm">Pendente</p>
-                  <p className="text-3xl font-bold">R$ {pendingTotal.toFixed(2)}</p>
-                  <p className="text-white/80 text-xs">A receber</p>
+                  <p className="text-orange-400/80 text-sm font-medium">Pendente</p>
+                  <p className="text-3xl font-bold text-orange-400">R$ {pendingTotal.toFixed(2)}</p>
+                  <p className="text-orange-400/70 text-xs">A receber</p>
                 </div>
-                <Clock className="h-8 w-8 text-white/80" />
+                <div className="w-12 h-12 bg-orange-500/20 rounded-full flex items-center justify-center backdrop-blur-sm">
+                  <Clock className="h-6 w-6 text-orange-400" />
+                </div>
               </div>
             </CardContent>
           </Card>
           
-          <Card className="bg-gradient-to-r from-primary to-secondary text-white">
+          <Card className="bg-gradient-to-br from-primary/20 to-secondary/10 border-primary/30 backdrop-blur-xl">
             <CardContent className="p-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-white/80 text-sm">Média por Job</p>
-                  <p className="text-3xl font-bold">R$ {(totalEarnings / transactions.filter(t => t.status === "Concluído").length).toFixed(0)}</p>
-                  <p className="text-white/80 text-xs">Por trabalho</p>
+                  <p className="text-primary/80 text-sm font-medium">Média por Job</p>
+                  <p className="text-3xl font-bold text-primary">R$ {(totalEarnings / transactions.filter(t => t.status === "Concluído").length).toFixed(0)}</p>
+                  <p className="text-primary/70 text-xs">Por trabalho</p>
                 </div>
-                <TrendingUp className="h-8 w-8 text-white/80" />
+                <div className="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center backdrop-blur-sm">
+                  <TrendingUp className="h-6 w-6 text-primary" />
+                </div>
               </div>
             </CardContent>
           </Card>
         </div>
 
         <div className="grid lg:grid-cols-3 gap-6">
-          {/* Transaction History */}
+          {/* Transaction History with updated design */}
           <div className="lg:col-span-2 space-y-6">
-            <Card>
+            <Card className="bg-white/10 backdrop-blur-xl border-white/20">
               <CardHeader>
-                <CardTitle className="flex items-center justify-between">
-                  <span>Histórico de Transações</span>
-                  <Button variant="outline" size="sm">
+                <CardTitle className="flex items-center justify-between text-white">
+                  <span>Histórico SuperaBank</span>
+                  <Button variant="outline" size="sm" className="border-white/20 text-white/80 hover:bg-white/10">
                     Filtrar
                   </Button>
                 </CardTitle>
@@ -169,10 +180,10 @@ const Wallet = () => {
               <CardContent>
                 <div className="space-y-4">
                   {transactions.map((transaction) => (
-                    <div key={transaction.id} className="flex items-center justify-between p-4 border rounded-lg hover:bg-muted/50 transition-colors">
+                    <div key={transaction.id} className="flex items-center justify-between p-4 border rounded-lg hover:bg-white/5 transition-colors border-white/20">
                       <div className="flex items-center space-x-4">
                         <div className={`w-10 h-10 rounded-full flex items-center justify-center ${
-                          transaction.status === 'Concluído' ? 'bg-success/10' : 'bg-orange-500/10'
+                          transaction.status === 'Concluído' ? 'bg-success/20' : 'bg-orange-500/20'
                         }`}>
                           {transaction.status === 'Concluído' ? 
                             <TrendingUp className="h-5 w-5 text-success" /> :
@@ -181,8 +192,8 @@ const Wallet = () => {
                         </div>
                         
                         <div className="flex-1">
-                          <h4 className="font-medium">{transaction.description}</h4>
-                          <div className="flex items-center space-x-2 text-sm text-muted-foreground">
+                          <h4 className="font-medium text-white">{transaction.description}</h4>
+                          <div className="flex items-center space-x-2 text-sm text-white/60">
                             <span>{transaction.company}</span>
                             <span>•</span>
                             <span>{transaction.date}</span>
@@ -205,20 +216,20 @@ const Wallet = () => {
             </Card>
           </div>
 
-          {/* Sidebar */}
+          {/* Sidebar with updated design */}
           <div className="space-y-6">
             {/* Pending Payments */}
-            <Card>
+            <Card className="bg-white/10 backdrop-blur-xl border-white/20">
               <CardHeader>
-                <CardTitle className="text-lg">Pagamentos Pendentes</CardTitle>
-                <CardDescription>Jobs concluídos aguardando pagamento</CardDescription>
+                <CardTitle className="text-lg text-white">Pagamentos Pendentes</CardTitle>
+                <CardDescription className="text-white/70">Jobs concluídos aguardando pagamento</CardDescription>
               </CardHeader>
               <CardContent className="space-y-3">
                 {pendingPayments.map((payment) => (
-                  <div key={payment.id} className="p-3 border rounded-lg">
-                    <h4 className="font-medium text-sm">{payment.description}</h4>
+                  <div key={payment.id} className="p-3 border rounded-lg border-white/20">
+                    <h4 className="font-medium text-sm text-white">{payment.description}</h4>
                     <div className="flex justify-between items-center mt-2">
-                      <span className="text-xs text-muted-foreground">{payment.expectedDate}</span>
+                      <span className="text-xs text-white/60">{payment.expectedDate}</span>
                       <span className="font-semibold text-success">R$ {payment.amount.toFixed(2)}</span>
                     </div>
                   </div>
@@ -227,21 +238,21 @@ const Wallet = () => {
             </Card>
 
             {/* Payment Methods */}
-            <Card>
+            <Card className="bg-white/10 backdrop-blur-xl border-white/20">
               <CardHeader>
-                <CardTitle className="text-lg">Forma de Pagamento</CardTitle>
+                <CardTitle className="text-lg text-white">Forma de Pagamento</CardTitle>
               </CardHeader>
               <CardContent className="space-y-3">
-                <div className="flex items-center space-x-3 p-3 border rounded-lg">
+                <div className="flex items-center space-x-3 p-3 border rounded-lg border-white/20">
                   <CreditCard className="h-5 w-5 text-primary" />
                   <div className="flex-1">
-                    <p className="font-medium text-sm">PIX</p>
-                    <p className="text-xs text-muted-foreground">maria.silva@email.com</p>
+                    <p className="font-medium text-sm text-white">PIX</p>
+                    <p className="text-xs text-white/60">maria.silva@email.com</p>
                   </div>
                   <Badge variant="secondary">Principal</Badge>
                 </div>
                 
-                <Button variant="outline" className="w-full justify-start text-sm">
+                <Button variant="outline" className="w-full justify-start text-sm border-white/20 text-white/80 hover:bg-white/10">
                   <CreditCard className="h-4 w-4 mr-2" />
                   Adicionar Conta Bancária
                 </Button>
@@ -249,29 +260,29 @@ const Wallet = () => {
             </Card>
 
             {/* Monthly Stats */}
-            <Card>
+            <Card className="bg-white/10 backdrop-blur-xl border-white/20">
               <CardHeader>
-                <CardTitle className="text-lg">Estatísticas do Mês</CardTitle>
+                <CardTitle className="text-lg text-white">Estatísticas do Mês</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="flex justify-between items-center">
-                  <span className="text-sm">Jobs Realizados</span>
-                  <span className="font-semibold">4</span>
+                  <span className="text-sm text-white/80">Jobs Realizados</span>
+                  <span className="font-semibold text-white">4</span>
                 </div>
                 
                 <div className="flex justify-between items-center">
-                  <span className="text-sm">Horas Trabalhadas</span>
-                  <span className="font-semibold">16h</span>
+                  <span className="text-sm text-white/80">Horas Trabalhadas</span>
+                  <span className="font-semibold text-white">16h</span>
                 </div>
                 
                 <div className="flex justify-between items-center">
-                  <span className="text-sm">Valor por Hora</span>
+                  <span className="text-sm text-white/80">Valor por Hora</span>
                   <span className="font-semibold text-success">R$ 31,25</span>
                 </div>
                 
-                <div className="pt-2 border-t">
+                <div className="pt-2 border-t border-white/20">
                   <div className="flex justify-between items-center">
-                    <span className="text-sm">Crescimento</span>
+                    <span className="text-sm text-white/80">Crescimento</span>
                     <div className="flex items-center space-x-1">
                       <TrendingUp className="h-4 w-4 text-success" />
                       <span className="font-semibold text-success">+15%</span>
@@ -281,6 +292,16 @@ const Wallet = () => {
               </CardContent>
             </Card>
           </div>
+        </div>
+
+        {/* Sury Assistant FAB */}
+        <div className="fixed bottom-6 right-6">
+          <Button 
+            size="lg" 
+            className="rounded-full w-16 h-16 bg-gradient-to-r from-primary to-secondary shadow-2xl hover:shadow-3xl transition-all duration-300 hover:scale-110"
+          >
+            <Bot className="h-7 w-7" />
+          </Button>
         </div>
       </div>
     </div>

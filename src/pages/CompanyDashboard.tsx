@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { useNavigate } from "react-router-dom";
-import { Plus, Users, Clock, CheckCircle, AlertCircle, TrendingUp, Zap, Bell, User } from "lucide-react";
+import { Plus, Users, Clock, CheckCircle, AlertCircle, TrendingUp, Zap, Bell, User, Bot } from "lucide-react";
 
 const CompanyDashboard = () => {
   const navigate = useNavigate();
@@ -50,27 +50,29 @@ const CompanyDashboard = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-primary/5 via-background to-secondary/5">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
       {/* Header */}
-      <header className="bg-white/90 backdrop-blur-sm border-b sticky top-0 z-50 shadow-sm">
+      <header className="bg-black/20 backdrop-blur-xl border-b border-white/10 sticky top-0 z-50">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-4">
               <div className="flex items-center space-x-3">
-                <div className="w-12 h-12 bg-gradient-to-r from-primary to-secondary rounded-xl flex items-center justify-center shadow-lg">
-                  <Zap className="h-7 w-7 text-white" />
-                </div>
+                <img 
+                  src="/lovable-uploads/e172e5ba-c278-4674-bb50-c1cccacbb507.png" 
+                  alt="Supera Flash Logo" 
+                  className="h-12 w-auto logo-animate"
+                />
                 <div>
-                  <h1 className="text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-                    Job Flash
+                  <h1 className="text-xl font-bold text-white">
+                    Supera Flash
                   </h1>
-                  <p className="text-sm text-muted-foreground">Conectando talentos</p>
+                  <p className="text-sm text-white/60">Conectando talentos</p>
                 </div>
               </div>
-              <div className="hidden md:block h-8 w-px bg-border"></div>
+              <div className="hidden md:block h-8 w-px bg-white/20"></div>
               <div className="hidden md:block">
-                <h2 className="text-lg font-semibold">FoodBrand Ltda</h2>
-                <p className="text-sm text-muted-foreground">Gerencie suas ações promocionais</p>
+                <h2 className="text-lg font-semibold text-white">FoodBrand Ltda</h2>
+                <p className="text-sm text-white/60">Gerencie suas ações promocionais</p>
               </div>
             </div>
             
@@ -82,10 +84,10 @@ const CompanyDashboard = () => {
                 <Plus className="h-4 w-4 mr-2" />
                 Nova Vaga
               </Button>
-              <Button variant="ghost" size="icon">
+              <Button variant="ghost" size="icon" className="text-white/80 hover:text-white hover:bg-white/10">
                 <Bell className="h-5 w-5" />
               </Button>
-              <Button variant="ghost" size="icon" onClick={() => navigate('/profile')}>
+              <Button variant="ghost" size="icon" onClick={() => navigate('/profile')} className="text-white/80 hover:text-white hover:bg-white/10">
                 <User className="h-5 w-5" />
               </Button>
             </div>
@@ -96,57 +98,57 @@ const CompanyDashboard = () => {
       <div className="container mx-auto px-4 py-6">
         {/* Stats Overview */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-          <Card className="hover:shadow-lg transition-shadow">
+          <Card className="bg-white/10 backdrop-blur-sm border-white/20 hover:bg-white/15 transition-all">
             <CardContent className="p-4">
               <div className="flex items-center space-x-2">
-                <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center">
+                <div className="w-10 h-10 bg-primary/20 rounded-lg flex items-center justify-center backdrop-blur-sm">
                   <Users className="h-5 w-5 text-primary" />
                 </div>
                 <div>
-                  <p className="text-2xl font-bold">45</p>
-                  <p className="text-xs text-muted-foreground">Candidatos ativos</p>
+                  <p className="text-2xl font-bold text-white">45</p>
+                  <p className="text-xs text-white/60">Candidatos ativos</p>
                 </div>
               </div>
             </CardContent>
           </Card>
           
-          <Card className="hover:shadow-lg transition-shadow">
+          <Card className="bg-white/10 backdrop-blur-sm border-white/20 hover:bg-white/15 transition-all">
             <CardContent className="p-4">
               <div className="flex items-center space-x-2">
-                <div className="w-10 h-10 bg-success/10 rounded-lg flex items-center justify-center">
+                <div className="w-10 h-10 bg-success/20 rounded-lg flex items-center justify-center backdrop-blur-sm">
                   <CheckCircle className="h-5 w-5 text-success" />
                 </div>
                 <div>
-                  <p className="text-2xl font-bold">23</p>
-                  <p className="text-xs text-muted-foreground">Vagas preenchidas</p>
+                  <p className="text-2xl font-bold text-white">23</p>
+                  <p className="text-xs text-white/60">Vagas preenchidas</p>
                 </div>
               </div>
             </CardContent>
           </Card>
           
-          <Card className="hover:shadow-lg transition-shadow">
+          <Card className="bg-white/10 backdrop-blur-sm border-white/20 hover:bg-white/15 transition-all">
             <CardContent className="p-4">
               <div className="flex items-center space-x-2">
-                <div className="w-10 h-10 bg-orange-500/10 rounded-lg flex items-center justify-center">
+                <div className="w-10 h-10 bg-orange-500/20 rounded-lg flex items-center justify-center backdrop-blur-sm">
                   <Clock className="h-5 w-5 text-orange-500" />
                 </div>
                 <div>
-                  <p className="text-2xl font-bold">3</p>
-                  <p className="text-xs text-muted-foreground">Ações pendentes</p>
+                  <p className="text-2xl font-bold text-white">3</p>
+                  <p className="text-xs text-white/60">Ações pendentes</p>
                 </div>
               </div>
             </CardContent>
           </Card>
           
-          <Card className="hover:shadow-lg transition-shadow">
+          <Card className="bg-white/10 backdrop-blur-sm border-white/20 hover:bg-white/15 transition-all">
             <CardContent className="p-4">
               <div className="flex items-center space-x-2">
-                <div className="w-10 h-10 bg-secondary/10 rounded-lg flex items-center justify-center">
+                <div className="w-10 h-10 bg-secondary/20 rounded-lg flex items-center justify-center backdrop-blur-sm">
                   <TrendingUp className="h-5 w-5 text-secondary" />
                 </div>
                 <div>
-                  <p className="text-2xl font-bold">92%</p>
-                  <p className="text-xs text-muted-foreground">Taxa de sucesso</p>
+                  <p className="text-2xl font-bold text-white">92%</p>
+                  <p className="text-xs text-white/60">Taxa de sucesso</p>
                 </div>
               </div>
             </CardContent>
@@ -158,20 +160,20 @@ const CompanyDashboard = () => {
           {/* Active Jobs */}
           <div className="lg:col-span-2">
             <div className="flex items-center justify-between mb-6">
-              <h2 className="text-2xl font-bold">Ações Ativas</h2>
-              <Button variant="outline">
+              <h2 className="text-2xl font-bold text-white">Ações Ativas</h2>
+              <Button variant="outline" className="border-white/20 text-white/80 hover:bg-white/10">
                 Ver Todas
               </Button>
             </div>
             
             <div className="space-y-4">
               {activeJobs.map((job) => (
-                <Card key={job.id} className="hover:shadow-lg transition-shadow">
+                <Card key={job.id} className="bg-white/10 backdrop-blur-sm border-white/20 hover:bg-white/15 transition-all">
                   <CardContent className="p-6">
                     <div className="flex items-start justify-between mb-4">
                       <div className="flex-1">
                         <div className="flex items-center space-x-2 mb-2">
-                          <h3 className="text-lg font-semibold">{job.title}</h3>
+                          <h3 className="text-lg font-semibold text-white">{job.title}</h3>
                           <Badge 
                             variant={getStatusColor(job.status) as any}
                             className="text-xs"
@@ -180,21 +182,21 @@ const CompanyDashboard = () => {
                           </Badge>
                         </div>
                         
-                        <p className="text-muted-foreground text-sm mb-3">{job.location}</p>
+                        <p className="text-white/70 text-sm mb-3">{job.location}</p>
                         
                         <div className="flex items-center space-x-4 text-sm">
                           <div className="flex items-center space-x-1">
-                            <Users className="h-4 w-4 text-muted-foreground" />
-                            <span>{job.candidates} candidatos</span>
+                            <Users className="h-4 w-4 text-white/60" />
+                            <span className="text-white/80">{job.candidates} candidatos</span>
                           </div>
                           <div className="flex items-center space-x-1">
-                            <Clock className="h-4 w-4 text-muted-foreground" />
-                            <span>{job.deadline}</span>
+                            <Clock className="h-4 w-4 text-white/60" />
+                            <span className="text-white/80">{job.deadline}</span>
                           </div>
                         </div>
                       </div>
                       
-                      <Button variant="outline" size="sm">
+                      <Button variant="outline" size="sm" className="border-white/20 text-white/80 hover:bg-white/10">
                         Gerenciar
                       </Button>
                     </div>
@@ -202,10 +204,10 @@ const CompanyDashboard = () => {
                     {/* Progress Bar */}
                     <div className="space-y-2">
                       <div className="flex justify-between text-sm">
-                        <span>Progresso ({job.filled}/{job.total})</span>
-                        <span>{Math.round((job.filled / job.total) * 100)}%</span>
+                        <span className="text-white/80">Progresso ({job.filled}/{job.total})</span>
+                        <span className="text-white/80">{Math.round((job.filled / job.total) * 100)}%</span>
                       </div>
-                      <div className="w-full bg-muted rounded-full h-2">
+                      <div className="w-full bg-white/20 rounded-full h-2">
                         <div 
                           className="bg-gradient-to-r from-primary to-secondary h-2 rounded-full transition-all"
                           style={{ width: `${(job.filled / job.total) * 100}%` }}
@@ -221,20 +223,20 @@ const CompanyDashboard = () => {
           {/* Sidebar */}
           <div className="space-y-6">
             {/* Quick Actions */}
-            <Card>
+            <Card className="bg-white/10 backdrop-blur-sm border-white/20">
               <CardHeader>
-                <CardTitle className="text-lg">Ações Rápidas</CardTitle>
+                <CardTitle className="text-lg text-white">Ações Rápidas</CardTitle>
               </CardHeader>
               <CardContent className="space-y-3">
-                <Button className="w-full justify-start" variant="outline">
+                <Button className="w-full justify-start text-white/80 hover:bg-white/10 border-white/20" variant="outline">
                   <Plus className="h-4 w-4 mr-2" />
                   Criar Nova Vaga
                 </Button>
-                <Button className="w-full justify-start" variant="outline">
+                <Button className="w-full justify-start text-white/80 hover:bg-white/10 border-white/20" variant="outline">
                   <Users className="h-4 w-4 mr-2" />
                   Ver Candidatos
                 </Button>
-                <Button className="w-full justify-start" variant="outline">
+                <Button className="w-full justify-start text-white/80 hover:bg-white/10 border-white/20" variant="outline">
                   <TrendingUp className="h-4 w-4 mr-2" />
                   Relatórios
                 </Button>
@@ -242,33 +244,33 @@ const CompanyDashboard = () => {
             </Card>
 
             {/* Recent Activity */}
-            <Card>
+            <Card className="bg-white/10 backdrop-blur-sm border-white/20">
               <CardHeader>
-                <CardTitle className="text-lg">Atividade Recente</CardTitle>
+                <CardTitle className="text-lg text-white">Atividade Recente</CardTitle>
               </CardHeader>
               <CardContent className="space-y-3">
                 <div className="space-y-3">
                   <div className="flex items-start space-x-3">
                     <div className="w-2 h-2 bg-success rounded-full mt-2"></div>
                     <div className="flex-1">
-                      <p className="text-sm">5 novos candidatos para "Evento de Lançamento"</p>
-                      <p className="text-xs text-muted-foreground">Há 2 horas</p>
+                      <p className="text-sm text-white/80">5 novos candidatos para "Evento de Lançamento"</p>
+                      <p className="text-xs text-white/60">Há 2 horas</p>
                     </div>
                   </div>
                   
                   <div className="flex items-start space-x-3">
                     <div className="w-2 h-2 bg-primary rounded-full mt-2"></div>
                     <div className="flex-1">
-                      <p className="text-sm">Vaga de "Reposição" foi totalmente preenchida</p>
-                      <p className="text-xs text-muted-foreground">Há 4 horas</p>
+                      <p className="text-sm text-white/80">Vaga de "Reposição" foi totalmente preenchida</p>
+                      <p className="text-xs text-white/60">Há 4 horas</p>
                     </div>
                   </div>
                   
                   <div className="flex items-start space-x-3">
                     <div className="w-2 h-2 bg-orange-500 rounded-full mt-2"></div>
                     <div className="flex-1">
-                      <p className="text-sm">3 candidatos aguardando aprovação</p>
-                      <p className="text-xs text-muted-foreground">Há 6 horas</p>
+                      <p className="text-sm text-white/80">3 candidatos aguardando aprovação</p>
+                      <p className="text-xs text-white/60">Há 6 horas</p>
                     </div>
                   </div>
                 </div>
@@ -276,29 +278,39 @@ const CompanyDashboard = () => {
             </Card>
 
             {/* Performance */}
-            <Card>
+            <Card className="bg-white/10 backdrop-blur-sm border-white/20">
               <CardHeader>
-                <CardTitle className="text-lg">Performance</CardTitle>
-                <CardDescription>Últimos 30 dias</CardDescription>
+                <CardTitle className="text-lg text-white">Performance</CardTitle>
+                <CardDescription className="text-white/60">Últimos 30 dias</CardDescription>
               </CardHeader>
               <CardContent>
                 <div className="space-y-4">
                   <div className="flex justify-between items-center">
-                    <span className="text-sm">Taxa de preenchimento</span>
+                    <span className="text-sm text-white/80">Taxa de preenchimento</span>
                     <span className="font-semibold text-success">94%</span>
                   </div>
                   <div className="flex justify-between items-center">
-                    <span className="text-sm">Tempo médio de contratação</span>
-                    <span className="font-semibold">2.3 dias</span>
+                    <span className="text-sm text-white/80">Tempo médio de contratação</span>
+                    <span className="font-semibold text-white">2.3 dias</span>
                   </div>
                   <div className="flex justify-between items-center">
-                    <span className="text-sm">Satisfação dos freelancers</span>
+                    <span className="text-sm text-white/80">Satisfação dos freelancers</span>
                     <span className="font-semibold text-secondary">4.8/5</span>
                   </div>
                 </div>
               </CardContent>
             </Card>
           </div>
+        </div>
+
+        {/* Sury Assistant FAB */}
+        <div className="fixed bottom-6 right-6">
+          <Button 
+            size="lg" 
+            className="rounded-full w-16 h-16 bg-gradient-to-r from-primary to-secondary shadow-2xl hover:shadow-3xl transition-all duration-300 hover:scale-110"
+          >
+            <Bot className="h-7 w-7" />
+          </Button>
         </div>
       </div>
     </div>

@@ -1,10 +1,9 @@
-
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { useNavigate, useParams } from "react-router-dom";
-import { MapPin, Clock, DollarSign, Users, Building2, ArrowLeft, CheckCircle, Calendar } from "lucide-react";
+import { MapPin, Clock, DollarSign, Users, Building2, ArrowLeft, CheckCircle, Calendar, Bot } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
 const JobDetails = () => {
@@ -62,21 +61,27 @@ const JobDetails = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-primary/5 via-background to-secondary/5">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
       {/* Header */}
-      <header className="bg-white/80 backdrop-blur-sm border-b sticky top-0 z-50">
+      <header className="bg-black/20 backdrop-blur-xl border-b border-white/10 sticky top-0 z-50">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center space-x-4">
             <Button 
               variant="ghost" 
               size="icon"
               onClick={() => navigate('/dashboard')}
+              className="text-white/80 hover:text-white hover:bg-white/10"
             >
               <ArrowLeft className="h-5 w-5" />
             </Button>
+            <img 
+              src="/lovable-uploads/e172e5ba-c278-4674-bb50-c1cccacbb507.png" 
+              alt="Supera Flash Logo" 
+              className="h-10 w-auto logo-animate"
+            />
             <div>
-              <h1 className="text-xl font-bold">Detalhes da Vaga</h1>
-              <p className="text-sm text-muted-foreground">#{job.id}</p>
+              <h1 className="text-xl font-bold text-white">Detalhes da Vaga</h1>
+              <p className="text-sm text-white/60">#{job.id}</p>
             </div>
           </div>
         </div>
@@ -87,20 +92,20 @@ const JobDetails = () => {
           {/* Main Content */}
           <div className="lg:col-span-2 space-y-6">
             {/* Job Header */}
-            <Card>
+            <Card className="bg-white/10 backdrop-blur-xl border-white/20">
               <CardContent className="p-6">
                 <div className="space-y-4">
                   <div className="flex items-start justify-between">
                     <div className="flex-1">
                       <div className="flex items-center space-x-2 mb-2">
-                        <h1 className="text-2xl font-bold">{job.title}</h1>
+                        <h1 className="text-2xl font-bold text-white">{job.title}</h1>
                         {job.urgent && (
                           <Badge variant="destructive">Urgente</Badge>
                         )}
-                        <Badge variant="secondary">{job.type}</Badge>
+                        <Badge variant="secondary" className="bg-secondary/20 text-secondary border-secondary/30">{job.type}</Badge>
                       </div>
                       
-                      <div className="flex items-center space-x-2 text-muted-foreground mb-4">
+                      <div className="flex items-center space-x-2 text-white/70 mb-4">
                         <Building2 className="h-4 w-4" />
                         <span>{job.company}</span>
                       </div>
@@ -108,26 +113,26 @@ const JobDetails = () => {
                     
                     <div className="text-right">
                       <div className="text-3xl font-bold text-success">{job.payment}</div>
-                      <div className="text-sm text-muted-foreground">4 horas de trabalho</div>
+                      <div className="text-sm text-white/60">4 horas de trabalho</div>
                     </div>
                   </div>
 
-                  <Separator />
+                  <Separator className="bg-white/20" />
 
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     <div className="flex items-center space-x-3">
-                      <MapPin className="h-5 w-5 text-muted-foreground" />
+                      <MapPin className="h-5 w-5 text-white/60" />
                       <div>
-                        <div className="font-medium">{job.location}</div>
-                        <div className="text-sm text-muted-foreground">{job.distance} de distância</div>
+                        <div className="font-medium text-white">{job.location}</div>
+                        <div className="text-sm text-white/70">{job.distance} de distância</div>
                       </div>
                     </div>
                     
                     <div className="flex items-center space-x-3">
-                      <Clock className="h-5 w-5 text-muted-foreground" />
+                      <Clock className="h-5 w-5 text-white/60" />
                       <div>
-                        <div className="font-medium">{job.date}</div>
-                        <div className="text-sm text-muted-foreground">4 horas</div>
+                        <div className="font-medium text-white">{job.date}</div>
+                        <div className="text-sm text-white/70">4 horas</div>
                       </div>
                     </div>
                     
@@ -135,7 +140,7 @@ const JobDetails = () => {
                       <DollarSign className="h-5 w-5 text-success" />
                       <div>
                         <div className="font-medium text-success">{job.payment}</div>
-                        <div className="text-sm text-muted-foreground">Pagamento no dia</div>
+                        <div className="text-sm text-white/70">Pagamento no dia</div>
                       </div>
                     </div>
                   </div>
@@ -144,35 +149,35 @@ const JobDetails = () => {
             </Card>
 
             {/* Job Description */}
-            <Card>
+            <Card className="bg-white/10 backdrop-blur-xl border-white/20">
               <CardHeader>
-                <CardTitle>Descrição da Vaga</CardTitle>
+                <CardTitle className="text-white">Descrição da Vaga</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
-                <p className="text-muted-foreground leading-relaxed">
+                <p className="text-white/70 leading-relaxed">
                   {job.description}
                 </p>
                 
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
-                    <h4 className="font-semibold mb-3">Requisitos</h4>
+                    <h4 className="font-semibold mb-3 text-white">Requisitos</h4>
                     <ul className="space-y-2">
                       {job.requirements.map((req, index) => (
                         <li key={index} className="flex items-start space-x-2">
                           <CheckCircle className="h-4 w-4 text-success mt-0.5 flex-shrink-0" />
-                          <span className="text-sm">{req}</span>
+                          <span className="text-sm text-white">{req}</span>
                         </li>
                       ))}
                     </ul>
                   </div>
                   
                   <div>
-                    <h4 className="font-semibold mb-3">Benefícios</h4>
+                    <h4 className="font-semibold mb-3 text-white">Benefícios</h4>
                     <ul className="space-y-2">
                       {job.benefits.map((benefit, index) => (
                         <li key={index} className="flex items-start space-x-2">
                           <CheckCircle className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
-                          <span className="text-sm">{benefit}</span>
+                          <span className="text-sm text-white">{benefit}</span>
                         </li>
                       ))}
                     </ul>
@@ -182,9 +187,9 @@ const JobDetails = () => {
             </Card>
 
             {/* Company Info */}
-            <Card>
+            <Card className="bg-white/10 backdrop-blur-xl border-white/20">
               <CardHeader>
-                <CardTitle>Sobre a Empresa</CardTitle>
+                <CardTitle className="text-white">Sobre a Empresa</CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="space-y-4">
@@ -194,8 +199,8 @@ const JobDetails = () => {
                         <Building2 className="h-6 w-6 text-white" />
                       </div>
                       <div>
-                        <h4 className="font-semibold">{job.companyInfo.name}</h4>
-                        <div className="flex items-center space-x-2 text-sm text-muted-foreground">
+                        <h4 className="font-semibold text-white">{job.companyInfo.name}</h4>
+                        <div className="flex items-center space-x-2 text-sm text-white/70">
                           <span>⭐ {job.companyInfo.rating}</span>
                           <span>•</span>
                           <span>{job.companyInfo.completedJobs} jobs realizados</span>
@@ -203,12 +208,12 @@ const JobDetails = () => {
                       </div>
                     </div>
                     
-                    <Button variant="outline" size="sm">
+                    <Button variant="outline" size="sm" className="border-white/20 text-white/80 hover:bg-white/10">
                       Ver Perfil
                     </Button>
                   </div>
                   
-                  <p className="text-muted-foreground">
+                  <p className="text-white/70">
                     {job.companyInfo.about}
                   </p>
                 </div>
@@ -219,11 +224,11 @@ const JobDetails = () => {
           {/* Sidebar */}
           <div className="space-y-6">
             {/* Action Buttons */}
-            <Card>
+            <Card className="bg-white/10 backdrop-blur-xl border-white/20">
               <CardContent className="p-6 space-y-4">
                 <Button 
                   onClick={handleAcceptJob}
-                  className="w-full bg-success hover:bg-success/90 text-lg py-6"
+                  className="w-full bg-success hover:bg-success/90 text-lg py-6 text-white"
                   size="lg"
                 >
                   <CheckCircle className="h-5 w-5 mr-2" />
@@ -233,15 +238,15 @@ const JobDetails = () => {
                 <Button 
                   variant="outline" 
                   onClick={handleRejectJob}
-                  className="w-full border-destructive text-destructive hover:bg-destructive hover:text-white"
+                  className="w-full border-destructive text-destructive hover:bg-destructive hover:text-white border"
                   size="lg"
                 >
                   Não Tenho Interesse
                 </Button>
                 
-                <Separator />
+                <Separator className="bg-white/20" />
                 
-                <Button variant="ghost" className="w-full">
+                <Button variant="ghost" className="w-full text-white/80 hover:bg-white/10">
                   <Calendar className="h-4 w-4 mr-2" />
                   Adicionar ao Calendário
                 </Button>
@@ -249,33 +254,33 @@ const JobDetails = () => {
             </Card>
 
             {/* Match Score */}
-            <Card>
+            <Card className="bg-white/10 backdrop-blur-xl border-white/20">
               <CardHeader>
-                <CardTitle className="text-lg">Compatibilidade</CardTitle>
-                <CardDescription>Com base no seu perfil</CardDescription>
+                <CardTitle className="text-lg text-white">Compatibilidade</CardTitle>
+                <CardDescription className="text-white/70">Com base no seu perfil</CardDescription>
               </CardHeader>
               <CardContent>
                 <div className="space-y-4">
                   <div className="flex items-center justify-between">
                     <span className="text-lg font-semibold text-success">92% Match</span>
-                    <span className="text-sm text-muted-foreground">Muito Alto</span>
+                    <span className="text-sm text-white/70">Muito Alto</span>
                   </div>
                   
-                  <div className="w-full bg-muted rounded-full h-3">
+                  <div className="w-full bg-white/20 rounded-full h-3">
                     <div className="bg-success h-3 rounded-full" style={{ width: '92%' }}></div>
                   </div>
                   
                   <div className="space-y-2 text-sm">
                     <div className="flex justify-between">
-                      <span>Localização</span>
+                      <span className="text-white">Localização</span>
                       <span className="font-medium text-success">✓ Próximo</span>
                     </div>
                     <div className="flex justify-between">
-                      <span>Experiência</span>
+                      <span className="text-white">Experiência</span>
                       <span className="font-medium text-success">✓ Compatível</span>
                     </div>
                     <div className="flex justify-between">
-                      <span>Disponibilidade</span>
+                      <span className="text-white">Disponibilidade</span>
                       <span className="font-medium text-success">✓ Disponível</span>
                     </div>
                   </div>
@@ -284,22 +289,32 @@ const JobDetails = () => {
             </Card>
 
             {/* Similar Jobs */}
-            <Card>
+            <Card className="bg-white/10 backdrop-blur-xl border-white/20">
               <CardHeader>
-                <CardTitle className="text-lg">Vagas Similares</CardTitle>
+                <CardTitle className="text-lg text-white">Vagas Similares</CardTitle>
               </CardHeader>
               <CardContent className="space-y-3">
-                <div className="p-3 border rounded-lg hover:bg-muted/50 cursor-pointer transition-colors">
-                  <h4 className="font-medium text-sm">Reposição - SuperMax</h4>
-                  <p className="text-xs text-muted-foreground">Amanhã • R$ 80,00</p>
+                <div className="p-3 border rounded-lg hover:bg-white/10 cursor-pointer transition-colors border-white/30">
+                  <h4 className="font-medium text-sm text-white">Reposição - SuperMax</h4>
+                  <p className="text-xs text-white/70">Amanhã • R$ 80,00</p>
                 </div>
-                <div className="p-3 border rounded-lg hover:bg-muted/50 cursor-pointer transition-colors">
-                  <h4 className="font-medium text-sm">Evento - Shopping ABC</h4>
-                  <p className="text-xs text-muted-foreground">15/06 • R$ 150,00</p>
+                <div className="p-3 border rounded-lg hover:bg-white/10 cursor-pointer transition-colors border-white/30">
+                  <h4 className="font-medium text-sm text-white">Evento - Shopping ABC</h4>
+                  <p className="text-xs text-white/70">15/06 • R$ 150,00</p>
                 </div>
               </CardContent>
             </Card>
           </div>
+        </div>
+
+        {/* Sury Assistant FAB */}
+        <div className="fixed bottom-6 right-6">
+          <Button 
+            size="lg" 
+            className="rounded-full w-16 h-16 bg-gradient-to-r from-primary to-secondary shadow-2xl hover:shadow-3xl transition-all duration-300 hover:scale-110"
+          >
+            <Bot className="h-7 w-7" />
+          </Button>
         </div>
       </div>
     </div>
