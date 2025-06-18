@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -159,7 +160,7 @@ const FreelancerDashboard = () => {
         <div className="flex items-center justify-between mb-6">
           <h2 className="text-2xl font-bold text-white">Vagas Disponíveis</h2>
           <div className="flex items-center space-x-2">
-            <Button variant="outline" size="sm" className="border-white/20 text-white/80 hover:bg-white/10">
+            <Button variant="outline" size="sm" className="border-white/20 text-white/80 hover:bg-white/10 hover:text-white">
               <Filter className="h-4 w-4 mr-2" />
               Filtros
             </Button>
@@ -221,7 +222,7 @@ const FreelancerDashboard = () => {
                   <div className="flex flex-col space-y-2 ml-4">
                     <Button 
                       onClick={() => navigate(`/job/${job.id}`)}
-                      className="bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 shadow-lg"
+                      className="bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 shadow-lg text-white"
                     >
                       Ver Detalhes
                     </Button>
@@ -241,7 +242,7 @@ const FreelancerDashboard = () => {
             size="lg" 
             className="rounded-full w-16 h-16 bg-gradient-to-r from-primary to-secondary shadow-2xl hover:shadow-3xl transition-all duration-300 hover:scale-110 group"
           >
-            <Bot className="h-7 w-7" />
+            <Bot className="h-7 w-7 text-white" />
           </Button>
         </div>
       </div>

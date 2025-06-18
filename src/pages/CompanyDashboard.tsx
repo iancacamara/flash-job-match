@@ -1,3 +1,4 @@
+
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -161,7 +162,7 @@ const CompanyDashboard = () => {
           <div className="lg:col-span-2">
             <div className="flex items-center justify-between mb-6">
               <h2 className="text-2xl font-bold text-white">Ações Ativas</h2>
-              <Button variant="outline" className="border-white/20 text-white/80 hover:bg-white/10">
+              <Button variant="outline" className="border-white/20 text-white/80 hover:bg-white/10 hover:text-white">
                 Ver Todas
               </Button>
             </div>
@@ -176,7 +177,7 @@ const CompanyDashboard = () => {
                           <h3 className="text-lg font-semibold text-white">{job.title}</h3>
                           <Badge 
                             variant={getStatusColor(job.status) as any}
-                            className="text-xs"
+                            className="text-xs text-white bg-white/20"
                           >
                             {job.status}
                           </Badge>
@@ -196,7 +197,7 @@ const CompanyDashboard = () => {
                         </div>
                       </div>
                       
-                      <Button variant="outline" size="sm" className="border-white/20 text-white/80 hover:bg-white/10">
+                      <Button variant="outline" size="sm" className="border-white/20 text-white/80 hover:bg-white/10 hover:text-white">
                         Gerenciar
                       </Button>
                     </div>
@@ -228,15 +229,15 @@ const CompanyDashboard = () => {
                 <CardTitle className="text-lg text-white">Ações Rápidas</CardTitle>
               </CardHeader>
               <CardContent className="space-y-3">
-                <Button className="w-full justify-start text-white/80 hover:bg-white/10 border-white/20" variant="outline">
+                <Button className="w-full justify-start text-white/80 hover:bg-white/10 border-white/20 hover:text-white" variant="outline">
                   <Plus className="h-4 w-4 mr-2" />
                   Criar Nova Vaga
                 </Button>
-                <Button className="w-full justify-start text-white/80 hover:bg-white/10 border-white/20" variant="outline">
+                <Button className="w-full justify-start text-white/80 hover:bg-white/10 border-white/20 hover:text-white" variant="outline">
                   <Users className="h-4 w-4 mr-2" />
                   Ver Candidatos
                 </Button>
-                <Button className="w-full justify-start text-white/80 hover:bg-white/10 border-white/20" variant="outline">
+                <Button className="w-full justify-start text-white/80 hover:bg-white/10 border-white/20 hover:text-white" variant="outline">
                   <TrendingUp className="h-4 w-4 mr-2" />
                   Relatórios
                 </Button>
@@ -309,7 +310,7 @@ const CompanyDashboard = () => {
             size="lg" 
             className="rounded-full w-16 h-16 bg-gradient-to-r from-primary to-secondary shadow-2xl hover:shadow-3xl transition-all duration-300 hover:scale-110"
           >
-            <Bot className="h-7 w-7" />
+            <Bot className="h-7 w-7 text-white" />
           </Button>
         </div>
       </div>
