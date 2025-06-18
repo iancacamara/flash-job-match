@@ -50,10 +50,19 @@ const CompanyDashboard = () => {
     }
   };
 
+  const getStatusBadgeClass = (status: string) => {
+    switch (status) {
+      case "Completo": return "bg-success/30 text-success border-success/50";
+      case "Em andamento": return "bg-secondary/30 text-secondary border-secondary/50";
+      case "Recrutando": return "bg-primary/30 text-primary border-primary/50";
+      default: return "bg-secondary/30 text-secondary border-secondary/50";
+    }
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
       {/* Header */}
-      <header className="bg-black/20 backdrop-blur-xl border-b border-white/10 sticky top-0 z-50">
+      <header className="bg-black/40 backdrop-blur-xl border-b border-white/20 sticky top-0 z-50">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-4">
@@ -67,13 +76,13 @@ const CompanyDashboard = () => {
                   <h1 className="text-xl font-bold text-white">
                     Supera Flash
                   </h1>
-                  <p className="text-sm text-white/60">Conectando talentos</p>
+                  <p className="text-sm text-white/80">Conectando talentos</p>
                 </div>
               </div>
-              <div className="hidden md:block h-8 w-px bg-white/20"></div>
+              <div className="hidden md:block h-8 w-px bg-white/30"></div>
               <div className="hidden md:block">
                 <h2 className="text-lg font-semibold text-white">FoodBrand Ltda</h2>
-                <p className="text-sm text-white/60">Gerencie suas ações promocionais</p>
+                <p className="text-sm text-white/80">Gerencie suas ações promocionais</p>
               </div>
             </div>
             
@@ -85,10 +94,10 @@ const CompanyDashboard = () => {
                 <Plus className="h-4 w-4 mr-2" />
                 Nova Vaga
               </Button>
-              <Button variant="ghost" size="icon" className="text-white/80 hover:text-white hover:bg-white/10">
+              <Button variant="ghost" size="icon" className="text-white hover:text-white hover:bg-white/20">
                 <Bell className="h-5 w-5" />
               </Button>
-              <Button variant="ghost" size="icon" onClick={() => navigate('/profile')} className="text-white/80 hover:text-white hover:bg-white/10">
+              <Button variant="ghost" size="icon" onClick={() => navigate('/profile')} className="text-white hover:text-white hover:bg-white/20">
                 <User className="h-5 w-5" />
               </Button>
             </div>
@@ -99,57 +108,57 @@ const CompanyDashboard = () => {
       <div className="container mx-auto px-4 py-6">
         {/* Stats Overview */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-          <Card className="bg-white/10 backdrop-blur-sm border-white/20 hover:bg-white/15 transition-all">
+          <Card className="bg-black/30 backdrop-blur-sm border-white/30 hover:bg-black/40 transition-all">
             <CardContent className="p-4">
               <div className="flex items-center space-x-2">
-                <div className="w-10 h-10 bg-primary/20 rounded-lg flex items-center justify-center backdrop-blur-sm">
+                <div className="w-10 h-10 bg-primary/30 rounded-lg flex items-center justify-center backdrop-blur-sm">
                   <Users className="h-5 w-5 text-primary" />
                 </div>
                 <div>
                   <p className="text-2xl font-bold text-white">45</p>
-                  <p className="text-xs text-white/60">Candidatos ativos</p>
+                  <p className="text-xs text-white/80">Candidatos ativos</p>
                 </div>
               </div>
             </CardContent>
           </Card>
           
-          <Card className="bg-white/10 backdrop-blur-sm border-white/20 hover:bg-white/15 transition-all">
+          <Card className="bg-black/30 backdrop-blur-sm border-white/30 hover:bg-black/40 transition-all">
             <CardContent className="p-4">
               <div className="flex items-center space-x-2">
-                <div className="w-10 h-10 bg-success/20 rounded-lg flex items-center justify-center backdrop-blur-sm">
+                <div className="w-10 h-10 bg-success/30 rounded-lg flex items-center justify-center backdrop-blur-sm">
                   <CheckCircle className="h-5 w-5 text-success" />
                 </div>
                 <div>
                   <p className="text-2xl font-bold text-white">23</p>
-                  <p className="text-xs text-white/60">Vagas preenchidas</p>
+                  <p className="text-xs text-white/80">Vagas preenchidas</p>
                 </div>
               </div>
             </CardContent>
           </Card>
           
-          <Card className="bg-white/10 backdrop-blur-sm border-white/20 hover:bg-white/15 transition-all">
+          <Card className="bg-black/30 backdrop-blur-sm border-white/30 hover:bg-black/40 transition-all">
             <CardContent className="p-4">
               <div className="flex items-center space-x-2">
-                <div className="w-10 h-10 bg-orange-500/20 rounded-lg flex items-center justify-center backdrop-blur-sm">
+                <div className="w-10 h-10 bg-orange-500/30 rounded-lg flex items-center justify-center backdrop-blur-sm">
                   <Clock className="h-5 w-5 text-orange-500" />
                 </div>
                 <div>
                   <p className="text-2xl font-bold text-white">3</p>
-                  <p className="text-xs text-white/60">Ações pendentes</p>
+                  <p className="text-xs text-white/80">Ações pendentes</p>
                 </div>
               </div>
             </CardContent>
           </Card>
           
-          <Card className="bg-white/10 backdrop-blur-sm border-white/20 hover:bg-white/15 transition-all">
+          <Card className="bg-black/30 backdrop-blur-sm border-white/30 hover:bg-black/40 transition-all">
             <CardContent className="p-4">
               <div className="flex items-center space-x-2">
-                <div className="w-10 h-10 bg-secondary/20 rounded-lg flex items-center justify-center backdrop-blur-sm">
+                <div className="w-10 h-10 bg-secondary/30 rounded-lg flex items-center justify-center backdrop-blur-sm">
                   <TrendingUp className="h-5 w-5 text-secondary" />
                 </div>
                 <div>
                   <p className="text-2xl font-bold text-white">92%</p>
-                  <p className="text-xs text-white/60">Taxa de sucesso</p>
+                  <p className="text-xs text-white/80">Taxa de sucesso</p>
                 </div>
               </div>
             </CardContent>
@@ -162,42 +171,39 @@ const CompanyDashboard = () => {
           <div className="lg:col-span-2">
             <div className="flex items-center justify-between mb-6">
               <h2 className="text-2xl font-bold text-white">Ações Ativas</h2>
-              <Button variant="outline" className="border-white/20 text-white/80 hover:bg-white/10 hover:text-white">
+              <Button variant="outline" className="border-white/30 text-white hover:bg-black/30 hover:text-white">
                 Ver Todas
               </Button>
             </div>
             
             <div className="space-y-4">
               {activeJobs.map((job) => (
-                <Card key={job.id} className="bg-white/10 backdrop-blur-sm border-white/20 hover:bg-white/15 transition-all">
+                <Card key={job.id} className="bg-black/30 backdrop-blur-sm border-white/30 hover:bg-black/40 transition-all">
                   <CardContent className="p-6">
                     <div className="flex items-start justify-between mb-4">
                       <div className="flex-1">
                         <div className="flex items-center space-x-2 mb-2">
                           <h3 className="text-lg font-semibold text-white">{job.title}</h3>
-                          <Badge 
-                            variant={getStatusColor(job.status) as any}
-                            className="text-xs text-white bg-white/20"
-                          >
+                          <Badge className={`text-xs ${getStatusBadgeClass(job.status)}`}>
                             {job.status}
                           </Badge>
                         </div>
                         
-                        <p className="text-white/70 text-sm mb-3">{job.location}</p>
+                        <p className="text-white/80 text-sm mb-3">{job.location}</p>
                         
                         <div className="flex items-center space-x-4 text-sm">
                           <div className="flex items-center space-x-1">
-                            <Users className="h-4 w-4 text-white/60" />
-                            <span className="text-white/80">{job.candidates} candidatos</span>
+                            <Users className="h-4 w-4 text-white/70" />
+                            <span className="text-white">{job.candidates} candidatos</span>
                           </div>
                           <div className="flex items-center space-x-1">
-                            <Clock className="h-4 w-4 text-white/60" />
-                            <span className="text-white/80">{job.deadline}</span>
+                            <Clock className="h-4 w-4 text-white/70" />
+                            <span className="text-white">{job.deadline}</span>
                           </div>
                         </div>
                       </div>
                       
-                      <Button variant="outline" size="sm" className="border-white/20 text-white/80 hover:bg-white/10 hover:text-white">
+                      <Button variant="outline" size="sm" className="border-white/30 text-white hover:bg-black/30 hover:text-white">
                         Gerenciar
                       </Button>
                     </div>
@@ -205,10 +211,10 @@ const CompanyDashboard = () => {
                     {/* Progress Bar */}
                     <div className="space-y-2">
                       <div className="flex justify-between text-sm">
-                        <span className="text-white/80">Progresso ({job.filled}/{job.total})</span>
-                        <span className="text-white/80">{Math.round((job.filled / job.total) * 100)}%</span>
+                        <span className="text-white">Progresso ({job.filled}/{job.total})</span>
+                        <span className="text-white">{Math.round((job.filled / job.total) * 100)}%</span>
                       </div>
-                      <div className="w-full bg-white/20 rounded-full h-2">
+                      <div className="w-full bg-white/30 rounded-full h-2">
                         <div 
                           className="bg-gradient-to-r from-primary to-secondary h-2 rounded-full transition-all"
                           style={{ width: `${(job.filled / job.total) * 100}%` }}
@@ -224,20 +230,20 @@ const CompanyDashboard = () => {
           {/* Sidebar */}
           <div className="space-y-6">
             {/* Quick Actions */}
-            <Card className="bg-white/10 backdrop-blur-sm border-white/20">
+            <Card className="bg-black/30 backdrop-blur-sm border-white/30">
               <CardHeader>
                 <CardTitle className="text-lg text-white">Ações Rápidas</CardTitle>
               </CardHeader>
               <CardContent className="space-y-3">
-                <Button className="w-full justify-start text-white/80 hover:bg-white/10 border-white/20 hover:text-white" variant="outline">
+                <Button className="w-full justify-start text-white hover:bg-black/30 border-white/30 hover:text-white" variant="outline">
                   <Plus className="h-4 w-4 mr-2" />
                   Criar Nova Vaga
                 </Button>
-                <Button className="w-full justify-start text-white/80 hover:bg-white/10 border-white/20 hover:text-white" variant="outline">
+                <Button className="w-full justify-start text-white hover:bg-black/30 border-white/30 hover:text-white" variant="outline">
                   <Users className="h-4 w-4 mr-2" />
                   Ver Candidatos
                 </Button>
-                <Button className="w-full justify-start text-white/80 hover:bg-white/10 border-white/20 hover:text-white" variant="outline">
+                <Button className="w-full justify-start text-white hover:bg-black/30 border-white/30 hover:text-white" variant="outline">
                   <TrendingUp className="h-4 w-4 mr-2" />
                   Relatórios
                 </Button>
@@ -245,7 +251,7 @@ const CompanyDashboard = () => {
             </Card>
 
             {/* Recent Activity */}
-            <Card className="bg-white/10 backdrop-blur-sm border-white/20">
+            <Card className="bg-black/30 backdrop-blur-sm border-white/30">
               <CardHeader>
                 <CardTitle className="text-lg text-white">Atividade Recente</CardTitle>
               </CardHeader>
@@ -254,24 +260,24 @@ const CompanyDashboard = () => {
                   <div className="flex items-start space-x-3">
                     <div className="w-2 h-2 bg-success rounded-full mt-2"></div>
                     <div className="flex-1">
-                      <p className="text-sm text-white/80">5 novos candidatos para "Evento de Lançamento"</p>
-                      <p className="text-xs text-white/60">Há 2 horas</p>
+                      <p className="text-sm text-white">5 novos candidatos para "Evento de Lançamento"</p>
+                      <p className="text-xs text-white/70">Há 2 horas</p>
                     </div>
                   </div>
                   
                   <div className="flex items-start space-x-3">
                     <div className="w-2 h-2 bg-primary rounded-full mt-2"></div>
                     <div className="flex-1">
-                      <p className="text-sm text-white/80">Vaga de "Reposição" foi totalmente preenchida</p>
-                      <p className="text-xs text-white/60">Há 4 horas</p>
+                      <p className="text-sm text-white">Vaga de "Reposição" foi totalmente preenchida</p>
+                      <p className="text-xs text-white/70">Há 4 horas</p>
                     </div>
                   </div>
                   
                   <div className="flex items-start space-x-3">
                     <div className="w-2 h-2 bg-orange-500 rounded-full mt-2"></div>
                     <div className="flex-1">
-                      <p className="text-sm text-white/80">3 candidatos aguardando aprovação</p>
-                      <p className="text-xs text-white/60">Há 6 horas</p>
+                      <p className="text-sm text-white">3 candidatos aguardando aprovação</p>
+                      <p className="text-xs text-white/70">Há 6 horas</p>
                     </div>
                   </div>
                 </div>
@@ -279,23 +285,23 @@ const CompanyDashboard = () => {
             </Card>
 
             {/* Performance */}
-            <Card className="bg-white/10 backdrop-blur-sm border-white/20">
+            <Card className="bg-black/30 backdrop-blur-sm border-white/30">
               <CardHeader>
                 <CardTitle className="text-lg text-white">Performance</CardTitle>
-                <CardDescription className="text-white/60">Últimos 30 dias</CardDescription>
+                <CardDescription className="text-white/80">Últimos 30 dias</CardDescription>
               </CardHeader>
               <CardContent>
                 <div className="space-y-4">
                   <div className="flex justify-between items-center">
-                    <span className="text-sm text-white/80">Taxa de preenchimento</span>
+                    <span className="text-sm text-white">Taxa de preenchimento</span>
                     <span className="font-semibold text-success">94%</span>
                   </div>
                   <div className="flex justify-between items-center">
-                    <span className="text-sm text-white/80">Tempo médio de contratação</span>
+                    <span className="text-sm text-white">Tempo médio de contratação</span>
                     <span className="font-semibold text-white">2.3 dias</span>
                   </div>
                   <div className="flex justify-between items-center">
-                    <span className="text-sm text-white/80">Satisfação dos freelancers</span>
+                    <span className="text-sm text-white">Satisfação dos freelancers</span>
                     <span className="font-semibold text-secondary">4.8/5</span>
                   </div>
                 </div>
