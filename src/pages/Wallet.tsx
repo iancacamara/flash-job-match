@@ -1,3 +1,4 @@
+
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -108,7 +109,7 @@ const Wallet = () => {
               </div>
             </div>
             
-            <Button variant="outline" className="border-white/20 text-white/80 hover:bg-white/10">
+            <Button variant="outline" className="border-white/20 text-white/80 hover:bg-white/10 hover:text-white">
               <Download className="h-4 w-4 mr-2" />
               Relatório
             </Button>
@@ -172,7 +173,7 @@ const Wallet = () => {
               <CardHeader>
                 <CardTitle className="flex items-center justify-between text-white">
                   <span>Histórico SuperaBank</span>
-                  <Button variant="outline" size="sm" className="border-white/20 text-white/80 hover:bg-white/10">
+                  <Button variant="outline" size="sm" className="border-white/20 text-white/80 hover:bg-white/10 hover:text-white">
                     Filtrar
                   </Button>
                 </CardTitle>
@@ -249,10 +250,10 @@ const Wallet = () => {
                     <p className="font-medium text-sm text-white">PIX</p>
                     <p className="text-xs text-white/60">maria.silva@email.com</p>
                   </div>
-                  <Badge variant="secondary">Principal</Badge>
+                  <Badge variant="secondary" className="text-white bg-white/20">Principal</Badge>
                 </div>
                 
-                <Button variant="outline" className="w-full justify-start text-sm border-white/20 text-white/80 hover:bg-white/10">
+                <Button variant="outline" className="w-full justify-start text-sm border-white/20 text-white/80 hover:bg-white/10 hover:text-white">
                   <CreditCard className="h-4 w-4 mr-2" />
                   Adicionar Conta Bancária
                 </Button>
@@ -300,7 +301,7 @@ const Wallet = () => {
             size="lg" 
             className="rounded-full w-16 h-16 bg-gradient-to-r from-primary to-secondary shadow-2xl hover:shadow-3xl transition-all duration-300 hover:scale-110"
           >
-            <Bot className="h-7 w-7" />
+            <Bot className="h-7 w-7 text-white" />
           </Button>
         </div>
       </div>
