@@ -2,7 +2,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { useNavigate } from "react-router-dom";
-import { ArrowRight, Zap, Users, MapPin, Clock, TrendingUp, Sparkles } from "lucide-react";
+import { ArrowRight, Zap, Users, MapPin, Clock, TrendingUp, Sparkles, Star } from "lucide-react";
 
 const Welcome = () => {
   const navigate = useNavigate();
@@ -12,15 +12,16 @@ const Welcome = () => {
       {/* Header */}
       <header className="container mx-auto px-4 py-6">
         <div className="flex items-center justify-between">
-          <div className="flex items-center space-x-3">
-            <div className="w-12 h-12 bg-gradient-to-r from-primary to-secondary rounded-xl flex items-center justify-center shadow-lg">
-              <Zap className="h-7 w-7 text-white" />
+          <div className="flex items-center space-x-4">
+            <div className="relative">
+              <img 
+                src="/lovable-uploads/7b59ef82-1342-459a-8fc3-23cd8bdb09e8.png" 
+                alt="Supera Flash Logo" 
+                className="h-16 w-auto logo-animate"
+              />
             </div>
             <div>
-              <h1 className="text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-                Job Flash
-              </h1>
-              <p className="text-sm text-muted-foreground">Conectando Talentos</p>
+              <p className="text-sm text-muted-foreground font-medium">by Supera Holdings</p>
             </div>
           </div>
           <Button variant="ghost" onClick={() => navigate('/auth')}>
@@ -31,136 +32,160 @@ const Welcome = () => {
 
       {/* Hero Section */}
       <main className="flex-1 container mx-auto px-4 py-12">
-        <div className="text-center space-y-8 max-w-4xl mx-auto">
+        <div className="text-center space-y-8 max-w-5xl mx-auto">
           {/* Main Title */}
-          <div className="space-y-4">
-            <div className="inline-flex items-center space-x-2 bg-primary/10 rounded-full px-4 py-2 border border-primary/20">
-              <Sparkles className="h-4 w-4 text-primary" />
-              <span className="text-sm font-medium text-primary">Powered by IA</span>
-            </div>
-            <h1 className="text-5xl md:text-6xl font-bold leading-tight">
-              Conecte empresas a 
-              <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent block mt-2">
-                freelancers e promotores
+          <div className="space-y-6">
+            <div className="inline-flex items-center space-x-2 bg-gradient-to-r from-primary/10 to-secondary/10 rounded-full px-6 py-3 border border-primary/20 backdrop-blur-sm">
+              <Sparkles className="h-5 w-5 text-primary" />
+              <span className="text-sm font-semibold supera-gradient bg-clip-text text-transparent">
+                Powered by Ianquinha IA
               </span>
-              <span className="text-3xl md:text-4xl font-normal text-muted-foreground block mt-4">
-                com rapidez e inteligência
+            </div>
+            
+            <h1 className="text-6xl md:text-7xl font-black leading-tight">
+              Recrutamento
+              <span className="supera-gradient bg-clip-text text-transparent block mt-2">
+                Inteligente
+              </span>
+              <span className="text-4xl md:text-5xl font-normal text-muted-foreground block mt-4">
+                para promotores e freelancers
               </span>
             </h1>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Nossa IA conecta o talento certo à oportunidade perfeita, 
-              otimizando tempo e maximizando resultados para todos.
+            
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto font-medium">
+              A Ianquinha, nossa IA, conecta o talento certo à oportunidade perfeita, 
+              otimizando tempo e maximizando resultados com geolocalização inteligente.
             </p>
           </div>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+          <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6">
             <Button 
               size="lg"
-              className="bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-lg px-8 py-6 shadow-xl hover:shadow-2xl transition-all duration-300"
+              className="supera-gradient hover:opacity-90 text-white text-lg px-10 py-7 shadow-2xl hover:shadow-3xl transition-all duration-300 font-bold rounded-xl"
               onClick={() => navigate('/auth')}
             >
-              Começar Agora
-              <ArrowRight className="ml-2 h-5 w-5" />
+              Começar com Ianquinha
+              <ArrowRight className="ml-2 h-6 w-6" />
             </Button>
             <Button 
               variant="outline" 
               size="lg"
-              className="text-lg px-8 py-6 border-2 hover:bg-primary/5"
+              className="text-lg px-10 py-7 border-2 hover:bg-primary/5 font-semibold rounded-xl"
             >
-              Como Funciona
+              Ver Demonstração
             </Button>
           </div>
 
-          {/* Stats */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 pt-16">
-            <div className="text-center">
-              <div className="text-3xl font-bold text-primary">10k+</div>
-              <div className="text-sm text-muted-foreground">Freelancers ativos</div>
+          {/* Stats com visual aprimorado */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 pt-20">
+            <div className="text-center group">
+              <div className="supera-gradient bg-clip-text text-transparent text-4xl md:text-5xl font-black group-hover:scale-110 transition-transform">
+                10k+
+              </div>
+              <div className="text-sm text-muted-foreground font-medium mt-2">Promotores ativos</div>
             </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-secondary">500+</div>
-              <div className="text-sm text-muted-foreground">Empresas parceiras</div>
+            <div className="text-center group">
+              <div className="supera-gradient bg-clip-text text-transparent text-4xl md:text-5xl font-black group-hover:scale-110 transition-transform">
+                500+
+              </div>
+              <div className="text-sm text-muted-foreground font-medium mt-2">Empresas parceiras</div>
             </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-success">95%</div>
-              <div className="text-sm text-muted-foreground">Taxa de sucesso</div>
+            <div className="text-center group">
+              <div className="text-success text-4xl md:text-5xl font-black group-hover:scale-110 transition-transform">
+                95%
+              </div>
+              <div className="text-sm text-muted-foreground font-medium mt-2">Taxa de sucesso</div>
             </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-orange-500">2h</div>
-              <div className="text-sm text-muted-foreground">Tempo médio de match</div>
+            <div className="text-center group">
+              <div className="text-orange-500 text-4xl md:text-5xl font-black group-hover:scale-110 transition-transform">
+                2h
+              </div>
+              <div className="text-sm text-muted-foreground font-medium mt-2">Tempo médio de match</div>
             </div>
           </div>
         </div>
 
-        {/* Features Grid */}
-        <div className="grid md:grid-cols-3 gap-8 mt-24">
-          <Card className="border-0 shadow-xl bg-gradient-to-br from-primary/5 to-primary/10 hover:shadow-2xl transition-all duration-300">
-            <CardHeader className="text-center">
-              <div className="w-16 h-16 bg-gradient-to-r from-primary to-primary/80 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <Zap className="h-8 w-8 text-white" />
+        {/* Features Grid com Ianquinha */}
+        <div className="grid md:grid-cols-3 gap-8 mt-32">
+          <Card className="border-0 shadow-2xl supera-gradient p-1 hover:shadow-3xl transition-all duration-300 group">
+            <div className="bg-white rounded-lg p-8 h-full">
+              <CardHeader className="text-center p-0">
+                <div className="w-20 h-20 supera-gradient rounded-3xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
+                  <Sparkles className="h-10 w-10 text-white" />
+                </div>
+                <CardTitle className="text-2xl font-bold mb-4">Ianquinha IA</CardTitle>
+                <CardDescription className="text-base leading-relaxed">
+                  Nossa assistente virtual analisa perfis e conecta automaticamente os melhores matches com inteligência geolocalizada
+                </CardDescription>
+              </CardHeader>
+            </div>
+          </Card>
+
+          <Card className="border-0 shadow-2xl bg-gradient-to-br from-success/10 to-success/20 hover:shadow-3xl transition-all duration-300 group">
+            <CardHeader className="text-center p-8">
+              <div className="w-20 h-20 bg-gradient-to-r from-success to-success/80 rounded-3xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
+                <MapPin className="h-10 w-10 text-white" />
               </div>
-              <CardTitle className="text-xl">IA Inteligente</CardTitle>
-              <CardDescription className="text-base">
-                Nossa IA analisa perfis e conecta automaticamente os melhores matches
+              <CardTitle className="text-2xl font-bold mb-4">Geolocalização Inteligente</CardTitle>
+              <CardDescription className="text-base leading-relaxed">
+                Vagas próximas com precisão, otimizando tempo e custos de deslocamento para máxima eficiência
               </CardDescription>
             </CardHeader>
           </Card>
 
-          <Card className="border-0 shadow-xl bg-gradient-to-br from-secondary/5 to-secondary/10 hover:shadow-2xl transition-all duration-300">
-            <CardHeader className="text-center">
-              <div className="w-16 h-16 bg-gradient-to-r from-secondary to-secondary/80 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <MapPin className="h-8 w-8 text-white" />
+          <Card className="border-0 shadow-2xl bg-gradient-to-br from-orange-500/10 to-orange-500/20 hover:shadow-3xl transition-all duration-300 group">
+            <CardHeader className="text-center p-8">
+              <div className="w-20 h-20 bg-gradient-to-r from-orange-500 to-orange-600 rounded-3xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
+                <Clock className="h-10 w-10 text-white" />
               </div>
-              <CardTitle className="text-xl">Localização Inteligente</CardTitle>
-              <CardDescription className="text-base">
-                Vagas próximas a você, otimizando tempo e custos de deslocamento
-              </CardDescription>
-            </CardHeader>
-          </Card>
-
-          <Card className="border-0 shadow-xl bg-gradient-to-br from-success/5 to-success/10 hover:shadow-2xl transition-all duration-300">
-            <CardHeader className="text-center">
-              <div className="w-16 h-16 bg-gradient-to-r from-success to-success/80 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <Clock className="h-8 w-8 text-white" />
-              </div>
-              <CardTitle className="text-xl">Rapidez Garantida</CardTitle>
-              <CardDescription className="text-base">
-                Matches em minutos, não em dias. Agilidade que o mercado precisa
+              <CardTitle className="text-2xl font-bold mb-4">SuperaBank Integrado</CardTitle>
+              <CardDescription className="text-base leading-relaxed">
+                Pagamentos instantâneos e seguros direto na plataforma, sem intermediários
               </CardDescription>
             </CardHeader>
           </Card>
         </div>
 
-        {/* How it Works */}
-        <div className="mt-24 text-center">
-          <h2 className="text-3xl font-bold mb-12">Como Funciona</h2>
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="space-y-4">
-              <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center mx-auto text-white font-bold text-lg">
+        {/* How it Works com Ianquinha */}
+        <div className="mt-32 text-center">
+          <div className="flex items-center justify-center space-x-3 mb-8">
+            <img 
+              src="/lovable-uploads/6e4c944a-d970-4266-896d-2219db44d5ab.png" 
+              alt="Ianquinha - Assistente IA" 
+              className="h-16 w-auto animate-bounce-in"
+            />
+            <h2 className="text-4xl font-black supera-gradient bg-clip-text text-transparent">
+              Como a Ianquinha Funciona
+            </h2>
+          </div>
+          
+          <div className="grid md:grid-cols-3 gap-12 mt-16">
+            <div className="space-y-6 group">
+              <div className="w-16 h-16 supera-gradient rounded-full flex items-center justify-center mx-auto text-white font-black text-2xl group-hover:scale-110 transition-transform shadow-xl">
                 1
               </div>
-              <h3 className="text-xl font-semibold">Cadastre-se</h3>
-              <p className="text-muted-foreground">
-                Crie seu perfil e conte para nossa IA sobre suas habilidades e preferências
+              <h3 className="text-2xl font-bold">Cadastro Inteligente</h3>
+              <p className="text-muted-foreground text-lg leading-relaxed">
+                A Ianquinha conduz uma entrevista personalizada para entender seu perfil e criar matches precisos
               </p>
             </div>
-            <div className="space-y-4">
-              <div className="w-12 h-12 bg-secondary rounded-full flex items-center justify-center mx-auto text-white font-bold text-lg">
+            <div className="space-y-6 group">
+              <div className="w-16 h-16 supera-gradient rounded-full flex items-center justify-center mx-auto text-white font-black text-2xl group-hover:scale-110 transition-transform shadow-xl">
                 2
               </div>
-              <h3 className="text-xl font-semibold">Receba Matches</h3>
-              <p className="text-muted-foreground">
-                Nossa IA encontra as melhores oportunidades baseadas no seu perfil
+              <h3 className="text-2xl font-bold">Matches Inteligentes</h3>
+              <p className="text-muted-foreground text-lg leading-relaxed">
+                Nossa IA encontra as melhores oportunidades baseadas no seu perfil e localização
               </p>
             </div>
-            <div className="space-y-4">
-              <div className="w-12 h-12 bg-success rounded-full flex items-center justify-center mx-auto text-white font-bold text-lg">
+            <div className="space-y-6 group">
+              <div className="w-16 h-16 bg-gradient-to-r from-success to-success/80 rounded-full flex items-center justify-center mx-auto text-white font-black text-2xl group-hover:scale-110 transition-transform shadow-xl">
                 3
               </div>
-              <h3 className="text-xl font-semibold">Trabalhe</h3>
-              <p className="text-muted-foreground">
-                Aceite as vagas que fazem sentido para você e comece a trabalhar
+              <h3 className="text-2xl font-bold">Trabalhe & Receba</h3>
+              <p className="text-muted-foreground text-lg leading-relaxed">
+                Aceite vagas compatíveis e receba pagamentos instantâneos pelo SuperaBank
               </p>
             </div>
           </div>
@@ -168,9 +193,15 @@ const Welcome = () => {
       </main>
 
       {/* Footer */}
-      <footer className="container mx-auto px-4 py-8 border-t">
-        <div className="text-center text-muted-foreground">
-          <p>&copy; 2024 Job Flash. Conectando talentos com inteligência.</p>
+      <footer className="container mx-auto px-4 py-12 border-t">
+        <div className="text-center space-y-4">
+          <div className="flex items-center justify-center space-x-2">
+            <Star className="h-5 w-5 text-primary" />
+            <p className="text-muted-foreground font-medium">
+              &copy; 2024 Supera Flash by Supera Holdings. Recrutamento inteligente com IA.
+            </p>
+            <Star className="h-5 w-5 text-secondary" />
+          </div>
         </div>
       </footer>
     </div>
