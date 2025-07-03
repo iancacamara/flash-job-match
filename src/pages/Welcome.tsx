@@ -7,7 +7,6 @@ const Welcome = () => {
   const navigate = useNavigate();
 
   const handleRoleSelection = (role: string) => {
-    // Navigate to auth page with the selected role
     navigate('/auth', { state: { selectedRole: role } });
   };
 
@@ -27,7 +26,7 @@ const Welcome = () => {
           <div className="flex items-center gap-2">
             <img 
               src="/lovable-uploads/ead26371-00b8-4736-a344-5df3ac04a8bd.png" 
-              alt="Supera Flash Logo" 
+              alt="GM Promo Logo" 
               className="h-24 w-auto"
             />
             <span className="text-white/80 text-sm">by GM Promo</span>
@@ -103,6 +102,48 @@ const Welcome = () => {
               <h3 className="text-xl font-bold text-white mb-2">Recrutador</h3>
               <p className="text-white/70 text-sm">
                 Gerencie processos seletivos com eficiência
+              </p>
+            </CardContent>
+          </Card>
+        </div>
+
+        {/* Features Section */}
+        <div className="grid md:grid-cols-3 gap-8 mb-16 max-w-4xl mx-auto">
+          {/* Sury IA */}
+          <Card className="bg-gradient-to-br from-purple-600/20 to-purple-800/30 backdrop-blur-sm border border-purple-400/30">
+            <CardContent className="p-8 text-center">
+              <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-cyan-400 to-primary rounded-full flex items-center justify-center">
+                <span className="text-2xl">🤖</span>
+              </div>
+              <h3 className="text-xl font-bold text-white mb-2">Sury IA</h3>
+              <p className="text-white/70 text-sm">
+                Nossa assistente virtual analisa perfis e conecta automaticamente os melhores matches
+              </p>
+            </CardContent>
+          </Card>
+
+          {/* Geolocalização */}
+          <Card className="bg-gradient-to-br from-purple-600/20 to-purple-800/30 backdrop-blur-sm border border-purple-400/30">
+            <CardContent className="p-8 text-center">
+              <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-green-400 to-green-600 rounded-full flex items-center justify-center">
+                <span className="text-2xl">📍</span>
+              </div>
+              <h3 className="text-xl font-bold text-white mb-2">Geolocalização</h3>
+              <p className="text-white/70 text-sm">
+                Vagas próximas com precisão, otimizando tempo e custos de deslocamento
+              </p>
+            </CardContent>
+          </Card>
+
+          {/* SuperaBank */}
+          <Card className="bg-gradient-to-br from-purple-600/20 to-purple-800/30 backdrop-blur-sm border border-purple-400/30">
+            <CardContent className="p-8 text-center">
+              <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-orange-400 to-orange-600 rounded-full flex items-center justify-center">
+                <span className="text-2xl">🛡️</span>
+              </div>
+              <h3 className="text-xl font-bold text-white mb-2">SuperaBank</h3>
+              <p className="text-white/70 text-sm">
+                Pagamentos instantâneos e seguros direto na plataforma
               </p>
             </CardContent>
           </Card>
