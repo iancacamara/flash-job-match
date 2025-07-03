@@ -428,10 +428,10 @@ const OnboardingFlow = ({ userType, setHasCompletedOnboarding }: OnboardingFlowP
                   </div>
 
                   <div className="flex justify-end space-x-4 pt-6">
-                    <Button type="button" variant="outline" className="border-white/30 text-white bg-white/10">
+                    <Button type="button" variant="outline" className="border-white/30 text-white bg-white/10 hover:bg-white/20">
                       Voltar
                     </Button>
-                    <Button type="submit" className="bg-gradient-to-r from-primary to-secondary">
+                    <Button type="submit" className="bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90">
                       <CheckCircle className="h-4 w-4 mr-2" />
                       Finalizar Cadastro
                     </Button>

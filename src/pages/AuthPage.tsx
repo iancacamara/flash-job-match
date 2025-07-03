@@ -121,7 +121,7 @@ const AuthPage = ({ setUserType, setIsAuthenticated }: AuthPageProps) => {
                         id="email" 
                         type="email" 
                         placeholder="seu@email.com"
-                        className="h-11 bg-white/10 border-white/20 text-white placeholder:text-white/50 backdrop-blur-sm"
+                        className="h-11 bg-white/10 border-white/20 text-white placeholder:text-white/50 backdrop-blur-sm focus:border-primary focus:ring-primary/20"
                       />
                     </div>
                     <div className="space-y-2">
@@ -130,12 +130,12 @@ const AuthPage = ({ setUserType, setIsAuthenticated }: AuthPageProps) => {
                         id="password" 
                         type="password" 
                         placeholder="••••••••"
-                        className="h-11 bg-white/10 border-white/20 text-white placeholder:text-white/50 backdrop-blur-sm"
+                        className="h-11 bg-white/10 border-white/20 text-white placeholder:text-white/50 backdrop-blur-sm focus:border-primary focus:ring-primary/20"
                       />
                     </div>
                     <Button 
                       type="submit" 
-                      className="w-full h-11 bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90"
+                      className="w-full h-11 bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 transition-all duration-300"
                     >
                       Entrar
                     </Button>
@@ -152,7 +152,7 @@ const AuthPage = ({ setUserType, setIsAuthenticated }: AuthPageProps) => {
                         <Button
                           type="button"
                           variant={selectedUserType === 'freelancer' ? 'default' : 'outline'}
-                          className={`h-16 flex flex-col items-center justify-center space-y-1 ${
+                          className={`h-16 flex flex-col items-center justify-center space-y-1 transition-all duration-300 ${
                             selectedUserType === 'freelancer' 
                               ? 'bg-gradient-to-r from-primary to-secondary text-white' 
                               : 'border-2 border-white/20 text-white hover:border-primary hover:bg-white/10'
@@ -165,7 +165,7 @@ const AuthPage = ({ setUserType, setIsAuthenticated }: AuthPageProps) => {
                         <Button
                           type="button"
                           variant={selectedUserType === 'company' ? 'default' : 'outline'}
-                          className={`h-16 flex flex-col items-center justify-center space-y-1 ${
+                          className={`h-16 flex flex-col items-center justify-center space-y-1 transition-all duration-300 ${
                             selectedUserType === 'company' 
                               ? 'bg-gradient-to-r from-primary to-secondary text-white' 
                               : 'border-2 border-white/20 text-white hover:border-primary hover:bg-white/10'
@@ -189,7 +189,7 @@ const AuthPage = ({ setUserType, setIsAuthenticated }: AuthPageProps) => {
                             value={formData.name}
                             onChange={handleInputChange}
                             placeholder="Seu nome completo"
-                            className="h-11 bg-white/10 border-white/20 text-white placeholder:text-white/50 backdrop-blur-sm"
+                            className="h-11 bg-white/10 border-white/20 text-white placeholder:text-white/50 backdrop-blur-sm focus:border-primary focus:ring-primary/20"
                             required
                           />
                         </div>
@@ -204,7 +204,7 @@ const AuthPage = ({ setUserType, setIsAuthenticated }: AuthPageProps) => {
                               value={formData.email}
                               onChange={handleInputChange}
                               placeholder="seu@email.com"
-                              className="h-11 bg-white/10 border-white/20 text-white placeholder:text-white/50 backdrop-blur-sm"
+                              className="h-11 bg-white/10 border-white/20 text-white placeholder:text-white/50 backdrop-blur-sm focus:border-primary focus:ring-primary/20"
                               required
                             />
                           </div>
@@ -216,7 +216,7 @@ const AuthPage = ({ setUserType, setIsAuthenticated }: AuthPageProps) => {
                               value={formData.cpf}
                               onChange={handleInputChange}
                               placeholder="000.000.000-00"
-                              className="h-11 bg-white/10 border-white/20 text-white placeholder:text-white/50 backdrop-blur-sm"
+                              className="h-11 bg-white/10 border-white/20 text-white placeholder:text-white/50 backdrop-blur-sm focus:border-primary focus:ring-primary/20"
                               required
                             />
                           </div>
@@ -230,7 +230,7 @@ const AuthPage = ({ setUserType, setIsAuthenticated }: AuthPageProps) => {
                             value={formData.phone}
                             onChange={handleInputChange}
                             placeholder="(11) 99999-9999"
-                            className="h-11 bg-white/10 border-white/20 text-white placeholder:text-white/50 backdrop-blur-sm"
+                            className="h-11 bg-white/10 border-white/20 text-white placeholder:text-white/50 backdrop-blur-sm focus:border-primary focus:ring-primary/20"
                             required
                           />
                         </div>
@@ -247,7 +247,7 @@ const AuthPage = ({ setUserType, setIsAuthenticated }: AuthPageProps) => {
                             value={formData.companyName}
                             onChange={handleInputChange}
                             placeholder="Nome da empresa LTDA"
-                            className="h-11 bg-white/10 border-white/20 text-white placeholder:text-white/50 backdrop-blur-sm"
+                            className="h-11 bg-white/10 border-white/20 text-white placeholder:text-white/50 backdrop-blur-sm focus:border-primary focus:ring-primary/20"
                             required
                           />
                         </div>
@@ -261,7 +261,7 @@ const AuthPage = ({ setUserType, setIsAuthenticated }: AuthPageProps) => {
                               value={formData.cnpj}
                               onChange={handleInputChange}
                               placeholder="00.000.000/0001-00"
-                              className="h-11 bg-white/10 border-white/20 text-white placeholder:text-white/50 backdrop-blur-sm"
+                              className="h-11 bg-white/10 border-white/20 text-white placeholder:text-white/50 backdrop-blur-sm focus:border-primary focus:ring-primary/20"
                               required
                             />
                           </div>
@@ -273,7 +273,7 @@ const AuthPage = ({ setUserType, setIsAuthenticated }: AuthPageProps) => {
                               value={formData.fantasyName}
                               onChange={handleInputChange}
                               placeholder="Nome comercial"
-                              className="h-11 bg-white/10 border-white/20 text-white placeholder:text-white/50 backdrop-blur-sm"
+                              className="h-11 bg-white/10 border-white/20 text-white placeholder:text-white/50 backdrop-blur-sm focus:border-primary focus:ring-primary/20"
                             />
                           </div>
                         </div>
@@ -318,7 +318,7 @@ const AuthPage = ({ setUserType, setIsAuthenticated }: AuthPageProps) => {
                               value={formData.email}
                               onChange={handleInputChange}
                               placeholder="empresa@email.com"
-                              className="h-11 bg-white/10 border-white/20 text-white placeholder:text-white/50 backdrop-blur-sm"
+                              className="h-11 bg-white/10 border-white/20 text-white placeholder:text-white/50 backdrop-blur-sm focus:border-primary focus:ring-primary/20"
                               required
                             />
                           </div>
@@ -332,7 +332,7 @@ const AuthPage = ({ setUserType, setIsAuthenticated }: AuthPageProps) => {
                             value={formData.address}
                             onChange={handleInputChange}
                             placeholder="Rua, número, bairro"
-                            className="h-11 bg-white/10 border-white/20 text-white placeholder:text-white/50 backdrop-blur-sm"
+                            className="h-11 bg-white/10 border-white/20 text-white placeholder:text-white/50 backdrop-blur-sm focus:border-primary focus:ring-primary/20"
                             required
                           />
                         </div>
@@ -346,7 +346,7 @@ const AuthPage = ({ setUserType, setIsAuthenticated }: AuthPageProps) => {
                               value={formData.responsibleName}
                               onChange={handleInputChange}
                               placeholder="Nome do responsável"
-                              className="h-11 bg-white/10 border-white/20 text-white placeholder:text-white/50 backdrop-blur-sm"
+                              className="h-11 bg-white/10 border-white/20 text-white placeholder:text-white/50 backdrop-blur-sm focus:border-primary focus:ring-primary/20"
                               required
                             />
                           </div>
@@ -358,7 +358,7 @@ const AuthPage = ({ setUserType, setIsAuthenticated }: AuthPageProps) => {
                               value={formData.responsibleRole}
                               onChange={handleInputChange}
                               placeholder="Gerente, Diretor, etc."
-                              className="h-11 bg-white/10 border-white/20 text-white placeholder:text-white/50 backdrop-blur-sm"
+                              className="h-11 bg-white/10 border-white/20 text-white placeholder:text-white/50 backdrop-blur-sm focus:border-primary focus:ring-primary/20"
                               required
                             />
                           </div>
@@ -372,7 +372,7 @@ const AuthPage = ({ setUserType, setIsAuthenticated }: AuthPageProps) => {
                             value={formData.phone}
                             onChange={handleInputChange}
                             placeholder="(11) 3000-0000"
-                            className="h-11 bg-white/10 border-white/20 text-white placeholder:text-white/50 backdrop-blur-sm"
+                            className="h-11 bg-white/10 border-white/20 text-white placeholder:text-white/50 backdrop-blur-sm focus:border-primary focus:ring-primary/20"
                             required
                           />
                         </div>
@@ -388,14 +388,14 @@ const AuthPage = ({ setUserType, setIsAuthenticated }: AuthPageProps) => {
                         value={formData.password}
                         onChange={handleInputChange}
                         placeholder="••••••••"
-                        className="h-11 bg-white/10 border-white/20 text-white placeholder:text-white/50 backdrop-blur-sm"
+                        className="h-11 bg-white/10 border-white/20 text-white placeholder:text-white/50 backdrop-blur-sm focus:border-primary focus:ring-primary/20"
                         required
                       />
                     </div>
 
                     <Button 
                       type="submit" 
-                      className="w-full h-11 bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90"
+                      className="w-full h-11 bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
                       disabled={!selectedUserType}
                     >
                       Criar Conta
@@ -410,7 +410,7 @@ const AuthPage = ({ setUserType, setIsAuthenticated }: AuthPageProps) => {
             <Button 
               variant="ghost" 
               onClick={() => navigate('/')}
-              className="text-white/60 hover:text-white hover:bg-white/10"
+              className="text-white/60 hover:text-white hover:bg-white/10 transition-all duration-300"
             >
               <ArrowLeft className="h-4 w-4 mr-2" />
               Voltar ao início
