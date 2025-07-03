@@ -11,80 +11,56 @@ const Welcome = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-900 via-purple-800 to-purple-900 relative overflow-hidden">
-      {/* Background dots/decorations */}
-      <div className="absolute inset-0">
-        <div className="absolute top-20 right-20 w-2 h-2 bg-purple-400 rounded-full opacity-60"></div>
-        <div className="absolute top-40 left-40 w-1 h-1 bg-purple-300 rounded-full opacity-40"></div>
-        <div className="absolute bottom-32 left-20 w-1.5 h-1.5 bg-purple-400 rounded-full opacity-50"></div>
-        <div className="absolute bottom-20 right-32 w-1 h-1 bg-purple-300 rounded-full opacity-30"></div>
-      </div>
-
-      <div className="container mx-auto px-8 py-8 relative z-10">
-        {/* Header */}
-        <div className="flex justify-between items-center mb-16">
-          <div className="flex items-center gap-2">
+    <div className="min-h-screen bg-gray-50">
+      <div className="container mx-auto px-8 py-16">
+        {/* Header com Logo Centralizada */}
+        <div className="text-center mb-16">
+          <div className="flex justify-center mb-8">
             <img 
               src="/lovable-uploads/ead26371-00b8-4736-a344-5df3ac04a8bd.png" 
               alt="GM Promo Logo" 
-              className="h-24 w-auto"
+              className="h-32 w-auto"
             />
-            <span className="text-white/80 text-sm">by GM Promo</span>
           </div>
-          <Button 
-            className="bg-purple-600/80 hover:bg-purple-700 text-white px-6 py-2 rounded-full border border-purple-400/30"
-          >
-            Já tenho conta
-          </Button>
-        </div>
-
-        {/* Main Content */}
-        <div className="text-center mb-16">
-          <h1 className="text-6xl font-bold text-white mb-6 leading-tight">
-            Recrutamento{" "}
-            <span className="text-transparent bg-gradient-to-r from-cyan-400 to-primary bg-clip-text">
-              Inteligente
-            </span>
+          
+          <h1 className="text-4xl font-bold text-gray-800 mb-4">
+            Bem-vindo ao GM Promo
           </h1>
           
-          <h2 className="text-2xl text-white/90 mb-8 font-light">
-            com IA e Geolocalização
-          </h2>
-          
-          <p className="text-white/70 text-lg mb-12 leading-relaxed max-w-2xl mx-auto">
-            Sury, nossa IA, conecta o talento certo à oportunidade perfeita, otimizando tempo e maximizando resultados.
+          <p className="text-gray-600 text-lg mb-8 max-w-2xl mx-auto">
+            Escolha seu perfil para começar
           </p>
         </div>
 
-        {/* Role Selection Cards */}
+        {/* Cards de Seleção de Papel */}
         <div className="grid md:grid-cols-3 gap-8 mb-16 max-w-4xl mx-auto">
           {/* Candidato Card */}
           <Card 
-            className="bg-gradient-to-br from-purple-600/20 to-purple-800/30 backdrop-blur-sm border border-purple-400/30 cursor-pointer hover:scale-105 transition-transform duration-300"
+            className="bg-white shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer hover:scale-105 border-2 hover:border-blue-300"
             onClick={() => handleRoleSelection('freelancer')}
           >
             <CardContent className="p-8 text-center">
-              <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-cyan-400 to-primary rounded-full flex items-center justify-center">
-                <span className="text-2xl">👤</span>
+              <div className="w-20 h-20 mx-auto mb-6 bg-gradient-to-br from-blue-400 to-blue-600 rounded-full flex items-center justify-center">
+                <span className="text-3xl text-white">👤</span>
               </div>
-              <h3 className="text-xl font-bold text-white mb-2">Candidato</h3>
-              <p className="text-white/70 text-sm">
-                Encontre oportunidades perfeitas para seu perfil
+              <h3 className="text-2xl font-bold text-gray-800 mb-3">Candidato</h3>
+              <p className="text-gray-600 text-base leading-relaxed">
+                Encontre oportunidades perfeitas para seu perfil profissional
               </p>
             </CardContent>
           </Card>
 
           {/* Empresa Card */}
           <Card 
-            className="bg-gradient-to-br from-purple-600/20 to-purple-800/30 backdrop-blur-sm border border-purple-400/30 cursor-pointer hover:scale-105 transition-transform duration-300"
+            className="bg-white shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer hover:scale-105 border-2 hover:border-green-300"
             onClick={() => handleRoleSelection('company')}
           >
             <CardContent className="p-8 text-center">
-              <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-primary to-cyan-400 rounded-full flex items-center justify-center">
-                <span className="text-2xl">🏢</span>
+              <div className="w-20 h-20 mx-auto mb-6 bg-gradient-to-br from-green-400 to-green-600 rounded-full flex items-center justify-center">
+                <span className="text-3xl text-white">🏢</span>
               </div>
-              <h3 className="text-xl font-bold text-white mb-2">Empresa</h3>
-              <p className="text-white/70 text-sm">
+              <h3 className="text-2xl font-bold text-gray-800 mb-3">Empresa</h3>
+              <p className="text-gray-600 text-base leading-relaxed">
                 Encontre os melhores talentos para sua equipe
               </p>
             </CardContent>
@@ -92,15 +68,15 @@ const Welcome = () => {
 
           {/* Recrutador Card */}
           <Card 
-            className="bg-gradient-to-br from-purple-600/20 to-purple-800/30 backdrop-blur-sm border border-purple-400/30 cursor-pointer hover:scale-105 transition-transform duration-300"
+            className="bg-white shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer hover:scale-105 border-2 hover:border-purple-300"
             onClick={() => navigate('/recruiter')}
           >
             <CardContent className="p-8 text-center">
-              <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-cyan-400 to-primary rounded-full flex items-center justify-center">
-                <span className="text-2xl">🎯</span>
+              <div className="w-20 h-20 mx-auto mb-6 bg-gradient-to-br from-purple-400 to-purple-600 rounded-full flex items-center justify-center">
+                <span className="text-3xl text-white">🎯</span>
               </div>
-              <h3 className="text-xl font-bold text-white mb-2">Recrutador</h3>
-              <p className="text-white/70 text-sm">
+              <h3 className="text-2xl font-bold text-gray-800 mb-3">Recrutador</h3>
+              <p className="text-gray-600 text-base leading-relaxed">
                 Gerencie processos seletivos com eficiência
               </p>
             </CardContent>
@@ -111,26 +87,16 @@ const Welcome = () => {
         <div className="text-center">
           <Button 
             onClick={() => navigate('/auth')}
-            className="bg-gradient-to-r from-primary to-cyan-400 hover:from-primary/90 hover:to-cyan-400/90 text-white px-8 py-3 rounded-full text-lg font-medium mr-4"
+            className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg text-lg font-medium mr-4"
           >
-            Começar com Sury →
+            Começar Agora
           </Button>
           <Button 
             variant="outline"
-            className="border-white/30 text-white hover:bg-white/10 px-8 py-3 rounded-full text-lg"
+            className="border-gray-300 text-gray-700 hover:bg-gray-50 px-8 py-3 rounded-lg text-lg"
           >
-            Saiba mais
+            Saiba Mais
           </Button>
-        </div>
-
-        {/* Powered by Sury IA */}
-        <div className="mt-16 text-center">
-          <div className="inline-flex items-center gap-2 bg-purple-800/40 backdrop-blur-sm border border-purple-400/30 rounded-full px-4 py-2">
-            <div className="w-4 h-4 bg-primary rounded-sm flex items-center justify-center">
-              <div className="w-2 h-2 bg-white rounded-sm"></div>
-            </div>
-            <span className="text-white font-medium">Powered by Sury IA</span>
-          </div>
         </div>
       </div>
     </div>
