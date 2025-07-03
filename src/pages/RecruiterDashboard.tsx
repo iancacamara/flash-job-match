@@ -35,6 +35,9 @@ const RecruiterDashboard = () => {
       appliedDate: "10/01/2025",
       jobTitle: "Promotor Fort Jundiaí",
       nearbyClinic: "Clínica São José - 1.2km",
+      availability: "Disponível",
+      totalJobs: 15,
+      lastWork: "Fort Atacadista - Jundiaí",
       documents: {
         rg: true,
         cpf: true,
@@ -56,6 +59,9 @@ const RecruiterDashboard = () => {
       appliedDate: "12/01/2025",
       jobTitle: "Promotor Supermercados ABC",
       nearbyClinic: "Hospital das Clínicas - 2.5km",
+      availability: "Disponível",
+      totalJobs: 28,
+      lastWork: "Carrefour - São Paulo",
       documents: {
         rg: true,
         cpf: true,
@@ -77,6 +83,9 @@ const RecruiterDashboard = () => {
       appliedDate: "15/01/2025",
       jobTitle: "Promotor Extra",
       nearbyClinic: "Clínica da Família - 0.8km",
+      availability: "Disponível fim de semana",
+      totalJobs: 12,
+      lastWork: "Pão de Açúcar - Rio de Janeiro",
       documents: {
         rg: true,
         cpf: true,
