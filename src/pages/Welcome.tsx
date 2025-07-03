@@ -26,16 +26,16 @@ const Welcome = () => {
         </div>
 
         {/* Cards de Acesso */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto mb-12">
-          {/* Freelancer */}
+        <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto mb-12">
+          {/* Candidato/Freelancer */}
           <Card className="bg-black/30 backdrop-blur-sm border-white/30 hover:bg-black/40 transition-all cursor-pointer">
             <CardHeader className="text-center pb-4">
               <div className="w-16 h-16 bg-primary/30 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Users className="h-8 w-8 text-primary" />
               </div>
-              <CardTitle className="text-white text-xl">Freelancers</CardTitle>
+              <CardTitle className="text-white text-xl">Candidato</CardTitle>
               <CardDescription className="text-white/70">
-                Encontre oportunidades de trabalho flexível
+                Acesse como freelancer ou se inscreva em vagas fixas
               </CardDescription>
             </CardHeader>
             <CardContent className="text-center">
@@ -54,9 +54,9 @@ const Welcome = () => {
               <div className="w-16 h-16 bg-secondary/30 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Building2 className="h-8 w-8 text-secondary" />
               </div>
-              <CardTitle className="text-white text-xl">Empresas</CardTitle>
+              <CardTitle className="text-white text-xl">Empresa</CardTitle>
               <CardDescription className="text-white/70">
-                Contrate profissionais qualificados
+                Cadastre sua empresa e solicite nossos serviços
               </CardDescription>
             </CardHeader>
             <CardContent className="text-center">
@@ -77,7 +77,7 @@ const Welcome = () => {
               </div>
               <CardTitle className="text-white text-xl">Recrutador</CardTitle>
               <CardDescription className="text-white/70">
-                Gerencie candidatos e vagas
+                Acesso para gestão do sistema e candidatos
               </CardDescription>
             </CardHeader>
             <CardContent className="text-center">
@@ -86,27 +86,6 @@ const Welcome = () => {
                 className="w-full bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700"
               >
                 Acessar RH
-              </Button>
-            </CardContent>
-          </Card>
-
-          {/* Vagas */}
-          <Card className="bg-black/30 backdrop-blur-sm border-white/30 hover:bg-black/40 transition-all cursor-pointer">
-            <CardHeader className="text-center pb-4">
-              <div className="w-16 h-16 bg-orange-500/30 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Briefcase className="h-8 w-8 text-orange-500" />
-              </div>
-              <CardTitle className="text-white text-xl">Vagas</CardTitle>
-              <CardDescription className="text-white/70">
-                Explore oportunidades disponíveis
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="text-center">
-              <Button 
-                onClick={() => navigate('/auth')}
-                className="w-full bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700"
-              >
-                Ver Vagas
               </Button>
             </CardContent>
           </Card>
