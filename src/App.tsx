@@ -10,6 +10,7 @@ import AuthPage from "./pages/AuthPage";
 import OnboardingFlow from "./pages/OnboardingFlow";
 import FreelancerDashboard from "./pages/FreelancerDashboard";
 import CompanyDashboard from "./pages/CompanyDashboard";
+import RecruiterDashboard from "./pages/RecruiterDashboard";
 import JobDetails from "./pages/JobDetails";
 import Profile from "./pages/Profile";
 import Wallet from "./pages/Wallet";
@@ -58,6 +59,7 @@ const App = () => {
                 <CompanyDashboard />
               } 
             />
+            <Route path="/recruiter" element={<RecruiterDashboard />} />
             <Route path="/job/:id" element={<JobDetails />} />
             <Route path="/profile" element={<Profile userType={userType} />} />
             <Route path="/wallet" element={<Wallet />} />

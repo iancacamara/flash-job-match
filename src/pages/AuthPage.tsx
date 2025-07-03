@@ -4,6 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useNavigate } from "react-router-dom";
 import { Zap, User, Building2, ArrowLeft } from "lucide-react";
 import { UserType } from "@/App";
@@ -17,17 +18,34 @@ const AuthPage = ({ setUserType, setIsAuthenticated }: AuthPageProps) => {
   const navigate = useNavigate();
   const [selectedUserType, setSelectedUserType] = useState<UserType>(null);
   const [formData, setFormData] = useState({
+    // Campos pessoais/freelancer
     name: "",
     email: "",
     cpf: "",
     phone: "",
-    password: ""
+    password: "",
+    // Campos específicos da empresa
+    companyName: "",
+    cnpj: "",
+    fantasyName: "",
+    city: "",
+    state: "",
+    address: "",
+    responsibleName: "",
+    responsibleRole: ""
   });
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value
+    });
+  };
+
+  const handleSelectChange = (field: string, value: string) => {
+    setFormData({
+      ...formData,
+      [field]: value
     });
   };
 
@@ -47,6 +65,17 @@ const AuthPage = ({ setUserType, setIsAuthenticated }: AuthPageProps) => {
     navigate('/dashboard');
   };
 
+  const cities = [
+    "São Paulo", "Rio de Janeiro", "Brasília", "Salvador", "Fortaleza", 
+    "Belo Horizonte", "Manaus", "Curitiba", "Recife", "Goiânia"
+  ];
+
+  const states = [
+    "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", 
+    "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", 
+    "RS", "RO", "RR", "SC", "SP", "SE", "TO"
+  ];
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 relative overflow-hidden">
       {/* Animated Background */}
@@ -56,7 +85,7 @@ const AuthPage = ({ setUserType, setIsAuthenticated }: AuthPageProps) => {
       </div>
 
       <div className="relative z-10 flex items-center justify-center min-h-screen p-4">
-        <div className="w-full max-w-md">
+        <div className="w-full max-w-2xl">
           {/* Header */}
           <div className="text-center mb-8">
             <img 
@@ -116,74 +145,6 @@ const AuthPage = ({ setUserType, setIsAuthenticated }: AuthPageProps) => {
                 {/* Register Form */}
                 <TabsContent value="register" className="space-y-4 mt-6">
                   <form onSubmit={handleSubmit} className="space-y-4">
-                    <div className="space-y-2">
-                      <Label htmlFor="name" className="text-white">Nome Completo</Label>
-                      <Input 
-                        id="name" 
-                        name="name"
-                        value={formData.name}
-                        onChange={handleInputChange}
-                        placeholder="Seu nome completo"
-                        className="h-11 bg-white/10 border-white/20 text-white placeholder:text-white/50 backdrop-blur-sm"
-                        required
-                      />
-                    </div>
-                    
-                    <div className="grid grid-cols-2 gap-4">
-                      <div className="space-y-2">
-                        <Label htmlFor="email" className="text-white">E-mail</Label>
-                        <Input 
-                          id="email" 
-                          name="email"
-                          type="email"
-                          value={formData.email}
-                          onChange={handleInputChange}
-                          placeholder="seu@email.com"
-                          className="h-11 bg-white/10 border-white/20 text-white placeholder:text-white/50 backdrop-blur-sm"
-                          required
-                        />
-                      </div>
-                      <div className="space-y-2">
-                        <Label htmlFor="cpf" className="text-white">CPF</Label>
-                        <Input 
-                          id="cpf" 
-                          name="cpf"
-                          value={formData.cpf}
-                          onChange={handleInputChange}
-                          placeholder="000.000.000-00"
-                          className="h-11 bg-white/10 border-white/20 text-white placeholder:text-white/50 backdrop-blur-sm"
-                          required
-                        />
-                      </div>
-                    </div>
-
-                    <div className="space-y-2">
-                      <Label htmlFor="phone" className="text-white">Telefone</Label>
-                      <Input 
-                        id="phone" 
-                        name="phone"
-                        value={formData.phone}
-                        onChange={handleInputChange}
-                        placeholder="(11) 99999-9999"
-                        className="h-11 bg-white/10 border-white/20 text-white placeholder:text-white/50 backdrop-blur-sm"
-                        required
-                      />
-                    </div>
-
-                    <div className="space-y-2">
-                      <Label htmlFor="password" className="text-white">Senha</Label>
-                      <Input 
-                        id="password" 
-                        name="password"
-                        type="password"
-                        value={formData.password}
-                        onChange={handleInputChange}
-                        placeholder="••••••••"
-                        className="h-11 bg-white/10 border-white/20 text-white placeholder:text-white/50 backdrop-blur-sm"
-                        required
-                      />
-                    </div>
-
                     {/* User Type Selection */}
                     <div className="space-y-3">
                       <Label className="text-white">Tipo de usuário</Label>
@@ -215,6 +176,221 @@ const AuthPage = ({ setUserType, setIsAuthenticated }: AuthPageProps) => {
                           <span className="text-xs font-medium">Empresa</span>
                         </Button>
                       </div>
+                    </div>
+
+                    {/* Campos condicionais baseados no tipo de usuário */}
+                    {selectedUserType === 'freelancer' && (
+                      <>
+                        <div className="space-y-2">
+                          <Label htmlFor="name" className="text-white">Nome Completo</Label>
+                          <Input 
+                            id="name" 
+                            name="name"
+                            value={formData.name}
+                            onChange={handleInputChange}
+                            placeholder="Seu nome completo"
+                            className="h-11 bg-white/10 border-white/20 text-white placeholder:text-white/50 backdrop-blur-sm"
+                            required
+                          />
+                        </div>
+                        
+                        <div className="grid grid-cols-2 gap-4">
+                          <div className="space-y-2">
+                            <Label htmlFor="email" className="text-white">E-mail</Label>
+                            <Input 
+                              id="email" 
+                              name="email"
+                              type="email"
+                              value={formData.email}
+                              onChange={handleInputChange}
+                              placeholder="seu@email.com"
+                              className="h-11 bg-white/10 border-white/20 text-white placeholder:text-white/50 backdrop-blur-sm"
+                              required
+                            />
+                          </div>
+                          <div className="space-y-2">
+                            <Label htmlFor="cpf" className="text-white">CPF</Label>
+                            <Input 
+                              id="cpf" 
+                              name="cpf"
+                              value={formData.cpf}
+                              onChange={handleInputChange}
+                              placeholder="000.000.000-00"
+                              className="h-11 bg-white/10 border-white/20 text-white placeholder:text-white/50 backdrop-blur-sm"
+                              required
+                            />
+                          </div>
+                        </div>
+
+                        <div className="space-y-2">
+                          <Label htmlFor="phone" className="text-white">Telefone</Label>
+                          <Input 
+                            id="phone" 
+                            name="phone"
+                            value={formData.phone}
+                            onChange={handleInputChange}
+                            placeholder="(11) 99999-9999"
+                            className="h-11 bg-white/10 border-white/20 text-white placeholder:text-white/50 backdrop-blur-sm"
+                            required
+                          />
+                        </div>
+                      </>
+                    )}
+
+                    {selectedUserType === 'company' && (
+                      <>
+                        <div className="space-y-2">
+                          <Label htmlFor="companyName" className="text-white">Razão Social</Label>
+                          <Input 
+                            id="companyName" 
+                            name="companyName"
+                            value={formData.companyName}
+                            onChange={handleInputChange}
+                            placeholder="Nome da empresa LTDA"
+                            className="h-11 bg-white/10 border-white/20 text-white placeholder:text-white/50 backdrop-blur-sm"
+                            required
+                          />
+                        </div>
+
+                        <div className="grid grid-cols-2 gap-4">
+                          <div className="space-y-2">
+                            <Label htmlFor="cnpj" className="text-white">CNPJ</Label>
+                            <Input 
+                              id="cnpj" 
+                              name="cnpj"
+                              value={formData.cnpj}
+                              onChange={handleInputChange}
+                              placeholder="00.000.000/0001-00"
+                              className="h-11 bg-white/10 border-white/20 text-white placeholder:text-white/50 backdrop-blur-sm"
+                              required
+                            />
+                          </div>
+                          <div className="space-y-2">
+                            <Label htmlFor="fantasyName" className="text-white">Nome Fantasia</Label>
+                            <Input 
+                              id="fantasyName" 
+                              name="fantasyName"
+                              value={formData.fantasyName}
+                              onChange={handleInputChange}
+                              placeholder="Nome comercial"
+                              className="h-11 bg-white/10 border-white/20 text-white placeholder:text-white/50 backdrop-blur-sm"
+                            />
+                          </div>
+                        </div>
+
+                        <div className="grid grid-cols-3 gap-4">
+                          <div className="space-y-2">
+                            <Label className="text-white">Cidade</Label>
+                            <Select onValueChange={(value) => handleSelectChange('city', value)}>
+                              <SelectTrigger className="h-11 bg-white/10 border-white/20 text-white">
+                                <SelectValue placeholder="Selecione" />
+                              </SelectTrigger>
+                              <SelectContent className="bg-slate-800 border-white/20">
+                                {cities.map((city) => (
+                                  <SelectItem key={city} value={city} className="text-white hover:bg-white/10">
+                                    {city}
+                                  </SelectItem>
+                                ))}
+                              </SelectContent>
+                            </Select>
+                          </div>
+                          <div className="space-y-2">
+                            <Label className="text-white">Estado</Label>
+                            <Select onValueChange={(value) => handleSelectChange('state', value)}>
+                              <SelectTrigger className="h-11 bg-white/10 border-white/20 text-white">
+                                <SelectValue placeholder="UF" />
+                              </SelectTrigger>
+                              <SelectContent className="bg-slate-800 border-white/20">
+                                {states.map((state) => (
+                                  <SelectItem key={state} value={state} className="text-white hover:bg-white/10">
+                                    {state}
+                                  </SelectItem>
+                                ))}
+                              </SelectContent>
+                            </Select>
+                          </div>
+                          <div className="space-y-2">
+                            <Label htmlFor="email" className="text-white">E-mail</Label>
+                            <Input 
+                              id="email" 
+                              name="email"
+                              type="email"
+                              value={formData.email}
+                              onChange={handleInputChange}
+                              placeholder="empresa@email.com"
+                              className="h-11 bg-white/10 border-white/20 text-white placeholder:text-white/50 backdrop-blur-sm"
+                              required
+                            />
+                          </div>
+                        </div>
+
+                        <div className="space-y-2">
+                          <Label htmlFor="address" className="text-white">Endereço Completo</Label>
+                          <Input 
+                            id="address" 
+                            name="address"
+                            value={formData.address}
+                            onChange={handleInputChange}
+                            placeholder="Rua, número, bairro"
+                            className="h-11 bg-white/10 border-white/20 text-white placeholder:text-white/50 backdrop-blur-sm"
+                            required
+                          />
+                        </div>
+
+                        <div className="grid grid-cols-2 gap-4">
+                          <div className="space-y-2">
+                            <Label htmlFor="responsibleName" className="text-white">Responsável</Label>
+                            <Input 
+                              id="responsibleName" 
+                              name="responsibleName"
+                              value={formData.responsibleName}
+                              onChange={handleInputChange}
+                              placeholder="Nome do responsável"
+                              className="h-11 bg-white/10 border-white/20 text-white placeholder:text-white/50 backdrop-blur-sm"
+                              required
+                            />
+                          </div>
+                          <div className="space-y-2">
+                            <Label htmlFor="responsibleRole" className="text-white">Cargo</Label>
+                            <Input 
+                              id="responsibleRole" 
+                              name="responsibleRole"
+                              value={formData.responsibleRole}
+                              onChange={handleInputChange}
+                              placeholder="Gerente, Diretor, etc."
+                              className="h-11 bg-white/10 border-white/20 text-white placeholder:text-white/50 backdrop-blur-sm"
+                              required
+                            />
+                          </div>
+                        </div>
+
+                        <div className="space-y-2">
+                          <Label htmlFor="phone" className="text-white">Telefone da Empresa</Label>
+                          <Input 
+                            id="phone" 
+                            name="phone"
+                            value={formData.phone}
+                            onChange={handleInputChange}
+                            placeholder="(11) 3000-0000"
+                            className="h-11 bg-white/10 border-white/20 text-white placeholder:text-white/50 backdrop-blur-sm"
+                            required
+                          />
+                        </div>
+                      </>
+                    )}
+
+                    <div className="space-y-2">
+                      <Label htmlFor="password" className="text-white">Senha</Label>
+                      <Input 
+                        id="password" 
+                        name="password"
+                        type="password"
+                        value={formData.password}
+                        onChange={handleInputChange}
+                        placeholder="••••••••"
+                        className="h-11 bg-white/10 border-white/20 text-white placeholder:text-white/50 backdrop-blur-sm"
+                        required
+                      />
                     </div>
 
                     <Button 
