@@ -8,11 +8,9 @@ import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { useNavigate } from "react-router-dom";
-import { Users, MapPin, Phone, Mail, Search, Filter, Plus, Calendar, Clock, CheckCircle, AlertCircle, XCircle, Building2, Star } from "lucide-react";
+import { Users, MapPin, Phone, Mail, Search, Filter, Plus, Calendar, Clock, Star } from "lucide-react";
 
 const CompanyDashboardNew = () => {
-  const navigate = useNavigate();
   const [selectedState, setSelectedState] = useState("all");
   const [selectedCity, setSelectedCity] = useState("all");
   const [selectedProfile, setSelectedProfile] = useState("all");
@@ -113,16 +111,6 @@ const CompanyDashboardNew = () => {
       case "Ocupado": return "bg-red-500/30 text-red-300 border-red-500/50";
       case "Indisponível": return "bg-gray-500/30 text-gray-300 border-gray-500/50";
       default: return "bg-gray-500/30 text-gray-300 border-gray-500/50";
-    }
-  };
-
-  const getStatusColor = (status: string) => {
-    switch (status) {
-      case "exameMedico": return "bg-blue-500/30 text-blue-300";
-      case "selecao": return "bg-yellow-500/30 text-yellow-300";
-      case "documentacao": return "bg-orange-500/30 text-orange-300";
-      case "contratados": return "bg-green-500/30 text-green-300";
-      default: return "bg-gray-500/30 text-gray-300";
     }
   };
 
