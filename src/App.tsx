@@ -8,8 +8,8 @@ import { useState } from "react";
 import Welcome from "./pages/Welcome";
 import AuthPage from "./pages/AuthPage";
 import OnboardingFlow from "./pages/OnboardingFlow";
-import FreelancerDashboard from "./pages/FreelancerDashboard";
-import CompanyDashboard from "./pages/CompanyDashboard";
+import CandidateDashboard from "./pages/CandidateDashboard";
+import CompanyDashboardNew from "./pages/CompanyDashboardNew";
 import RecruiterDashboard from "./pages/RecruiterDashboard";
 import JobDetails from "./pages/JobDetails";
 import Profile from "./pages/Profile";
@@ -55,8 +55,8 @@ const App = () => {
               path="/dashboard" 
               element={
                 userType === 'freelancer' ? 
-                <FreelancerDashboard /> : 
-                <CompanyDashboard />
+                <CandidateDashboard /> : 
+                <CompanyDashboardNew />
               } 
             />
             <Route path="/recruiter" element={<RecruiterDashboard />} />

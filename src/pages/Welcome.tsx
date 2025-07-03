@@ -40,7 +40,7 @@ const Welcome = () => {
             />
             <span className="text-white text-sm opacity-70">GM PROMO</span>
           </div>
-          <Button variant="outline" className="text-white border-white/30 bg-white/10 hover:bg-white/20">
+          <Button variant="outline" className="text-white border-white/30 bg-white/10">
             Já tenho conta
           </Button>
         </div>
@@ -74,14 +74,14 @@ const Welcome = () => {
 
             <div className="flex space-x-4 mb-12 animate-fade-in" style={{animationDelay: '0.6s'}}>
               <Button 
-                className="bg-cyan-500 hover:bg-cyan-600 text-white px-8 py-3 rounded-lg text-lg font-medium transform hover:scale-105 transition-all duration-200"
+                className="bg-cyan-500 text-white px-8 py-3 rounded-lg text-lg font-medium transform transition-all duration-200"
                 onClick={() => navigate('/auth')}
               >
                 Começar com Sury →
               </Button>
               <Button 
                 variant="outline" 
-                className="border-white/30 text-white hover:bg-white/10 px-8 py-3 rounded-lg text-lg transform hover:scale-105 transition-all duration-200"
+                className="border-white/30 text-white bg-white/10 px-8 py-3 rounded-lg text-lg transform transition-all duration-200"
               >
                 Saiba mais
               </Button>
@@ -90,7 +90,7 @@ const Welcome = () => {
             {/* Role Selection Cards */}
             <div className="grid grid-cols-3 gap-4 mb-12 animate-fade-in" style={{animationDelay: '0.8s'}}>
               <Card 
-                className="bg-blue-500/20 border border-blue-400/30 cursor-pointer hover:bg-blue-500/30 transition-all transform hover:scale-105 hover:shadow-lg hover:shadow-blue-500/20"
+                className="bg-blue-500/20 border border-blue-400/30 cursor-pointer transition-all transform"
                 onClick={() => handleRoleSelection('freelancer')}
               >
                 <CardContent className="p-4 text-center">
@@ -100,7 +100,7 @@ const Welcome = () => {
               </Card>
 
               <Card 
-                className="bg-green-500/20 border border-green-400/30 cursor-pointer hover:bg-green-500/30 transition-all transform hover:scale-105 hover:shadow-lg hover:shadow-green-500/20"
+                className="bg-green-500/20 border border-green-400/30 cursor-pointer transition-all transform"
                 onClick={() => handleRoleSelection('company')}
               >
                 <CardContent className="p-4 text-center">
@@ -110,7 +110,7 @@ const Welcome = () => {
               </Card>
 
               <Card 
-                className="bg-purple-500/20 border border-purple-400/30 cursor-pointer hover:bg-purple-500/30 transition-all transform hover:scale-105 hover:shadow-lg hover:shadow-purple-500/20"
+                className="bg-purple-500/20 border border-purple-400/30 cursor-pointer transition-all transform"
                 onClick={() => navigate('/recruiter')}
               >
                 <CardContent className="p-4 text-center">
@@ -147,7 +147,7 @@ const Welcome = () => {
               <div className="absolute -top-4 -right-4 bg-cyan-500 text-white px-3 py-1 rounded-full text-sm font-medium animate-bounce">
                 IA Inteligente
               </div>
-              <Card className="bg-gradient-to-br from-purple-500/30 to-purple-600/40 border border-purple-400/40 backdrop-blur-sm transform hover:scale-105 transition-all duration-300 hover:shadow-2xl hover:shadow-purple-500/30">
+              <Card className="bg-gradient-to-br from-purple-500/30 to-purple-600/40 border border-purple-400/40 backdrop-blur-sm transform transition-all duration-300">
                 <CardContent className="p-8 text-center relative">
                   <div className="mb-4">
                     <img 
@@ -183,7 +183,7 @@ const Welcome = () => {
           {/* Step 1 - Cadastro com Sury */}
           <div className="text-center animate-fade-in" style={{animationDelay: '0.2s'}}>
             <div className="mb-6">
-              <div className="w-16 h-16 bg-gradient-to-r from-cyan-500 to-cyan-600 rounded-full mx-auto flex items-center justify-center mb-4 transform hover:scale-110 transition-all duration-300 hover:shadow-lg hover:shadow-cyan-500/50">
+              <div className="w-16 h-16 bg-gradient-to-r from-cyan-500 to-cyan-600 rounded-full mx-auto flex items-center justify-center mb-4 transform transition-all duration-300">
                 <span className="text-white text-2xl font-bold">1</span>
               </div>
             </div>
@@ -196,7 +196,7 @@ const Welcome = () => {
           {/* Step 2 - Matches Inteligentes */}
           <div className="text-center animate-fade-in" style={{animationDelay: '0.4s'}}>
             <div className="mb-6">
-              <div className="w-16 h-16 bg-gradient-to-r from-purple-500 to-purple-600 rounded-full mx-auto flex items-center justify-center mb-4 transform hover:scale-110 transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/50">
+              <div className="w-16 h-16 bg-gradient-to-r from-purple-500 to-purple-600 rounded-full mx-auto flex items-center justify-center mb-4 transform transition-all duration-300">
                 <span className="text-white text-2xl font-bold">2</span>
               </div>
             </div>
@@ -209,7 +209,7 @@ const Welcome = () => {
           {/* Step 3 - Trabalhe & Receba */}
           <div className="text-center animate-fade-in" style={{animationDelay: '0.6s'}}>
             <div className="mb-6">
-              <div className="w-16 h-16 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-full mx-auto flex items-center justify-center mb-4 transform hover:scale-110 transition-all duration-300 hover:shadow-lg hover:shadow-cyan-500/50">
+              <div className="w-16 h-16 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-full mx-auto flex items-center justify-center mb-4 transform transition-all duration-300">
                 <span className="text-white text-2xl font-bold">3</span>
               </div>
             </div>

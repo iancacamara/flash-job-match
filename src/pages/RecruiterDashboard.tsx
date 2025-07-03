@@ -9,7 +9,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useNavigate } from "react-router-dom";
-import { Users, MapPin, Clock, Phone, Mail, Filter, Search, Calendar, Building2, Stethoscope, Plus, Eye, CheckCircle, XCircle, AlertCircle } from "lucide-react";
+import { Users, MapPin, Clock, Phone, Mail, Filter, Search, Calendar, Building2, Stethoscope, Plus, Eye, CheckCircle, XCircle, AlertCircle, Star } from "lucide-react";
 
 const RecruiterDashboard = () => {
   const navigate = useNavigate();
@@ -17,7 +17,7 @@ const RecruiterDashboard = () => {
   const [selectedProfile, setSelectedProfile] = useState("all");
   const [searchTerm, setSearchTerm] = useState("");
 
-  // Mock data para candidatos
+  // Mock data para candidatos com clínicas médicas
   const candidates = [
     {
       id: 1,
@@ -31,7 +31,13 @@ const RecruiterDashboard = () => {
       rating: 4.8,
       experienceYears: 3,
       lastInterview: "15/05/2024",
-      nearbyClinic: "Clínica São Paulo - 800m"
+      nearbyClinic: {
+        name: "Clínica São Paulo",
+        distance: "800m",
+        address: "Rua Augusta, 1234",
+        phone: "(11) 3000-1234"
+      },
+      type: "Freelancer"
     },
     {
       id: 2,
@@ -45,7 +51,13 @@ const RecruiterDashboard = () => {
       rating: 4.5,
       experienceYears: 2,
       lastInterview: "10/05/2024",
-      nearbyClinic: "Clínica Saúde Total - 1.2km"
+      nearbyClinic: {
+        name: "Clínica Saúde Total",
+        distance: "1.2km",
+        address: "Av. Paulista, 567",
+        phone: "(11) 3000-5678"
+      },
+      type: "Fixo"
     },
     {
       id: 3,
@@ -59,31 +71,41 @@ const RecruiterDashboard = () => {
       rating: 4.9,
       experienceYears: 5,
       lastInterview: "12/05/2024",
-      nearbyClinic: "Clínica Rio Saúde - 600m"
+      nearbyClinic: {
+        name: "Clínica Rio Saúde",
+        distance: "600m",
+        address: "Av. Copacabana, 890",
+        phone: "(21) 3000-9012"
+      },
+      type: "Freelancer"
     }
   ];
 
-  // Mock data para vagas fixas
-  const permanentJobs = [
+  // Mock data para vagas abertas
+  const openJobs = [
     {
       id: 1,
       title: "Promotor de Vendas - CLT",
-      company: "Supera Flash",
+      company: "GM Promo",
       type: "CLT",
       salary: "R$ 2.500,00",
       location: "São Paulo, SP",
       applications: 25,
-      status: "Ativa"
+      status: "Ativa",
+      deadline: "30/01/2025",
+      requirements: ["Ensino médio", "Experiência em vendas"]
     },
     {
       id: 2,
       title: "Coordenador de Equipe - PJ",
-      company: "Supera Flash",
+      company: "GM Promo",
       type: "PJ",
       salary: "R$ 4.000,00",
       location: "Rio de Janeiro, RJ",
       applications: 15,
-      status: "Ativa"
+      status: "Ativa",
+      deadline: "25/01/2025",
+      requirements: ["Superior completo", "Liderança de equipe"]
     }
   ];
 
@@ -95,6 +117,14 @@ const RecruiterDashboard = () => {
       case "Aprovado": return "bg-green-500/30 text-green-300 border-green-500/50";
       case "Pendente": return "bg-yellow-500/30 text-yellow-300 border-yellow-500/50";
       case "Rejeitado": return "bg-red-500/30 text-red-300 border-red-500/50";
+      default: return "bg-gray-500/30 text-gray-300 border-gray-500/50";
+    }
+  };
+
+  const getTypeBadge = (type: string) => {
+    switch (type) {
+      case "Freelancer": return "bg-blue-500/30 text-blue-300 border-blue-500/50";
+      case "Fixo": return "bg-purple-500/30 text-purple-300 border-purple-500/50";
       default: return "bg-gray-500/30 text-gray-300 border-gray-500/50";
     }
   };
@@ -116,13 +146,13 @@ const RecruiterDashboard = () => {
             <div className="flex items-center space-x-4">
               <div className="flex items-center space-x-3">
                 <img 
-                  src="/lovable-uploads/e172e5ba-c278-4674-bb50-c1cccacbb507.png" 
-                  alt="Supera Flash Logo" 
-                  className="h-12 w-auto logo-animate"
+                  src="/lovable-uploads/ead26371-00b8-4736-a344-5df3ac04a8bd.png" 
+                  alt="GM Promo Logo" 
+                  className="h-12 w-auto"
                 />
                 <div>
                   <h1 className="text-xl font-bold text-white">
-                    Supera Flash - RH
+                    GM Promo - RH
                   </h1>
                   <p className="text-sm text-white/80">Gestão de Candidatos</p>
                 </div>
@@ -131,7 +161,7 @@ const RecruiterDashboard = () => {
             
             <div className="flex items-center space-x-2">
               <Button 
-                className="bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90"
+                className="bg-gradient-to-r from-primary to-secondary"
                 onClick={() => navigate('/create-job')}
               >
                 <Plus className="h-4 w-4 mr-2" />
@@ -146,22 +176,25 @@ const RecruiterDashboard = () => {
         <Tabs defaultValue="candidates" className="w-full">
           <TabsList className="grid w-full grid-cols-3 bg-black/30 backdrop-blur-sm">
             <TabsTrigger value="candidates" className="text-white data-[state=active]:bg-primary data-[state=active]:text-white">
-              Candidatos Intermitentes
+              Todos os Promotores
             </TabsTrigger>
-            <TabsTrigger value="permanent" className="text-white data-[state=active]:bg-primary data-[state=active]:text-white">
-              Vagas Fixas (CLT/PJ)
+            <TabsTrigger value="jobs" className="text-white data-[state=active]:bg-primary data-[state=active]:text-white">
+              Vagas Abertas
             </TabsTrigger>
             <TabsTrigger value="analytics" className="text-white data-[state=active]:bg-primary data-[state=active]:text-white">
               Analytics
             </TabsTrigger>
           </TabsList>
 
-          {/* Candidatos Intermitentes */}
+          {/* Todos os Promotores */}
           <TabsContent value="candidates" className="space-y-6 mt-6">
             {/* Filtros */}
             <Card className="bg-black/30 backdrop-blur-sm border-white/30">
               <CardHeader>
-                <CardTitle className="text-white">Filtros de Candidatos</CardTitle>
+                <CardTitle className="text-white">Filtros de Promotores</CardTitle>
+                <CardDescription className="text-white/60">
+                  Visualize todos os promotores (freelancers e fixos) com suas clínicas médicas próximas
+                </CardDescription>
               </CardHeader>
               <CardContent>
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
@@ -213,7 +246,7 @@ const RecruiterDashboard = () => {
                   </div>
 
                   <div className="flex items-end">
-                    <Button variant="outline" className="border-white/30 text-white hover:bg-white/10">
+                    <Button variant="outline" className="border-white/30 text-white bg-white/10">
                       <Filter className="h-4 w-4 mr-2" />
                       Filtrar
                     </Button>
@@ -222,16 +255,17 @@ const RecruiterDashboard = () => {
               </CardContent>
             </Card>
 
-            {/* Tabela de Candidatos */}
+            {/* Tabela de Promotores */}
             <Card className="bg-black/30 backdrop-blur-sm border-white/30">
               <CardHeader>
-                <CardTitle className="text-white">Candidatos Disponíveis ({filteredCandidates.length})</CardTitle>
+                <CardTitle className="text-white">Promotores Disponíveis ({filteredCandidates.length})</CardTitle>
               </CardHeader>
               <CardContent>
                 <Table>
                   <TableHeader>
                     <TableRow className="border-white/20">
-                      <TableHead className="text-white">Candidato</TableHead>
+                      <TableHead className="text-white">Promotor</TableHead>
+                      <TableHead className="text-white">Tipo</TableHead>
                       <TableHead className="text-white">Perfil</TableHead>
                       <TableHead className="text-white">Disponibilidade</TableHead>
                       <TableHead className="text-white">Status</TableHead>
@@ -241,10 +275,16 @@ const RecruiterDashboard = () => {
                   </TableHeader>
                   <TableBody>
                     {filteredCandidates.map((candidate) => (
-                      <TableRow key={candidate.id} className="border-white/20 hover:bg-white/5">
+                      <TableRow key={candidate.id} className="border-white/20">
                         <TableCell>
                           <div className="space-y-1">
-                            <p className="font-medium text-white">{candidate.name}</p>
+                            <div className="flex items-center space-x-2">
+                              <p className="font-medium text-white">{candidate.name}</p>
+                              <div className="flex items-center">
+                                <Star className="h-3 w-3 text-yellow-400 fill-current mr-1" />
+                                <span className="text-white text-sm">{candidate.rating}</span>
+                              </div>
+                            </div>
                             <div className="flex items-center space-x-4 text-sm text-white/70">
                               <span className="flex items-center">
                                 <Mail className="h-3 w-3 mr-1" />
@@ -260,6 +300,11 @@ const RecruiterDashboard = () => {
                               {candidate.city}
                             </div>
                           </div>
+                        </TableCell>
+                        <TableCell>
+                          <Badge className={getTypeBadge(candidate.type)}>
+                            {candidate.type}
+                          </Badge>
                         </TableCell>
                         <TableCell>
                           <Badge className="bg-primary/30 text-primary border-primary/50">
@@ -278,24 +323,33 @@ const RecruiterDashboard = () => {
                           </Badge>
                         </TableCell>
                         <TableCell>
-                          <div className="flex items-center text-sm text-white">
-                            <Stethoscope className="h-4 w-4 mr-1 text-green-400" />
-                            <span>{candidate.nearbyClinic}</span>
+                          <div className="space-y-1">
+                            <div className="flex items-center text-sm text-white">
+                              <Stethoscope className="h-4 w-4 mr-1 text-green-400" />
+                              <span className="font-medium">{candidate.nearbyClinic.name}</span>
+                            </div>
+                            <div className="text-xs text-white/60">
+                              {candidate.nearbyClinic.distance} • {candidate.nearbyClinic.address}
+                            </div>
+                            <div className="text-xs text-white/60">
+                              <Phone className="h-3 w-3 inline mr-1" />
+                              {candidate.nearbyClinic.phone}
+                            </div>
                           </div>
                         </TableCell>
                         <TableCell>
                           <div className="flex items-center space-x-2">
-                            <Button size="sm" variant="outline" className="border-white/30 text-white hover:bg-white/10">
+                            <Button size="sm" variant="outline" className="border-white/30 text-white bg-white/10">
                               <Eye className="h-3 w-3 mr-1" />
                               Ver
                             </Button>
                             {candidate.status === "Pendente" && (
                               <>
-                                <Button size="sm" className="bg-green-600 hover:bg-green-700">
+                                <Button size="sm" className="bg-green-600">
                                   <CheckCircle className="h-3 w-3 mr-1" />
                                   Aprovar
                                 </Button>
-                                <Button size="sm" variant="outline" className="border-red-500 text-red-400 hover:bg-red-500/20">
+                                <Button size="sm" variant="outline" className="border-red-500 text-red-400">
                                   <XCircle className="h-3 w-3 mr-1" />
                                   Rejeitar
                                 </Button>
@@ -311,18 +365,18 @@ const RecruiterDashboard = () => {
             </Card>
           </TabsContent>
 
-          {/* Vagas Fixas */}
-          <TabsContent value="permanent" className="space-y-6 mt-6">
+          {/* Vagas Abertas */}
+          <TabsContent value="jobs" className="space-y-6 mt-6">
             <div className="flex items-center justify-between">
-              <h2 className="text-2xl font-bold text-white">Vagas Internas</h2>
+              <h2 className="text-2xl font-bold text-white">Vagas Abertas</h2>
               <Button className="bg-gradient-to-r from-primary to-secondary">
                 <Plus className="h-4 w-4 mr-2" />
-                Nova Vaga Fixa
+                Abrir Nova Vaga
               </Button>
             </div>
 
             <div className="grid gap-4">
-              {permanentJobs.map((job) => (
+              {openJobs.map((job) => (
                 <Card key={job.id} className="bg-black/30 backdrop-blur-sm border-white/30">
                   <CardContent className="p-6">
                     <div className="flex items-start justify-between">
@@ -336,7 +390,7 @@ const RecruiterDashboard = () => {
                         
                         <p className="text-white/80 mb-3">{job.company}</p>
                         
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
+                        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 text-sm mb-4">
                           <div className="flex items-center space-x-2">
                             <MapPin className="h-4 w-4 text-white/70" />
                             <span className="text-white">{job.location}</span>
@@ -351,12 +405,29 @@ const RecruiterDashboard = () => {
                             <Users className="h-4 w-4 text-white/70" />
                             <span className="text-white">{job.applications} candidatos</span>
                           </div>
+                          
+                          <div className="flex items-center space-x-2">
+                            <Calendar className="h-4 w-4 text-white/70" />
+                            <span className="text-white">Até {job.deadline}</span>
+                          </div>
+                        </div>
+                        
+                        <div className="mb-4">
+                          <p className="text-white/80 text-sm font-medium mb-2">Requisitos:</p>
+                          <ul className="list-disc list-inside text-white/60 text-sm space-y-1">
+                            {job.requirements.map((req, index) => (
+                              <li key={index}>{req}</li>
+                            ))}
+                          </ul>
                         </div>
                       </div>
                       
                       <div className="flex flex-col space-y-2 ml-4">
-                        <Button variant="outline" className="border-white/30 text-white hover:bg-white/10">
-                          Gerenciar
+                        <Button className="bg-gradient-to-r from-primary to-secondary">
+                          Gerenciar Vaga
+                        </Button>
+                        <Button variant="outline" className="border-white/30 text-white bg-white/10">
+                          Ver Candidatos
                         </Button>
                         <Badge className="bg-success/30 text-success border-success/50 justify-center">
                           {job.status}
@@ -380,7 +451,7 @@ const RecruiterDashboard = () => {
                     </div>
                     <div>
                       <p className="text-2xl font-bold text-white">156</p>
-                      <p className="text-xs text-white">Total Candidatos</p>
+                      <p className="text-xs text-white">Total Promotores</p>
                     </div>
                   </div>
                 </CardContent>
