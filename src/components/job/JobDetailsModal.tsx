@@ -7,7 +7,24 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from 
 import { MapPin, Clock, DollarSign, Calendar, CheckCircle, Star, Building2, Users, Briefcase } from "lucide-react";
 
 interface JobDetailsModalProps {
-  job: any;
+  job: {
+    id: number;
+    title: string;
+    company: string;
+    location: string;
+    type: string;
+    salary?: string;
+    payment?: string;
+    distance: string;
+    startDate: string;
+    description: string;
+    requirements?: string[];
+    benefits?: string[];
+    urgent?: boolean;
+    duration?: string;
+    schedule?: string;
+    paymentType?: string;
+  };
   children: React.ReactNode;
 }
 
@@ -16,7 +33,7 @@ const JobDetailsModal = ({ job, children }: JobDetailsModalProps) => {
 
   const handleApply = () => {
     setIsApplied(true);
-    // Aqui você implementaria a lógica de candidatura
+    console.log('Applied to job:', job.id);
   };
 
   const getCompatibilityColor = (percentage: number) => {
@@ -25,7 +42,7 @@ const JobDetailsModal = ({ job, children }: JobDetailsModalProps) => {
     return "text-red-400";
   };
 
-  const compatibility = 92; // Mock compatibility percentage
+  const compatibility = 92;
 
   return (
     <Dialog>
@@ -38,7 +55,6 @@ const JobDetailsModal = ({ job, children }: JobDetailsModalProps) => {
         </DialogHeader>
         
         <div className="space-y-6">
-          {/* Header da Vaga */}
           <Card className="bg-black/30 backdrop-blur-sm border-white/30">
             <CardHeader>
               <div className="flex items-start justify-between">
@@ -74,9 +90,7 @@ const JobDetailsModal = ({ job, children }: JobDetailsModalProps) => {
           </Card>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            {/* Informações Principais */}
             <div className="lg:col-span-2 space-y-6">
-              {/* Detalhes do Trabalho */}
               <Card className="bg-black/30 backdrop-blur-sm border-white/30">
                 <CardHeader>
                   <CardTitle className="text-white">Informações do Trabalho</CardTitle>
@@ -118,7 +132,6 @@ const JobDetailsModal = ({ job, children }: JobDetailsModalProps) => {
                 </CardContent>
               </Card>
 
-              {/* Descrição */}
               <Card className="bg-black/30 backdrop-blur-sm border-white/30">
                 <CardHeader>
                   <CardTitle className="text-white">Descrição da Vaga</CardTitle>
@@ -130,7 +143,7 @@ const JobDetailsModal = ({ job, children }: JobDetailsModalProps) => {
                     <div>
                       <h4 className="text-white font-semibold mb-3">Requisitos</h4>
                       <ul className="space-y-2">
-                        {job.requirements?.map((req: string, index: number) => (
+                        {(job.requirements || ["Experiência em vendas", "Disponibilidade de horário"]).map((req: string, index: number) => (
                           <li key={index} className="flex items-start space-x-2">
                             <CheckCircle className="h-4 w-4 text-green-400 mt-0.5 flex-shrink-0" />
                             <span className="text-white/70 text-sm">{req}</span>
@@ -155,9 +168,7 @@ const JobDetailsModal = ({ job, children }: JobDetailsModalProps) => {
               </Card>
             </div>
 
-            {/* Sidebar */}
             <div className="space-y-6">
-              {/* Compatibilidade */}
               <Card className="bg-black/30 backdrop-blur-sm border-white/30">
                 <CardHeader>
                   <CardTitle className="text-white">Compatibilidade</CardTitle>
@@ -201,7 +212,6 @@ const JobDetailsModal = ({ job, children }: JobDetailsModalProps) => {
                 </CardContent>
               </Card>
 
-              {/* Ações */}
               <Card className="bg-black/30 backdrop-blur-sm border-white/30">
                 <CardContent className="p-4 space-y-3">
                   {!isApplied ? (
@@ -238,24 +248,6 @@ const JobDetailsModal = ({ job, children }: JobDetailsModalProps) => {
                     <Calendar className="h-4 w-4 mr-2" />
                     Adicionar ao Calendário
                   </Button>
-                </CardContent>
-              </Card>
-
-              {/* Vagas Similares */}
-              <Card className="bg-black/30 backdrop-blur-sm border-white/30">
-                <CardHeader>
-                  <CardTitle className="text-white">Vagas Similares</CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-3">
-                  <div className="p-3 bg-white/5 rounded-lg">
-                    <p className="text-white font-medium text-sm">Reposição - SuperMax</p>
-                    <p className="text-white/60 text-xs">Armazém • R$ 80,00</p>
-                  </div>
-                  
-                  <div className="p-3 bg-white/5 rounded-lg">
-                    <p className="text-white font-medium text-sm">Evento - Shopping ABC</p>
-                    <p className="text-white/60 text-xs">Eventos • R$ 150,00</p>
-                  </div>
                 </CardContent>
               </Card>
             </div>
