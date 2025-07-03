@@ -157,6 +157,107 @@ const Welcome = () => {
           </div>
         </div>
       </div>
+
+      {/* Features Section */}
+      <div className="relative z-10 container mx-auto px-6 py-12">
+        <div className="grid grid-cols-3 gap-8 max-w-6xl mx-auto mb-16">
+          {/* Sury IA Card */}
+          <Card className="bg-purple-600/30 border border-purple-500/40 backdrop-blur-sm">
+            <CardContent className="p-8 text-center">
+              <div className="mb-6">
+                <div className="w-16 h-16 bg-cyan-500 rounded-2xl mx-auto flex items-center justify-center mb-4">
+                  <div className="text-white text-2xl">🤖</div>
+                </div>
+              </div>
+              <h3 className="text-white font-bold text-xl mb-4">Sury IA</h3>
+              <p className="text-white/80 text-sm leading-relaxed">
+                Nossa assistente virtual analisa perfis e conecta automaticamente os melhores matches
+              </p>
+            </CardContent>
+          </Card>
+
+          {/* Geolocalização Card */}
+          <Card className="bg-purple-600/30 border border-purple-500/40 backdrop-blur-sm">
+            <CardContent className="p-8 text-center">
+              <div className="mb-6">
+                <div className="w-16 h-16 bg-green-500 rounded-2xl mx-auto flex items-center justify-center mb-4">
+                  <div className="text-white text-2xl">📍</div>
+                </div>
+              </div>
+              <h3 className="text-white font-bold text-xl mb-4">Geolocalização</h3>
+              <p className="text-white/80 text-sm leading-relaxed">
+                Vagas próximas com precisão, otimizando tempo e custos de deslocamento
+              </p>
+            </CardContent>
+          </Card>
+
+          {/* SuperaBank Card */}
+          <Card className="bg-purple-600/30 border border-purple-500/40 backdrop-blur-sm">
+            <CardContent className="p-8 text-center">
+              <div className="mb-6">
+                <div className="w-16 h-16 bg-orange-500 rounded-2xl mx-auto flex items-center justify-center mb-4">
+                  <div className="text-white text-2xl">🛡️</div>
+                </div>
+              </div>
+              <h3 className="text-white font-bold text-xl mb-4">SuperaBank</h3>
+              <p className="text-white/80 text-sm leading-relaxed">
+                Pagamentos instantâneos e seguros direto na plataforma
+              </p>
+            </CardContent>
+          </Card>
+        </div>
+
+        {/* Como Funciona Section */}
+        <div className="text-center mb-12">
+          <div className="flex items-center justify-center mb-8">
+            <div className="w-12 h-12 bg-cyan-500 rounded-xl flex items-center justify-center mr-4">
+              <div className="text-white text-xl">🚀</div>
+            </div>
+            <h2 className="text-4xl font-bold text-white">Como Funciona</h2>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-3 gap-8 max-w-6xl mx-auto">
+          {/* Step 1 - Cadastro com Sury */}
+          <div className="text-center">
+            <div className="mb-6">
+              <div className="w-16 h-16 bg-cyan-500 rounded-full mx-auto flex items-center justify-center mb-4">
+                <span className="text-white text-2xl font-bold">1</span>
+              </div>
+            </div>
+            <h3 className="text-white font-bold text-xl mb-4">Cadastro com Sury</h3>
+            <p className="text-white/80 text-sm leading-relaxed">
+              Nossa IA conduz uma entrevista personalizada para criar seu perfil perfeito
+            </p>
+          </div>
+
+          {/* Step 2 - Matches Inteligentes */}
+          <div className="text-center">
+            <div className="mb-6">
+              <div className="w-16 h-16 bg-purple-500 rounded-full mx-auto flex items-center justify-center mb-4">
+                <span className="text-white text-2xl font-bold">2</span>
+              </div>
+            </div>
+            <h3 className="text-white font-bold text-xl mb-4">Matches Inteligentes</h3>
+            <p className="text-white/80 text-sm leading-relaxed">
+              Algoritmo encontra as melhores oportunidades baseadas no seu perfil
+            </p>
+          </div>
+
+          {/* Step 3 - Trabalhe & Receba */}
+          <div className="text-center">
+            <div className="mb-6">
+              <div className="w-16 h-16 bg-cyan-500 rounded-full mx-auto flex items-center justify-center mb-4">
+                <span className="text-white text-2xl font-bold">3</span>
+              </div>
+            </div>
+            <h3 className="text-white font-bold text-xl mb-4">Trabalhe & Receba</h3>
+            <p className="text-white/80 text-sm leading-relaxed">
+              Aceite vagas e receba pagamentos instantâneos pelo SuperaBank
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
