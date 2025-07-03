@@ -13,9 +13,9 @@ const Welcome = () => {
         {/* Header */}
         <div className="text-center mb-12">
           <img 
-            src="/lovable-uploads/e172e5ba-c278-4674-bb50-c1cccacbb507.png" 
+            src="/lovable-uploads/2a686b03-80b6-475a-b721-cd6d7344535a.png" 
             alt="Supera Flash Logo" 
-            className="h-20 w-auto mx-auto mb-6 logo-animate"
+            className="h-24 w-auto mx-auto mb-6 logo-animate"
           />
           <h1 className="text-4xl md:text-6xl font-bold text-white mb-4">
             Bem-vindo ao Supera Flash
