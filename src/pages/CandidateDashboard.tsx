@@ -8,9 +8,10 @@ import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useNavigate } from "react-router-dom";
-import { MapPin, Clock, DollarSign, Building2, Calendar, Search, Filter, User, Briefcase, CreditCard, Map, LogOut } from "lucide-react";
+import { MapPin, Clock, DollarSign, Building2, Calendar, Search, Filter, User, Briefcase, CreditCard, Map, LogOut, Star } from "lucide-react";
 import JobsMap from "@/components/map/JobsMap";
 import SuperaWallet from "@/components/wallet/SuperaWallet";
+import JobDetailsModal from "@/components/job/JobDetailsModal";
 
 const CandidateDashboard = () => {
   const navigate = useNavigate();
@@ -22,31 +23,58 @@ const CandidateDashboard = () => {
   const freelanceJobs = [
     {
       id: 1,
-      title: "Promotor Mercearia Seca",
-      company: "Fort Atacadista",
-      location: "Jundiaí, SP",
+      title: "Promotor de Degustação",
+      company: "FoodBrand",
+      location: "Shopping Vila Lobos - Av das Nações Unidas, 4777",
       coordinates: [-46.8838, -23.1858] as [number, number],
       type: "Por Demanda",
-      duration: "3 dias",
-      payment: "R$ 150/dia",
-      description: "Promoção de produtos de mercearia seca durante final de semana",
-      requirements: ["Experiência com vendas", "Disponibilidade fim de semana"],
-      startDate: "15/01/2025",
-      distance: "2.5 km"
+      duration: "4 horas de trabalho",
+      payment: "R$ 120,00",
+      paymentType: "Pagamento no mesmo dia",
+      schedule: "Hoje, 14h-18h",
+      urgent: true,
+      description: "Procuramos promotor(a) para degustação de novos sabores de iogurte na praça de alimentação do Shopping Vila Lobos. Experiência em atendimento ao público é um diferencial.",
+      requirements: [
+        "Maior de 18 anos",
+        "Experiência em atendimento ao público",
+        "Disponibilidade para trabalhar em pé por 4 horas",
+        "Comunicação clara e simpática"
+      ],
+      benefits: [
+        "Pagamento no mesmo dia",
+        "Vale transporte",
+        "Possibilidade de trabalhos futuros",
+        "Ambiente climatizado"
+      ],
+      startDate: "Hoje",
+      distance: "2.5 km",
+      compatibility: 92
     },
     {
       id: 2,
-      title: "Promotor Perecíveis",
-      company: "Supermercados ABC",
-      location: "São Paulo, SP",
+      title: "Reposição - SuperMax",
+      company: "SuperMax Atacados",
+      location: "Armazém",
       coordinates: [-46.6333, -23.5505] as [number, number],
       type: "Por Demanda",
-      duration: "5 dias",
-      payment: "R$ 120/dia",
-      description: "Promoção de laticínios e produtos refrigerados",
-      requirements: ["Conhecimento em produtos perecíveis", "Flexibilidade de horário"],
-      startDate: "20/01/2025",
-      distance: "1.8 km"
+      duration: "6 horas",
+      payment: "R$ 80,00",
+      paymentType: "Semanal",
+      schedule: "Amanhã, 8h-14h",
+      description: "Reposição de produtos em prateleiras e organização do estoque",
+      requirements: [
+        "Experiência com produtos de atacado",
+        "Disponibilidade manhã",
+        "Força física para carregar produtos"
+      ],
+      benefits: [
+        "Vale transporte",
+        "Vale refeição",
+        "Ambiente de trabalho agradável"
+      ],
+      startDate: "Amanhã",
+      distance: "1.8 km",
+      compatibility: 78
     }
   ];
 
@@ -61,7 +89,8 @@ const CandidateDashboard = () => {
       salary: "R$ 2.800/mês",
       description: "Vaga fixa para atendimento em múltiplas lojas da região",
       requirements: ["CNH", "Veículo próprio", "Experiência mínima 1 ano"],
-      benefits: ["Vale combustível", "Comissões", "Flexibilidade"]
+      benefits: ["Vale combustível", "Comissões", "Flexibilidade"],
+      compatibility: 85
     },
     {
       id: 4,
@@ -72,7 +101,8 @@ const CandidateDashboard = () => {
       salary: "R$ 2.200/mês + benefícios",
       description: "Promotor fixo com rota definida para grandes redes",
       requirements: ["Ensino médio completo", "Experiência em vendas", "Residir na zona sul"],
-      benefits: ["Vale transporte", "Vale refeição", "Plano de saúde", "13º salário"]
+      benefits: ["Vale transporte", "Vale refeição", "Plano de saúde", "13º salário"],
+      compatibility: 91
     },
     {
       id: 5,
@@ -83,7 +113,8 @@ const CandidateDashboard = () => {
       salary: "R$ 3.500/mês + benefícios",
       description: "Coordenação de equipe de promotores em MG",
       requirements: ["Superior completo", "Experiência em liderança", "CNH categoria B"],
-      benefits: ["Carro da empresa", "Plano de saúde", "Participação nos lucros"]
+      benefits: ["Carro da empresa", "Plano de saúde", "Participação nos lucros"],
+      compatibility: 67
     }
   ];
 
@@ -97,6 +128,12 @@ const CandidateDashboard = () => {
       case "CLT": return "bg-purple-500/30 text-purple-300 border-purple-500/50";
       default: return "bg-gray-500/30 text-gray-300 border-gray-500/50";
     }
+  };
+
+  const getCompatibilityColor = (compatibility: number) => {
+    if (compatibility >= 90) return "text-green-400";
+    if (compatibility >= 70) return "text-yellow-400";
+    return "text-red-400";
   };
 
   const handleLogout = () => {
@@ -115,12 +152,12 @@ const CandidateDashboard = () => {
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-4">
               <img 
-                src="/lovable-uploads/ead26371-00b8-4736-a344-5df3ac04a8bd.png" 
-                alt="GM Promo Logo" 
+                src="/lovable-uploads/e172e5ba-c278-4674-bb50-c1cccacbb507.png" 
+                alt="Supera Flash Logo" 
                 className="h-10 w-auto"
               />
               <div>
-                <h1 className="text-xl font-bold text-white">GM Promo</h1>
+                <h1 className="text-xl font-bold text-white">Supera Flash</h1>
                 <p className="text-sm text-white/80">Área do Candidato</p>
               </div>
             </div>
@@ -129,7 +166,7 @@ const CandidateDashboard = () => {
               <SuperaWallet>
                 <Button variant="outline" className="border-white/30 text-white bg-white/10">
                   <CreditCard className="h-4 w-4 mr-2" />
-                  Carteira
+                  Supera Bank
                 </Button>
               </SuperaWallet>
               
@@ -171,7 +208,10 @@ const CandidateDashboard = () => {
             <CardHeader>
               <div className="flex items-center justify-between">
                 <div>
-                  <CardTitle className="text-white">Filtrar Oportunidades</CardTitle>
+                  <CardTitle className="text-white">Oportunidades Próximas</CardTitle>
+                  <CardDescription className="text-white/60">
+                    Encontre trabalhos ideais para seu perfil
+                  </CardDescription>
                 </div>
                 <JobsMap jobs={freelanceJobs}>
                   <Button variant="outline" className="border-primary/50 text-primary bg-primary/10">
@@ -254,9 +294,25 @@ const CandidateDashboard = () => {
                         <Badge className={getJobTypeBadge(job.type)}>
                           {job.type}
                         </Badge>
+                        {job.urgent && (
+                          <Badge className="bg-red-500/30 text-red-300 border-red-500/50">
+                            Urgente
+                          </Badge>
+                        )}
                       </div>
                       
-                      <p className="text-white/80 mb-3">{job.company}</p>
+                      <div className="flex items-center space-x-4 mb-3">
+                        <div className="flex items-center space-x-2">
+                          <Building2 className="h-4 w-4 text-white/70" />
+                          <span className="text-white/80">{job.company}</span>
+                        </div>
+                        <div className="flex items-center space-x-2">
+                          <Star className="h-4 w-4 text-yellow-400" />
+                          <span className={`font-medium ${getCompatibilityColor(job.compatibility)}`}>
+                            {job.compatibility}% Match
+                          </span>
+                        </div>
+                      </div>
                       
                       <div className="grid grid-cols-1 md:grid-cols-4 gap-4 text-sm mb-4">
                         <div className="flex items-center space-x-2">
@@ -266,7 +322,7 @@ const CandidateDashboard = () => {
                         
                         <div className="flex items-center space-x-2">
                           <Clock className="h-4 w-4 text-white/70" />
-                          <span className="text-white">{job.duration}</span>
+                          <span className="text-white">{job.schedule}</span>
                         </div>
                         
                         <div className="flex items-center space-x-2">
@@ -276,30 +332,20 @@ const CandidateDashboard = () => {
                         
                         <div className="flex items-center space-x-2">
                           <Calendar className="h-4 w-4 text-white/70" />
-                          <span className="text-white">Início: {job.startDate}</span>
+                          <span className="text-white">{job.distance}</span>
                         </div>
                       </div>
                       
                       <p className="text-white/70 mb-3">{job.description}</p>
-                      
-                      <div className="mb-4">
-                        <p className="text-white/80 text-sm font-medium mb-2">Requisitos:</p>
-                        <ul className="list-disc list-inside text-white/60 text-sm space-y-1">
-                          {job.requirements.map((req, index) => (
-                            <li key={index}>{req}</li>
-                          ))}
-                        </ul>
-                      </div>
                     </div>
                     
                     <div className="flex flex-col space-y-2 ml-4">
-                      <Button className="bg-gradient-to-r from-primary to-secondary">
-                        <Briefcase className="h-4 w-4 mr-2" />
-                        Candidatar-se
-                      </Button>
-                      <Button variant="outline" className="border-white/30 text-white bg-white/10">
-                        Ver Detalhes
-                      </Button>
+                      <JobDetailsModal job={job}>
+                        <Button className="bg-gradient-to-r from-primary to-secondary">
+                          <Briefcase className="h-4 w-4 mr-2" />
+                          Ver Detalhes
+                        </Button>
+                      </JobDetailsModal>
                     </div>
                   </div>
                 </CardContent>
@@ -323,7 +369,18 @@ const CandidateDashboard = () => {
                         </Badge>
                       </div>
                       
-                      <p className="text-white/80 mb-3">{job.company}</p>
+                      <div className="flex items-center space-x-4 mb-3">
+                        <div className="flex items-center space-x-2">
+                          <Building2 className="h-4 w-4 text-white/70" />
+                          <span className="text-white/80">{job.company}</span>
+                        </div>
+                        <div className="flex items-center space-x-2">
+                          <Star className="h-4 w-4 text-yellow-400" />
+                          <span className={`font-medium ${getCompatibilityColor(job.compatibility)}`}>
+                            {job.compatibility}% Match
+                          </span>
+                        </div>
+                      </div>
                       
                       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm mb-4">
                         <div className="flex items-center space-x-2">
@@ -366,13 +423,12 @@ const CandidateDashboard = () => {
                     </div>
                     
                     <div className="flex flex-col space-y-2 ml-4">
-                      <Button className="bg-gradient-to-r from-primary to-secondary">
-                        <Briefcase className="h-4 w-4 mr-2" />
-                        Candidatar-se
-                      </Button>
-                      <Button variant="outline" className="border-white/30 text-white bg-white/10">
-                        Ver Detalhes
-                      </Button>
+                      <JobDetailsModal job={job}>
+                        <Button className="bg-gradient-to-r from-primary to-secondary">
+                          <Briefcase className="h-4 w-4 mr-2" />
+                          Candidatar-se
+                        </Button>
+                      </JobDetailsModal>
                     </div>
                   </div>
                 </CardContent>

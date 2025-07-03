@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useNavigate } from "react-router-dom";
-import { Bot, CheckCircle, ArrowRight, Sparkles, MapPin, Clock, Car, Briefcase, Zap, User, Phone, Mail, Calendar } from "lucide-react";
+import { Bot, CheckCircle, ArrowRight, Sparkles, MapPin, Clock, Car, Briefcase, Zap, User, Phone, Mail, Calendar, Star } from "lucide-react";
 import { UserType } from "@/App";
 
 interface OnboardingFlowProps {
@@ -30,45 +30,94 @@ const OnboardingFlow = ({ userType, setHasCompletedOnboarding }: OnboardingFlowP
     cidade: "",
     estado: "",
     experiencia: "",
-    disponibilidade: ""
+    disponibilidade: "",
+    transporte: "",
+    areaInteresse: ""
   });
 
   const freelancerQuestions = [
     {
-      question: "Olá! 👋 Eu sou a Sury, sua IA pessoal do Supera Flash! Vou te ajudar a criar um perfil incrível para trade marketing. Para começar, você já trabalhou como promotor antes?",
-      options: ["Sim, tenho experiência", "Não, seria minha primeira vez", "Já fiz trabalhos similares"],
+      question: "Olá! 👋 Eu sou a Sury, sua IA pessoal do Supera Flash! Vou te ajudar a criar um perfil incrível para trade marketing. Para começar, você já trabalhou como promotor de vendas ou trade marketing antes?",
+      options: [
+        "Sim, tenho experiência como promotor",
+        "Trabalhei em vendas, mas não como promotor",
+        "Não, seria minha primeira experiência",
+        "Já fiz trabalhos similares esporadicamente"
+      ],
       icon: Bot,
       color: "from-primary to-blue-500"
     },
     {
-      question: "Perfeito! 🎯 Em quais áreas do trade marketing você tem interesse ou experiência? (Escolha a principal)",
-      options: ["Merchandising em PDV", "Degustação e demonstração", "Reposição de produtos", "Pesquisa de mercado", "Ações promocionais"],
+      question: "Perfeito! 🎯 No trade marketing, trabalhamos com diferentes tipos de ações. Em qual área você tem mais interesse ou experiência?",
+      options: [
+        "Degustação e demonstração de produtos",
+        "Merchandising e organização de PDV",
+        "Reposição e abastecimento",
+        "Pesquisa de preços e concorrência",
+        "Ações promocionais e eventos"
+      ],
       icon: Briefcase,
       color: "from-secondary to-purple-500"
     },
     {
-      question: "Ótimo! ⏰ Qual sua disponibilidade de horários? Isso é crucial para o trade marketing:",
-      options: ["Manhã (6h às 14h)", "Tarde (14h às 22h)", "Horário comercial", "Fins de semana", "Flexível - qualquer horário"],
+      question: "Ótimo! ⏰ Vamos falar sobre disponibilidade. Qual horário você prefere trabalhar? Isso é importante para te conectar com as melhores oportunidades:",
+      options: [
+        "Manhã (6h às 14h) - Ideal para atacados",
+        "Tarde (14h às 22h) - Perfeito para varejo",
+        "Horário comercial (8h às 18h)",
+        "Fins de semana - Ações especiais",
+        "Flexível - Qualquer horário disponível"
+      ],
       icon: Clock,
       color: "from-green-500 to-emerald-500"
     },
     {
-      question: "🚗 Para trabalhar com trade marketing, preciso saber sobre transporte. Como você se locomove?",
-      options: ["Tenho carro próprio", "Tenho moto", "Uso transporte público", "Prefiro trabalhar próximo de casa", "Tenho CNH mas não tenho veículo"],
+      question: "🚗 Transporte é fundamental no trade marketing. Como você se locomove para trabalhar?",
+      options: [
+        "Tenho carro próprio - Posso atender várias lojas",
+        "Tenho moto - Ótimo para agilidade",
+        "Uso transporte público - Prefiro locais acessíveis",
+        "Prefiro trabalhar próximo de casa",
+        "Não tenho veículo, mas tenho CNH"
+      ],
       icon: Car,
       color: "from-orange-500 to-yellow-500"
     },
     {
-      question: "📚 Que tipo de produtos você se sente mais confortável para promover?",
-      options: ["Alimentos e bebidas", "Produtos de limpeza", "Cosméticos e higiene", "Eletrônicos", "Qualquer categoria"],
-      icon: Briefcase,
+      question: "🏪 Que tipos de estabelecimentos você se sente mais confortável para trabalhar?",
+      options: [
+        "Supermercados e hipermercados",
+        "Atacados e cash & carry",
+        "Farmácias e drogarias",
+        "Lojas de departamento",
+        "Qualquer tipo de estabelecimento"
+      ],
+      icon: MapPin,
       color: "from-pink-500 to-rose-500"
     },
     {
-      question: "🏪 Em que tipo de estabelecimento você prefere trabalhar?",
-      options: ["Supermercados", "Atacados", "Farmácias", "Lojas de departamento", "Qualquer tipo"],
-      icon: MapPin,
+      question: "📦 Qual categoria de produtos você tem mais afinidade ou experiência?",
+      options: [
+        "Alimentos e bebidas",
+        "Produtos de limpeza e higiene",
+        "Cosméticos e perfumaria",
+        "Eletrônicos e eletrodomésticos",
+        "Tenho facilidade com qualquer categoria"
+      ],
+      icon: Briefcase,
       color: "from-indigo-500 to-blue-500"
+    },
+    {
+      question: "💪 Para finalizar, como você se descreveria em relação ao trabalho físico?",
+      options: [
+        "Tenho resistência para ficar em pé o dia todo",
+        "Não tenho problema em carregar peso moderado",
+        "Prefiro atividades que não exijam muito esforço físico",
+        "Gosto de trabalhos que envolvem movimento",
+        "Me adapto a qualquer tipo de atividade"
+      ],
+      icon: Zap,
+      color: "from-teal-500 to-cyan-500"
     }
   ];
 
@@ -125,8 +174,7 @@ const OnboardingFlow = ({ userType, setHasCompletedOnboarding }: OnboardingFlowP
 
   const handleCadastroSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Aqui você salvaria os dados do cadastro
-    console.log("Dados do cadastro:", cadastroData);
+    console.log("Dados do cadastro:", { cadastroData, answers });
     setHasCompletedOnboarding(true);
     navigate('/dashboard');
   };
@@ -137,6 +185,17 @@ const OnboardingFlow = ({ userType, setHasCompletedOnboarding }: OnboardingFlowP
 
   const progress = showCadastro ? 100 : ((currentStep + 1) / questions.length) * 100;
   const currentQuestion = questions[currentStep];
+
+  // Calcular compatibilidade baseada nas respostas
+  const calculateCompatibility = () => {
+    let compatibility = 85; // Base
+    
+    if (answers.includes("Sim, tenho experiência como promotor")) compatibility += 10;
+    if (answers.includes("Tenho carro próprio - Posso atender várias lojas")) compatibility += 5;
+    if (answers.includes("Tenho resistência para ficar em pé o dia todo")) compatibility += 5;
+    
+    return Math.min(compatibility, 98);
+  };
 
   // Se mostrar cadastro, renderizar formulário
   if (showCadastro) {
@@ -149,7 +208,7 @@ const OnboardingFlow = ({ userType, setHasCompletedOnboarding }: OnboardingFlowP
         </div>
 
         <div className="relative z-10 flex items-center justify-center min-h-screen p-4">
-          <div className="w-full max-w-4xl">
+          <div className="w-full max-w-5xl">
             {/* Header */}
             <div className="text-center mb-8">
               <img 
@@ -179,7 +238,7 @@ const OnboardingFlow = ({ userType, setHasCompletedOnboarding }: OnboardingFlowP
                       />
                     </div>
                     <div className="absolute -bottom-2 -right-2 w-8 h-8 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full flex items-center justify-center">
-                      <User className="h-4 w-4 text-white" />
+                      <CheckCircle className="h-4 w-4 text-white" />
                     </div>
                   </div>
                 </div>
@@ -187,7 +246,7 @@ const OnboardingFlow = ({ userType, setHasCompletedOnboarding }: OnboardingFlowP
                 <div>
                   <CardTitle className="text-2xl text-white mb-2">Finalize seu Cadastro</CardTitle>
                   <CardDescription className="text-white/70 text-lg">
-                    Agora preciso de alguns dados para criar seu perfil completo
+                    Agora preciso de alguns dados para criar seu perfil completo no Supera Flash
                   </CardDescription>
                 </div>
               </CardHeader>
@@ -197,41 +256,41 @@ const OnboardingFlow = ({ userType, setHasCompletedOnboarding }: OnboardingFlowP
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="space-y-4">
                       <div>
-                        <Label className="text-white">Nome Completo</Label>
+                        <Label className="text-white">Nome Completo *</Label>
                         <Input
                           value={cadastroData.nomeCompleto}
                           onChange={(e) => handleCadastroChange('nomeCompleto', e.target.value)}
                           placeholder="Seu nome completo"
-                          className="bg-white/10 border-white/20 text-white"
+                          className="bg-white/10 border-white/20 text-white placeholder:text-white/50"
                           required
                         />
                       </div>
                       
                       <div>
-                        <Label className="text-white">E-mail</Label>
+                        <Label className="text-white">E-mail *</Label>
                         <Input
                           type="email"
                           value={cadastroData.email}
                           onChange={(e) => handleCadastroChange('email', e.target.value)}
                           placeholder="seu@email.com"
-                          className="bg-white/10 border-white/20 text-white"
+                          className="bg-white/10 border-white/20 text-white placeholder:text-white/50"
                           required
                         />
                       </div>
                       
                       <div>
-                        <Label className="text-white">Telefone</Label>
+                        <Label className="text-white">Telefone *</Label>
                         <Input
                           value={cadastroData.telefone}
                           onChange={(e) => handleCadastroChange('telefone', e.target.value)}
                           placeholder="(11) 99999-9999"
-                          className="bg-white/10 border-white/20 text-white"
+                          className="bg-white/10 border-white/20 text-white placeholder:text-white/50"
                           required
                         />
                       </div>
                       
                       <div>
-                        <Label className="text-white">Data de Nascimento</Label>
+                        <Label className="text-white">Data de Nascimento *</Label>
                         <Input
                           type="date"
                           value={cadastroData.dataNascimento}
@@ -240,45 +299,45 @@ const OnboardingFlow = ({ userType, setHasCompletedOnboarding }: OnboardingFlowP
                           required
                         />
                       </div>
-                    </div>
-                    
-                    <div className="space-y-4">
+                      
                       <div>
-                        <Label className="text-white">CPF</Label>
+                        <Label className="text-white">CPF *</Label>
                         <Input
                           value={cadastroData.cpf}
                           onChange={(e) => handleCadastroChange('cpf', e.target.value)}
                           placeholder="000.000.000-00"
-                          className="bg-white/10 border-white/20 text-white"
+                          className="bg-white/10 border-white/20 text-white placeholder:text-white/50"
                           required
                         />
                       </div>
-                      
+                    </div>
+                    
+                    <div className="space-y-4">
                       <div>
-                        <Label className="text-white">Endereço</Label>
+                        <Label className="text-white">Endereço *</Label>
                         <Input
                           value={cadastroData.endereco}
                           onChange={(e) => handleCadastroChange('endereco', e.target.value)}
                           placeholder="Rua, número, bairro"
-                          className="bg-white/10 border-white/20 text-white"
+                          className="bg-white/10 border-white/20 text-white placeholder:text-white/50"
                           required
                         />
                       </div>
                       
                       <div className="grid grid-cols-2 gap-4">
                         <div>
-                          <Label className="text-white">Cidade</Label>
+                          <Label className="text-white">Cidade *</Label>
                           <Input
                             value={cadastroData.cidade}
                             onChange={(e) => handleCadastroChange('cidade', e.target.value)}
                             placeholder="Sua cidade"
-                            className="bg-white/10 border-white/20 text-white"
+                            className="bg-white/10 border-white/20 text-white placeholder:text-white/50"
                             required
                           />
                         </div>
                         
                         <div>
-                          <Label className="text-white">Estado</Label>
+                          <Label className="text-white">Estado *</Label>
                           <Select value={cadastroData.estado} onValueChange={(value) => handleCadastroChange('estado', value)}>
                             <SelectTrigger className="bg-white/10 border-white/20 text-white">
                               <SelectValue placeholder="UF" />
@@ -287,40 +346,84 @@ const OnboardingFlow = ({ userType, setHasCompletedOnboarding }: OnboardingFlowP
                               <SelectItem value="SP" className="text-white">SP</SelectItem>
                               <SelectItem value="RJ" className="text-white">RJ</SelectItem>
                               <SelectItem value="MG" className="text-white">MG</SelectItem>
+                              <SelectItem value="RS" className="text-white">RS</SelectItem>
+                              <SelectItem value="PR" className="text-white">PR</SelectItem>
+                              <SelectItem value="SC" className="text-white">SC</SelectItem>
                             </SelectContent>
                           </Select>
                         </div>
                       </div>
                       
                       <div>
-                        <Label className="text-white">Experiência Profissional</Label>
+                        <Label className="text-white">Experiência Profissional *</Label>
                         <Select value={cadastroData.experiencia} onValueChange={(value) => handleCadastroChange('experiencia', value)}>
                           <SelectTrigger className="bg-white/10 border-white/20 text-white">
                             <SelectValue placeholder="Nível de experiência" />
                           </SelectTrigger>
                           <SelectContent className="bg-slate-800 border-white/20">
-                            <SelectItem value="iniciante" className="text-white">Iniciante</SelectItem>
-                            <SelectItem value="intermediario" className="text-white">Intermediário</SelectItem>
-                            <SelectItem value="experiente" className="text-white">Experiente</SelectItem>
+                            <SelectItem value="iniciante" className="text-white">Iniciante - Primeira experiência</SelectItem>
+                            <SelectItem value="intermediario" className="text-white">Intermediário - 1 a 3 anos</SelectItem>
+                            <SelectItem value="experiente" className="text-white">Experiente - Mais de 3 anos</SelectItem>
+                          </SelectContent>
+                        </Select>
+                      </div>
+                      
+                      <div>
+                        <Label className="text-white">Disponibilidade Preferencial</Label>
+                        <Select value={cadastroData.disponibilidade} onValueChange={(value) => handleCadastroChange('disponibilidade', value)}>
+                          <SelectTrigger className="bg-white/10 border-white/20 text-white">
+                            <SelectValue placeholder="Selecione" />
+                          </SelectTrigger>
+                          <SelectContent className="bg-slate-800 border-white/20">
+                            <SelectItem value="manha" className="text-white">Manhã (6h às 14h)</SelectItem>
+                            <SelectItem value="tarde" className="text-white">Tarde (14h às 22h)</SelectItem>
+                            <SelectItem value="comercial" className="text-white">Horário comercial</SelectItem>
+                            <SelectItem value="flexivel" className="text-white">Flexível</SelectItem>
                           </SelectContent>
                         </Select>
                       </div>
                     </div>
                   </div>
 
-                  {/* Resumo das Respostas */}
+                  {/* Resumo da Entrevista */}
                   <div className="border-t border-white/20 pt-6">
-                    <div className="flex items-center space-x-2 mb-4">
-                      <Sparkles className="h-5 w-5 text-secondary" />
-                      <h4 className="font-semibold text-white">Suas respostas da entrevista:</h4>
-                    </div>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                      {answers.map((answer, index) => (
-                        <div key={index} className="flex items-center space-x-3 text-sm bg-success/20 rounded-xl p-3 border border-success/30 backdrop-blur-sm">
-                          <CheckCircle className="h-5 w-5 text-success flex-shrink-0" />
-                          <span className="text-white font-medium">{answer}</span>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div>
+                        <div className="flex items-center space-x-2 mb-4">
+                          <Sparkles className="h-5 w-5 text-secondary" />
+                          <h4 className="font-semibold text-white">Suas respostas da entrevista:</h4>
                         </div>
-                      ))}
+                        <div className="space-y-2">
+                          {answers.slice(0, Math.ceil(answers.length / 2)).map((answer, index) => (
+                            <div key={index} className="flex items-center space-x-3 text-sm bg-success/20 rounded-xl p-3 border border-success/30 backdrop-blur-sm">
+                              <CheckCircle className="h-4 w-4 text-success flex-shrink-0" />
+                              <span className="text-white font-medium">{answer}</span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                      
+                      <div>
+                        <div className="flex items-center space-x-2 mb-4">
+                          <Star className="h-5 w-5 text-yellow-400" />
+                          <h4 className="font-semibold text-white">Compatibilidade:</h4>
+                        </div>
+                        <div className="bg-primary/10 rounded-xl p-4 border border-primary/30 text-center mb-4">
+                          <div className="text-3xl font-bold text-primary mb-2">
+                            {calculateCompatibility()}%
+                          </div>
+                          <p className="text-white/70">Perfil muito promissor para trade marketing!</p>
+                        </div>
+                        
+                        <div className="space-y-2">
+                          {answers.slice(Math.ceil(answers.length / 2)).map((answer, index) => (
+                            <div key={index} className="flex items-center space-x-3 text-sm bg-success/20 rounded-xl p-3 border border-success/30 backdrop-blur-sm">
+                              <CheckCircle className="h-4 w-4 text-success flex-shrink-0" />
+                              <span className="text-white font-medium">{answer}</span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
                     </div>
                   </div>
 
@@ -393,7 +496,7 @@ const OnboardingFlow = ({ userType, setHasCompletedOnboarding }: OnboardingFlowP
               <div>
                 <CardTitle className="text-2xl text-white mb-2">Sury IA</CardTitle>
                 <CardDescription className="text-white/70 text-lg">
-                  Sua assistente para entrevista de trade marketing
+                  Sua assistente especializada em trade marketing
                 </CardDescription>
               </div>
             </CardHeader>
