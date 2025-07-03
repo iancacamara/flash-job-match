@@ -8,7 +8,9 @@ import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useNavigate } from "react-router-dom";
-import { MapPin, Clock, DollarSign, Building2, Calendar, Search, Filter, User, Briefcase } from "lucide-react";
+import { MapPin, Clock, DollarSign, Building2, Calendar, Search, Filter, User, Briefcase, CreditCard, Map, LogOut } from "lucide-react";
+import JobsMap from "@/components/map/JobsMap";
+import SuperaWallet from "@/components/wallet/SuperaWallet";
 
 const CandidateDashboard = () => {
   const navigate = useNavigate();
@@ -23,24 +25,28 @@ const CandidateDashboard = () => {
       title: "Promotor Mercearia Seca",
       company: "Fort Atacadista",
       location: "Jundiaí, SP",
+      coordinates: [-46.8838, -23.1858] as [number, number],
       type: "Por Demanda",
       duration: "3 dias",
       payment: "R$ 150/dia",
       description: "Promoção de produtos de mercearia seca durante final de semana",
       requirements: ["Experiência com vendas", "Disponibilidade fim de semana"],
-      startDate: "15/01/2025"
+      startDate: "15/01/2025",
+      distance: "2.5 km"
     },
     {
       id: 2,
       title: "Promotor Perecíveis",
       company: "Supermercados ABC",
       location: "São Paulo, SP",
+      coordinates: [-46.6333, -23.5505] as [number, number],
       type: "Por Demanda",
       duration: "5 dias",
       payment: "R$ 120/dia",
       description: "Promoção de laticínios e produtos refrigerados",
       requirements: ["Conhecimento em produtos perecíveis", "Flexibilidade de horário"],
-      startDate: "20/01/2025"
+      startDate: "20/01/2025",
+      distance: "1.8 km"
     }
   ];
 
@@ -93,6 +99,14 @@ const CandidateDashboard = () => {
     }
   };
 
+  const handleLogout = () => {
+    navigate('/auth');
+  };
+
+  const handleProfile = () => {
+    navigate('/profile');
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
       {/* Header */}
@@ -112,11 +126,28 @@ const CandidateDashboard = () => {
             </div>
             
             <div className="flex items-center space-x-4">
-              <Button variant="outline" className="border-white/30 text-white bg-white/10">
+              <SuperaWallet>
+                <Button variant="outline" className="border-white/30 text-white bg-white/10">
+                  <CreditCard className="h-4 w-4 mr-2" />
+                  Carteira
+                </Button>
+              </SuperaWallet>
+              
+              <Button 
+                variant="outline" 
+                className="border-white/30 text-white bg-white/10"
+                onClick={handleProfile}
+              >
                 <User className="h-4 w-4 mr-2" />
                 Meu Perfil
               </Button>
-              <Button variant="outline" className="border-white/30 text-white bg-white/10">
+              
+              <Button 
+                variant="outline" 
+                className="border-white/30 text-white bg-white/10"
+                onClick={handleLogout}
+              >
+                <LogOut className="h-4 w-4 mr-2" />
                 Sair
               </Button>
             </div>
@@ -138,7 +169,17 @@ const CandidateDashboard = () => {
           {/* Filtros */}
           <Card className="bg-black/30 backdrop-blur-sm border-white/30 mt-6">
             <CardHeader>
-              <CardTitle className="text-white">Filtrar Oportunidades</CardTitle>
+              <div className="flex items-center justify-between">
+                <div>
+                  <CardTitle className="text-white">Filtrar Oportunidades</CardTitle>
+                </div>
+                <JobsMap jobs={freelanceJobs}>
+                  <Button variant="outline" className="border-primary/50 text-primary bg-primary/10">
+                    <Map className="h-4 w-4 mr-2" />
+                    Ver no Mapa
+                  </Button>
+                </JobsMap>
+              </div>
             </CardHeader>
             <CardContent>
               <div className="grid grid-cols-1 md:grid-cols-4 gap-4">

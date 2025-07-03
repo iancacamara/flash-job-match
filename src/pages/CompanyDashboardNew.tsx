@@ -8,9 +8,13 @@ import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Users, MapPin, Phone, Mail, Search, Filter, Plus, Calendar, Clock, Star } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import { Users, MapPin, Phone, Mail, Search, Filter, Plus, Calendar, Clock, Star, LogOut, User } from "lucide-react";
+import NewRequestForm from "@/components/forms/NewRequestForm";
+import PromoterProfile from "@/components/profile/PromoterProfile";
 
 const CompanyDashboardNew = () => {
+  const navigate = useNavigate();
   const [selectedState, setSelectedState] = useState("all");
   const [selectedCity, setSelectedCity] = useState("all");
   const [selectedProfile, setSelectedProfile] = useState("all");
@@ -53,7 +57,7 @@ const CompanyDashboardNew = () => {
       name: "Carlos Oliveira",
       email: "carlos@email.com",
       phone: "(21) 99999-0003",
-      state: "RJ",
+      state: "RJ",  
       city: "Rio de Janeiro",
       profile: "Açougue",
       rating: 4.7,
@@ -65,7 +69,6 @@ const CompanyDashboardNew = () => {
     }
   ];
 
-  // Mock data para solicitações ativas
   const activeRequests = [
     {
       id: 1,
@@ -123,6 +126,24 @@ const CompanyDashboardNew = () => {
     return matchesState && matchesCity && matchesProfile && matchesSearch;
   });
 
+  const handleNewRequest = (data: any) => {
+    console.log("Nova solicitação:", data);
+    // Aqui você implementaria a lógica para criar uma nova solicitação
+  };
+
+  const handleContractPromoter = (promoterId: number) => {
+    console.log("Contratar promotor:", promoterId);
+    // Aqui você implementaria a lógica para contratar um promotor
+  };
+
+  const handleLogout = () => {
+    navigate('/auth');
+  };
+
+  const handleProfile = () => {
+    navigate('/profile');
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
       {/* Header */}
@@ -142,11 +163,21 @@ const CompanyDashboardNew = () => {
             </div>
             
             <div className="flex items-center space-x-2">
-              <Button className="bg-gradient-to-r from-primary to-secondary">
-                <Plus className="h-4 w-4 mr-2" />
-                Nova Solicitação
+              <NewRequestForm onSubmit={handleNewRequest} />
+              <Button 
+                variant="outline" 
+                className="border-white/30 text-white bg-white/10"
+                onClick={handleProfile}
+              >
+                <User className="h-4 w-4 mr-2" />
+                Perfil
               </Button>
-              <Button variant="outline" className="border-white/30 text-white bg-white/10">
+              <Button 
+                variant="outline" 
+                className="border-white/30 text-white bg-white/10"
+                onClick={handleLogout}
+              >
+                <LogOut className="h-4 w-4 mr-2" />
                 Sair
               </Button>
             </div>
@@ -315,12 +346,18 @@ const CompanyDashboardNew = () => {
                         </TableCell>
                         <TableCell>
                           <div className="flex items-center space-x-2">
-                            <Button size="sm" className="bg-gradient-to-r from-primary to-secondary">
+                            <Button 
+                              size="sm" 
+                              className="bg-gradient-to-r from-primary to-secondary"
+                              onClick={() => handleContractPromoter(promoter.id)}
+                            >
                               Contratar
                             </Button>
-                            <Button size="sm" variant="outline" className="border-white/30 text-white bg-white/10">
-                              Ver Perfil
-                            </Button>
+                            <PromoterProfile promoter={promoter}>
+                              <Button size="sm" variant="outline" className="border-white/30 text-white bg-white/10">
+                                Ver Perfil
+                              </Button>
+                            </PromoterProfile>
                           </div>
                         </TableCell>
                       </TableRow>
@@ -335,10 +372,7 @@ const CompanyDashboardNew = () => {
           <TabsContent value="requests" className="space-y-6 mt-6">
             <div className="flex items-center justify-between">
               <h2 className="text-2xl font-bold text-white">Solicitações Ativas</h2>
-              <Button className="bg-gradient-to-r from-primary to-secondary">
-                <Plus className="h-4 w-4 mr-2" />
-                Nova Solicitação
-              </Button>
+              <NewRequestForm onSubmit={handleNewRequest} />
             </div>
 
             {activeRequests.map((request) => (

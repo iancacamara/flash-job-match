@@ -9,7 +9,9 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useNavigate } from "react-router-dom";
-import { Users, MapPin, Clock, Phone, Mail, Filter, Search, Calendar, Building2, Stethoscope, Plus, Eye, CheckCircle, XCircle, AlertCircle, Star } from "lucide-react";
+import { Users, MapPin, Clock, Phone, Mail, Filter, Search, Calendar, Building2, Stethoscope, Plus, Eye, CheckCircle, XCircle, AlertCircle, Star, LogOut } from "lucide-react";
+import PromoterProfile from "@/components/profile/PromoterProfile";
+import NewRequestForm from "@/components/forms/NewRequestForm";
 
 const RecruiterDashboard = () => {
   const navigate = useNavigate();
@@ -29,8 +31,10 @@ const RecruiterDashboard = () => {
       availability: "Manhã/Tarde",
       status: "Aprovado",
       rating: 4.8,
+      experience: "3 anos",
       experienceYears: 3,
       lastInterview: "15/05/2024",
+      totalJobs: 45,
       nearbyClinic: {
         name: "Clínica São Paulo",
         distance: "800m",
@@ -49,8 +53,10 @@ const RecruiterDashboard = () => {
       availability: "Integral",
       status: "Pendente",
       rating: 4.5,
+      experience: "2 anos",
       experienceYears: 2,
       lastInterview: "10/05/2024",
+      totalJobs: 23,
       nearbyClinic: {
         name: "Clínica Saúde Total",
         distance: "1.2km",
@@ -62,15 +68,17 @@ const RecruiterDashboard = () => {
     {
       id: 3,
       name: "Ana Costa",
-      email: "ana@email.com",
+      email: "ana@email.com", 
       phone: "(11) 99999-0003",
       city: "Rio de Janeiro",
       profile: "Açougue",
       availability: "Tarde/Noite",
       status: "Aprovado",
       rating: 4.9,
+      experience: "5 anos",
       experienceYears: 5,
       lastInterview: "12/05/2024",
+      totalJobs: 67,
       nearbyClinic: {
         name: "Clínica Rio Saúde",
         distance: "600m",
@@ -137,6 +145,32 @@ const RecruiterDashboard = () => {
     return matchesCity && matchesProfile && matchesSearch;
   });
 
+  const handleNewJob = (data: any) => {
+    console.log("Nova vaga:", data);
+    // Aqui você implementaria a lógica para criar uma nova vaga
+  };
+
+  const handleApproveCandidate = (candidateId: number) => {
+    console.log("Aprovar candidato:", candidateId);
+    // Aqui você implementaria a lógica para aprovar um candidato
+  };
+
+  const handleRejectCandidate = (candidateId: number) => {
+    console.log("Rejeitar candidato:", candidateId);
+    // Aqui você implementaria a lógica para rejeitar um candidato
+  };
+
+  const handleLogout = () => {
+    navigate('/auth');
+  };
+
+  // Transformar candidates em formato de promoter para o componente PromoterProfile
+  const convertCandidateToPromoter = (candidate: any) => ({
+    ...candidate,
+    state: candidate.city === "São Paulo" ? "SP" : candidate.city === "Rio de Janeiro" ? "RJ" : "MG",
+    lastWork: candidate.lastInterview
+  });
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
       {/* Header */}
@@ -160,12 +194,19 @@ const RecruiterDashboard = () => {
             </div>
             
             <div className="flex items-center space-x-2">
+              <NewRequestForm onSubmit={handleNewJob}>
+                <Button className="bg-gradient-to-r from-primary to-secondary">
+                  <Plus className="h-4 w-4 mr-2" />
+                  Nova Vaga
+                </Button>
+              </NewRequestForm>
               <Button 
-                className="bg-gradient-to-r from-primary to-secondary"
-                onClick={() => navigate('/create-job')}
+                variant="outline" 
+                className="border-white/30 text-white bg-white/10"
+                onClick={handleLogout}
               >
-                <Plus className="h-4 w-4 mr-2" />
-                Nova Vaga
+                <LogOut className="h-4 w-4 mr-2" />
+                Sair
               </Button>
             </div>
           </div>
@@ -339,17 +380,28 @@ const RecruiterDashboard = () => {
                         </TableCell>
                         <TableCell>
                           <div className="flex items-center space-x-2">
-                            <Button size="sm" variant="outline" className="border-white/30 text-white bg-white/10">
-                              <Eye className="h-3 w-3 mr-1" />
-                              Ver
-                            </Button>
+                            <PromoterProfile promoter={convertCandidateToPromoter(candidate)}>
+                              <Button size="sm" variant="outline" className="border-white/30 text-white bg-white/10">
+                                <Eye className="h-3 w-3 mr-1" />
+                                Ver
+                              </Button>
+                            </PromoterProfile>
                             {candidate.status === "Pendente" && (
                               <>
-                                <Button size="sm" className="bg-green-600">
+                                <Button 
+                                  size="sm" 
+                                  className="bg-green-600"
+                                  onClick={() => handleApproveCandidate(candidate.id)}
+                                >
                                   <CheckCircle className="h-3 w-3 mr-1" />
                                   Aprovar
                                 </Button>
-                                <Button size="sm" variant="outline" className="border-red-500 text-red-400">
+                                <Button 
+                                  size="sm" 
+                                  variant="outline" 
+                                  className="border-red-500 text-red-400"
+                                  onClick={() => handleRejectCandidate(candidate.id)}
+                                >
                                   <XCircle className="h-3 w-3 mr-1" />
                                   Rejeitar
                                 </Button>
@@ -369,10 +421,12 @@ const RecruiterDashboard = () => {
           <TabsContent value="jobs" className="space-y-6 mt-6">
             <div className="flex items-center justify-between">
               <h2 className="text-2xl font-bold text-white">Vagas Abertas</h2>
-              <Button className="bg-gradient-to-r from-primary to-secondary">
-                <Plus className="h-4 w-4 mr-2" />
-                Abrir Nova Vaga
-              </Button>
+              <NewRequestForm onSubmit={handleNewJob}>
+                <Button className="bg-gradient-to-r from-primary to-secondary">
+                  <Plus className="h-4 w-4 mr-2" />
+                  Abrir Nova Vaga
+                </Button>
+              </NewRequestForm>
             </div>
 
             <div className="grid gap-4">
