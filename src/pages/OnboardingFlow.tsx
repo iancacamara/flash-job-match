@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useNavigate } from "react-router-dom";
-import { Bot, CheckCircle, ArrowRight, Sparkles, MapPin, Clock, Car, Briefcase, Zap, User, Phone, Mail, Calendar, Star } from "lucide-react";
+import { Bot, CheckCircle, ArrowRight, Sparkles, MapPin, Clock, Car, Briefcase, Zap, User, Phone, Mail, Calendar, Star, Users } from "lucide-react";
 import { UserType } from "@/App";
 
 interface OnboardingFlowProps {
@@ -123,22 +123,34 @@ const OnboardingFlow = ({ userType, setHasCompletedOnboarding }: OnboardingFlowP
 
   const companyQuestions = [
     {
-      question: "Bem-vindo ao Supera Flash! 🚀 Sou a Sury e vou te ajudar a configurar sua empresa. Que tipo de serviços vocês mais contratam?",
-      options: ["Promotores para eventos", "Reposição em PDV", "Pesquisa de mercado", "Ações promocionais", "Demonstração de produtos"],
+      question: "Bem-vindo ao GM Promo! 🚀 Sou a Sury e vou te ajudar a configurar sua empresa. Qual o porte da sua empresa?",
+      options: ["Pequena empresa (até 50 funcionários)", "Média empresa (51-200 funcionários)", "Grande empresa (201-1000 funcionários)", "Corporação (mais de 1000 funcionários)", "Startup/Agência"],
       icon: Briefcase,
       color: "from-primary to-blue-500"
     },
     {
-      question: "Perfeito! 👥 Quantos profissionais vocês costumam contratar por ação?",
-      options: ["1-5 pessoas", "6-15 pessoas", "16-30 pessoas", "Mais de 30 pessoas"],
+      question: "Perfeito! 🎯 Que tipo de campanhas de trade marketing vocês mais executam?",
+      options: ["Ações promocionais em PDV", "Degustação e demonstração", "Pesquisa de mercado e auditoria", "Merchandising e reposição", "Eventos e ativações"],
       icon: Bot,
       color: "from-secondary to-purple-500"
     },
     {
-      question: "📍 Em quais regiões vocês mais atuam? Isso me ajuda a conectar com os melhores profissionais:",
-      options: ["São Paulo - Capital", "Grande São Paulo", "Interior de SP", "Rio de Janeiro", "Outras capitais"],
+      question: "📍 Em quais regiões vocês mais atuam? Isso me ajuda a dimensionar nossa base de promotores:",
+      options: ["São Paulo - Capital e região", "Interior de São Paulo", "Rio de Janeiro", "Sul do Brasil", "Nacional - Todo o país"],
       icon: MapPin,
       color: "from-green-500 to-emerald-500"
+    },
+    {
+      question: "👥 Quantos promotores vocês costumam contratar por campanha?",
+      options: ["1-10 promotores", "11-30 promotores", "31-100 promotores", "Mais de 100 promotores", "Varia muito conforme a campanha"],
+      icon: Users,
+      color: "from-orange-500 to-yellow-500"
+    },
+    {
+      question: "⏰ Qual a frequência das suas campanhas de trade marketing?",
+      options: ["Campanhas pontuais (esporádicas)", "Mensais", "Semanais", "Operações contínuas", "Sazonais (datas específicas)"],
+      icon: Clock,
+      color: "from-pink-500 to-rose-500"
     }
   ];
 
@@ -428,10 +440,10 @@ const OnboardingFlow = ({ userType, setHasCompletedOnboarding }: OnboardingFlowP
                   </div>
 
                   <div className="flex justify-end space-x-4 pt-6">
-                    <Button type="button" variant="outline" className="border-white/30 text-white bg-white/10 hover:bg-white/20">
+                    <Button type="button" variant="outline" className="border-white/30 text-white bg-white/10">
                       Voltar
                     </Button>
-                    <Button type="submit" className="bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90">
+                    <Button type="submit" className="bg-gradient-to-r from-primary to-secondary">
                       <CheckCircle className="h-4 w-4 mr-2" />
                       Finalizar Cadastro
                     </Button>
@@ -531,15 +543,15 @@ const OnboardingFlow = ({ userType, setHasCompletedOnboarding }: OnboardingFlowP
                     <Button
                       key={index}
                       variant="outline"
-                      className="w-full justify-start text-left h-auto p-6 border-2 border-white/20 hover:border-primary hover:bg-primary/10 transition-all duration-300 hover:shadow-lg group bg-white/5 backdrop-blur-sm text-white hover:text-white"
+                      className="w-full justify-start text-left h-auto p-6 border-2 border-white/20 bg-white/5 backdrop-blur-sm text-white"
                       onClick={() => handleAnswer(option)}
                     >
                       <div className="flex items-center space-x-4 w-full">
-                        <div className="w-10 h-10 rounded-full border-2 border-primary/30 flex items-center justify-center group-hover:border-primary group-hover:bg-primary/20 transition-all">
-                          <div className="w-4 h-4 rounded-full bg-primary/30 group-hover:bg-primary/70 transition-all"></div>
+                        <div className="w-10 h-10 rounded-full border-2 border-primary/30 flex items-center justify-center">
+                          <div className="w-4 h-4 rounded-full bg-primary/30"></div>
                         </div>
                         <span className="flex-1 text-base font-medium">{option}</span>
-                        <ArrowRight className="h-5 w-5 text-white/60 group-hover:text-primary transition-all group-hover:translate-x-1" />
+                        <ArrowRight className="h-5 w-5 text-white/60" />
                       </div>
                     </Button>
                   ))}
@@ -574,7 +586,7 @@ const OnboardingFlow = ({ userType, setHasCompletedOnboarding }: OnboardingFlowP
                 setHasCompletedOnboarding(true);
                 navigate('/dashboard');
               }}
-              className="text-white/60 hover:text-white hover:bg-white/10"
+              className="text-white/60"
             >
               Pular entrevista →
             </Button>

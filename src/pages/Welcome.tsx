@@ -74,14 +74,15 @@ const Welcome = () => {
 
             <div className="flex space-x-4 mb-12 animate-fade-in" style={{animationDelay: '0.6s'}}>
               <Button 
-                className="bg-cyan-500 text-white px-8 py-3 rounded-lg text-lg font-medium transform transition-all duration-200"
-                onClick={() => navigate('/auth')}
+                className="bg-cyan-500 text-white px-8 py-3 rounded-lg text-lg font-medium"
+                onClick={() => navigate('/onboarding')}
               >
                 Começar com Sury →
               </Button>
               <Button 
                 variant="outline" 
-                className="border-white/30 text-white bg-white/10 px-8 py-3 rounded-lg text-lg transform transition-all duration-200"
+                className="border-white/30 text-white bg-white/10 px-8 py-3 rounded-lg text-lg"
+                onClick={() => navigate('/saiba-mais')}
               >
                 Saiba mais
               </Button>
@@ -147,7 +148,7 @@ const Welcome = () => {
               <div className="absolute -top-4 -right-4 bg-cyan-500 text-white px-3 py-1 rounded-full text-sm font-medium animate-bounce">
                 IA Inteligente
               </div>
-              <Card className="bg-gradient-to-br from-purple-500/30 to-purple-600/40 border border-purple-400/40 backdrop-blur-sm transform transition-all duration-300">
+              <Card className="bg-gradient-to-br from-purple-500/30 to-purple-600/40 border border-purple-400/40 backdrop-blur-sm">
                 <CardContent className="p-8 text-center relative">
                   <div className="mb-4">
                     <img 
@@ -183,7 +184,7 @@ const Welcome = () => {
           {/* Step 1 - Cadastro com Sury */}
           <div className="text-center animate-fade-in" style={{animationDelay: '0.2s'}}>
             <div className="mb-6">
-              <div className="w-16 h-16 bg-gradient-to-r from-cyan-500 to-cyan-600 rounded-full mx-auto flex items-center justify-center mb-4 transform transition-all duration-300">
+              <div className="w-16 h-16 bg-gradient-to-r from-cyan-500 to-cyan-600 rounded-full mx-auto flex items-center justify-center mb-4">
                 <span className="text-white text-2xl font-bold">1</span>
               </div>
             </div>
@@ -196,7 +197,7 @@ const Welcome = () => {
           {/* Step 2 - Matches Inteligentes */}
           <div className="text-center animate-fade-in" style={{animationDelay: '0.4s'}}>
             <div className="mb-6">
-              <div className="w-16 h-16 bg-gradient-to-r from-purple-500 to-purple-600 rounded-full mx-auto flex items-center justify-center mb-4 transform transition-all duration-300">
+              <div className="w-16 h-16 bg-gradient-to-r from-purple-500 to-purple-600 rounded-full mx-auto flex items-center justify-center mb-4">
                 <span className="text-white text-2xl font-bold">2</span>
               </div>
             </div>
@@ -209,7 +210,7 @@ const Welcome = () => {
           {/* Step 3 - Trabalhe & Receba */}
           <div className="text-center animate-fade-in" style={{animationDelay: '0.6s'}}>
             <div className="mb-6">
-              <div className="w-16 h-16 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-full mx-auto flex items-center justify-center mb-4 transform transition-all duration-300">
+              <div className="w-16 h-16 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-full mx-auto flex items-center justify-center mb-4">
                 <span className="text-white text-2xl font-bold">3</span>
               </div>
             </div>

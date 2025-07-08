@@ -16,6 +16,7 @@ import RecruiterDashboard from "./pages/RecruiterDashboard";
 import JobDetails from "./pages/JobDetails";
 import Profile from "./pages/Profile";
 import Wallet from "./pages/Wallet";
+import SaibaMais from "./pages/SaibaMais";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -53,6 +54,7 @@ const App = () => {
             <Route path="/job/:id" element={<JobDetails />} />
             <Route path="/profile" element={<Profile userType={userType} />} />
             <Route path="/wallet" element={<Wallet />} />
+            <Route path="/saiba-mais" element={<SaibaMais />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>

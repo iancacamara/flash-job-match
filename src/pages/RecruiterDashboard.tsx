@@ -321,6 +321,45 @@ const RecruiterDashboard = () => {
             </Card>
 
             {/* Lista de Candidatos */}
+            {/* Dashboard de Status */}
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-6">
+              <Card className="bg-black/30 backdrop-blur-sm border-white/30">
+                <CardContent className="p-6">
+                  <div className="text-center">
+                    <div className="text-3xl font-bold text-green-400 mb-2">12</div>
+                    <div className="text-white/70 text-sm">Aprovados</div>
+                  </div>
+                </CardContent>
+              </Card>
+              
+              <Card className="bg-black/30 backdrop-blur-sm border-white/30">
+                <CardContent className="p-6">
+                  <div className="text-center">
+                    <div className="text-3xl font-bold text-purple-400 mb-2">8</div>
+                    <div className="text-white/70 text-sm">Exame Médico</div>
+                  </div>
+                </CardContent>
+              </Card>
+              
+              <Card className="bg-black/30 backdrop-blur-sm border-white/30">
+                <CardContent className="p-6">
+                  <div className="text-center">
+                    <div className="text-3xl font-bold text-blue-400 mb-2">15</div>
+                    <div className="text-white/70 text-sm">Em Entrevista</div>
+                  </div>
+                </CardContent>
+              </Card>
+              
+              <Card className="bg-black/30 backdrop-blur-sm border-white/30">
+                <CardContent className="p-6">
+                  <div className="text-center">
+                    <div className="text-3xl font-bold text-yellow-400 mb-2">6</div>
+                    <div className="text-white/70 text-sm">Documentação</div>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+
             <Card className="bg-black/30 backdrop-blur-sm border-white/30">
               <CardHeader>
                 <CardTitle className="text-white">
