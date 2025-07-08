@@ -8,6 +8,7 @@ import { Star, MapPin, Clock, DollarSign, User, Settings, LogOut, Calendar, Chev
 import JobDetailsModal from "@/components/job/JobDetailsModal";
 import MapComponent from "@/components/MapComponent";
 import WalletComponent from "@/components/WalletComponent";
+import IllustrationMap from "@/components/IllustrationMap";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 const CandidateDashboard = () => {
@@ -355,7 +356,10 @@ const CandidateDashboard = () => {
 
           {/* Mapa */}
           <TabsContent value="map">
-            <MapComponent jobs={availableJobs} />
+            <div className="space-y-6">
+              <IllustrationMap />
+              <MapComponent jobs={availableJobs} />
+            </div>
           </TabsContent>
 
           {/* Carteira */}
