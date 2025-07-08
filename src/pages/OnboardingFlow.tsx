@@ -5,17 +5,19 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { Bot, CheckCircle, ArrowRight, Sparkles, MapPin, Clock, Car, Briefcase, Zap, User, Phone, Mail, Calendar, Star, Users } from "lucide-react";
 import { UserType } from "@/App";
 
 interface OnboardingFlowProps {
-  userType: UserType;
+  userType?: UserType;
   setHasCompletedOnboarding: (completed: boolean) => void;
 }
 
-const OnboardingFlow = ({ userType, setHasCompletedOnboarding }: OnboardingFlowProps) => {
+const OnboardingFlow = ({ userType: propUserType, setHasCompletedOnboarding }: OnboardingFlowProps) => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const [userType, setUserType] = useState<UserType>(propUserType || location.state?.userType || 'freelancer');
   const [currentStep, setCurrentStep] = useState(0);
   const [answers, setAnswers] = useState<string[]>([]);
   const [showTyping, setShowTyping] = useState(false);

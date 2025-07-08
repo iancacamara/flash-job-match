@@ -40,7 +40,11 @@ const Welcome = () => {
             />
             <span className="text-white text-sm opacity-70">GM PROMO</span>
           </div>
-          <Button variant="outline" className="text-white border-white/30 bg-white/10">
+          <Button 
+            variant="outline" 
+            className="text-white border-white/30 bg-white/10"
+            onClick={() => navigate('/candidate-auth')}
+          >
             Já tenho conta
           </Button>
         </div>
@@ -75,7 +79,7 @@ const Welcome = () => {
             <div className="flex space-x-4 mb-12 animate-fade-in" style={{animationDelay: '0.6s'}}>
               <Button 
                 className="bg-cyan-500 text-white px-8 py-3 rounded-lg text-lg font-medium"
-                onClick={() => navigate('/onboarding')}
+                onClick={() => navigate('/user-type-selection')}
               >
                 Começar com Sury →
               </Button>

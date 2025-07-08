@@ -132,11 +132,11 @@ const CandidateDashboard = () => {
   };
 
   const handleLogout = () => {
-    navigate('/candidate-auth');
+    navigate('/');
   };
 
   const handleProfile = () => {
-    navigate('/profile');
+    navigate('/profile', { state: { userType: 'freelancer' } });
   };
 
   const handleWallet = () => {

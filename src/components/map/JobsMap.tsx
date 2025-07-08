@@ -47,7 +47,7 @@ const JobsMap = ({ jobs, children }: JobsMapProps) => {
             {jobs.map((job) => (
               <Card 
                 key={job.id} 
-                className={`bg-black/30 border-white/30 cursor-pointer transition-all hover:bg-black/40 ${
+                className={`bg-black/30 border-white/30 cursor-pointer ${
                   selectedJob?.id === job.id ? 'border-primary/50 bg-primary/10' : ''
                 }`}
                 onClick={() => setSelectedJob(job)}
@@ -106,10 +106,10 @@ const JobsMap = ({ jobs, children }: JobsMapProps) => {
                   {jobs.slice(0, 6).map((job, index) => (
                     <div 
                       key={job.id}
-                      className={`relative p-3 bg-black/40 rounded-lg border cursor-pointer transition-all ${
+                      className={`relative p-3 bg-black/40 rounded-lg border cursor-pointer ${
                         selectedJob?.id === job.id 
                           ? 'border-primary bg-primary/20 scale-105' 
-                          : 'border-white/20 hover:border-white/40'
+                          : 'border-white/20'
                       }`}
                       onClick={() => setSelectedJob(job)}
                       style={{
@@ -135,7 +135,7 @@ const JobsMap = ({ jobs, children }: JobsMapProps) => {
                       variant="ghost" 
                       size="icon"
                       onClick={() => setSelectedJob(null)}
-                      className="text-white hover:bg-white/20 h-6 w-6"
+                      className="text-white h-6 w-6"
                     >
                       <X className="h-4 w-4" />
                     </Button>

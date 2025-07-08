@@ -84,7 +84,7 @@ const MapView = ({ onClose, jobs }: MapViewProps) => {
             />
             <h2 className="text-xl font-bold text-white">Mapa de Vagas - Supera Flash</h2>
           </div>
-          <Button variant="ghost" size="icon" onClick={onClose} className="text-white/80 hover:text-white hover:bg-white/10">
+          <Button variant="ghost" size="icon" onClick={onClose} className="text-white/80">
             <X className="h-5 w-5" />
           </Button>
         </div>

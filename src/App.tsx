@@ -16,6 +16,7 @@ import RecruiterDashboard from "./pages/RecruiterDashboard";
 import JobDetails from "./pages/JobDetails";
 import Profile from "./pages/Profile";
 import Wallet from "./pages/Wallet";
+import UserTypeSelection from "./pages/UserTypeSelection";
 import SaibaMais from "./pages/SaibaMais";
 import NotFound from "./pages/NotFound";
 
@@ -39,11 +40,11 @@ const App = () => {
             <Route path="/candidate-auth" element={<CandidateAuth />} />
             <Route path="/company-auth" element={<CompanyAuth />} />
             <Route path="/recruiter-auth" element={<RecruiterAuth />} />
+            <Route path="/user-type-selection" element={<UserTypeSelection />} />
             <Route 
               path="/onboarding" 
               element={
                 <OnboardingFlow 
-                  userType={userType}
                   setHasCompletedOnboarding={setHasCompletedOnboarding}
                 />
               } 
