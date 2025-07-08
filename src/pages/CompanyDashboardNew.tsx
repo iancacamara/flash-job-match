@@ -305,12 +305,18 @@ const CompanyDashboardNew = () => {
         </div>
 
         <Tabs defaultValue="promoters" className="w-full">
-          <TabsList className="grid w-full grid-cols-2 bg-black/30 backdrop-blur-sm">
+          <TabsList className="grid w-full grid-cols-4 bg-black/30 backdrop-blur-sm">
             <TabsTrigger value="promoters" className="text-white data-[state=active]:bg-primary data-[state=active]:text-white">
               Base de Promotores Fort
             </TabsTrigger>
             <TabsTrigger value="requests" className="text-white data-[state=active]:bg-primary data-[state=active]:text-white">
               Solicitações por Loja
+            </TabsTrigger>
+            <TabsTrigger value="evaluations" className="text-white data-[state=active]:bg-primary data-[state=active]:text-white">
+              Avaliar Candidatos
+            </TabsTrigger>
+            <TabsTrigger value="analytics" className="text-white data-[state=active]:bg-primary data-[state=active]:text-white">
+              Dashboard de Valores
             </TabsTrigger>
           </TabsList>
 
@@ -564,6 +570,162 @@ const CompanyDashboardNew = () => {
                 </CardContent>
               </Card>
             ))}
+          </TabsContent>
+
+          {/* Avaliar Candidatos */}
+          <TabsContent value="evaluations" className="space-y-6 mt-6">
+            <Card className="bg-black/30 backdrop-blur-sm border-white/30">
+              <CardHeader>
+                <CardTitle className="text-white">Avaliar Candidatos</CardTitle>
+                <CardDescription className="text-white/60">
+                  Avalie os candidatos após a conclusão dos serviços
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-4">
+                  {[
+                    { name: "João Silva", job: "Promotor Fort Jundiaí", period: "15-20/01/2025", status: "Concluído" },
+                    { name: "Maria Santos", job: "Promotor ABC São Paulo", period: "10-15/01/2025", status: "Concluído" },
+                    { name: "Carlos Oliveira", job: "Promotor Extra RJ", period: "05-10/01/2025", status: "Concluído" }
+                  ].map((candidate, index) => (
+                    <div key={index} className="bg-white/5 border border-white/20 rounded-lg p-4">
+                      <div className="flex items-center justify-between">
+                        <div>
+                          <h3 className="text-white font-semibold">{candidate.name}</h3>
+                          <p className="text-white/60 text-sm">{candidate.job}</p>
+                          <p className="text-white/50 text-xs">Período: {candidate.period}</p>
+                        </div>
+                        <div className="flex items-center space-x-3">
+                          <Badge className="bg-green-500/30 text-green-300 border-green-500/50">
+                            {candidate.status}
+                          </Badge>
+                          <div className="flex space-x-1">
+                            {[1, 2, 3, 4, 5].map((star) => (
+                              <button key={star} className="text-yellow-400 hover:text-yellow-300">
+                                <Star className="h-5 w-5" />
+                              </button>
+                            ))}
+                          </div>
+                          <Button size="sm" className="bg-primary">
+                            Avaliar
+                          </Button>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+          </TabsContent>
+
+          {/* Dashboard de Valores */}
+          <TabsContent value="analytics" className="space-y-6 mt-6">
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-6">
+              <Card className="bg-black/30 backdrop-blur-sm border-white/30">
+                <CardContent className="p-6">
+                  <div className="text-center">
+                    <div className="text-3xl font-bold text-primary mb-2">127</div>
+                    <div className="text-white/70 text-sm">Pessoas Solicitadas</div>
+                    <div className="text-white/50 text-xs">Este mês</div>
+                  </div>
+                </CardContent>
+              </Card>
+              
+              <Card className="bg-black/30 backdrop-blur-sm border-white/30">
+                <CardContent className="p-6">
+                  <div className="text-center">
+                    <div className="text-3xl font-bold text-green-400 mb-2">R$ 45.750</div>
+                    <div className="text-white/70 text-sm">Gasto Total</div>
+                    <div className="text-white/50 text-xs">Último mês</div>
+                  </div>
+                </CardContent>
+              </Card>
+              
+              <Card className="bg-black/30 backdrop-blur-sm border-white/30">
+                <CardContent className="p-6">
+                  <div className="text-center">
+                    <div className="text-3xl font-bold text-yellow-400 mb-2">R$ 360</div>
+                    <div className="text-white/70 text-sm">Média por Pessoa</div>
+                    <div className="text-white/50 text-xs">Custo médio</div>
+                  </div>
+                </CardContent>
+              </Card>
+              
+              <Card className="bg-black/30 backdrop-blur-sm border-white/30">
+                <CardContent className="p-6">
+                  <div className="text-center">
+                    <div className="text-3xl font-bold text-purple-400 mb-2">89</div>
+                    <div className="text-white/70 text-sm">Trabalhos Realizados</div>
+                    <div className="text-white/50 text-xs">Total do período</div>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <Card className="bg-black/30 backdrop-blur-sm border-white/30">
+                <CardHeader>
+                  <CardTitle className="text-white">Distribuição por Perfil</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="space-y-3">
+                    {[
+                      { profile: "Mercearia Seca", count: 45, percentage: 35 },
+                      { profile: "Perecíveis", count: 32, percentage: 25 },
+                      { profile: "Açougue", count: 28, percentage: 22 },
+                      { profile: "Manipulados", count: 22, percentage: 18 }
+                    ].map((item) => (
+                      <div key={item.profile} className="flex items-center justify-between">
+                        <span className="text-white text-sm">{item.profile}</span>
+                        <div className="flex items-center space-x-2">
+                          <div className="w-20 bg-white/20 rounded-full h-2">
+                            <div 
+                              className="bg-primary h-2 rounded-full" 
+                              style={{width: `${item.percentage}%`}}
+                            ></div>
+                          </div>
+                          <span className="text-white/70 text-sm">{item.count}</span>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card className="bg-black/30 backdrop-blur-sm border-white/30">
+                <CardHeader>
+                  <CardTitle className="text-white">Performance por Loja</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="space-y-3">
+                    {fortStores.map((store) => (
+                      <div key={store.id} className="bg-white/5 border border-white/20 rounded-lg p-3">
+                        <div className="flex items-center justify-between mb-2">
+                          <span className="text-white font-medium">{store.name}</span>
+                          <Badge className="bg-green-500/30 text-green-300 border-green-500/50">
+                            Ativo
+                          </Badge>
+                        </div>
+                        <div className="grid grid-cols-3 gap-2 text-sm">
+                          <div className="text-center">
+                            <div className="text-primary font-bold">32</div>
+                            <div className="text-white/60">Promotores</div>
+                          </div>
+                          <div className="text-center">
+                            <div className="text-green-400 font-bold">R$ 12.5k</div>
+                            <div className="text-white/60">Gasto</div>
+                          </div>
+                          <div className="text-center">
+                            <div className="text-yellow-400 font-bold">4.7</div>
+                            <div className="text-white/60">Avaliação</div>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
           </TabsContent>
         </Tabs>
       </div>
