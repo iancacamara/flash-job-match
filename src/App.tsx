@@ -19,6 +19,7 @@ import Wallet from "./pages/Wallet";
 import UserTypeSelection from "./pages/UserTypeSelection";
 import SaibaMais from "./pages/SaibaMais";
 import Industria from "./pages/Industria";
+import IndustriaAuth from "./pages/IndustriaAuth";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -58,6 +59,7 @@ const App = () => {
             <Route path="/profile" element={<Profile userType={userType} />} />
             <Route path="/wallet" element={<Wallet />} />
             <Route path="/saiba-mais" element={<SaibaMais />} />
+            <Route path="/industria-auth" element={<IndustriaAuth />} />
             <Route path="/industria" element={<Industria />} />
             <Route path="*" element={<NotFound />} />
           </Routes>

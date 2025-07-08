@@ -90,13 +90,6 @@ const Welcome = () => {
               >
                 Saiba mais
               </Button>
-              <Button 
-                variant="outline" 
-                className="border-white/30 text-white bg-white/10 px-8 py-3 rounded-lg text-lg"
-                onClick={() => navigate('/industria')}
-              >
-                Indústria
-              </Button>
             </div>
 
             {/* Role Selection Cards */}
@@ -133,7 +126,7 @@ const Welcome = () => {
 
               <Card 
                 className="bg-orange-500/20 border border-orange-400/30 cursor-pointer"
-                onClick={() => navigate('/industria')}
+                onClick={() => navigate('/industria-auth')}
               >
                 <CardContent className="p-4 text-center">
                   <div className="text-2xl mb-2">🏭</div>
