@@ -165,7 +165,7 @@ const OnboardingFlow = ({ userType, setHasCompletedOnboarding }: OnboardingFlowP
         } else {
           setTimeout(() => {
             setHasCompletedOnboarding(true);
-            navigate('/dashboard');
+            navigate('/company-dashboard');
           }, 1500);
         }
       }
@@ -176,7 +176,7 @@ const OnboardingFlow = ({ userType, setHasCompletedOnboarding }: OnboardingFlowP
     e.preventDefault();
     console.log("Dados do cadastro:", { cadastroData, answers });
     setHasCompletedOnboarding(true);
-    navigate('/dashboard');
+    navigate('/candidate-dashboard');
   };
 
   const handleCadastroChange = (field: string, value: string) => {
