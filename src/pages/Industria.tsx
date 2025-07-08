@@ -321,7 +321,7 @@ const Industria = () => {
 
       {/* Modal de Solicitação */}
       <Dialog open={!!selectedLoja} onOpenChange={() => setSelectedLoja(null)}>
-        <DialogContent className="bg-gradient-to-br from-purple-900 to-purple-800 border-white/20 text-white">
+        <DialogContent className="bg-gradient-to-br from-purple-900 to-purple-800 border-white/20 text-white max-w-2xl max-h-[90vh] overflow-y-auto">
           <DialogHeader>
             <DialogTitle>Solicitar Atendimento</DialogTitle>
           </DialogHeader>
