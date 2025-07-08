@@ -100,7 +100,7 @@ const Welcome = () => {
             </div>
 
             {/* Role Selection Cards */}
-            <div className="grid grid-cols-3 gap-4 mb-12 animate-fade-in" style={{animationDelay: '0.8s'}}>
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-12 animate-fade-in" style={{animationDelay: '0.8s'}}>
               <Card 
                 className="bg-blue-500/20 border border-blue-400/30 cursor-pointer"
                 onClick={() => navigate('/candidate-auth')}
@@ -128,6 +128,16 @@ const Welcome = () => {
                 <CardContent className="p-4 text-center">
                   <div className="text-2xl mb-2">🎯</div>
                   <h3 className="text-white font-semibold">Recrutador</h3>
+                </CardContent>
+              </Card>
+
+              <Card 
+                className="bg-orange-500/20 border border-orange-400/30 cursor-pointer"
+                onClick={() => navigate('/industria')}
+              >
+                <CardContent className="p-4 text-center">
+                  <div className="text-2xl mb-2">🏭</div>
+                  <h3 className="text-white font-semibold">Indústria</h3>
                 </CardContent>
               </Card>
             </div>

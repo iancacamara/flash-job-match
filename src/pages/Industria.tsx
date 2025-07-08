@@ -78,8 +78,8 @@ const Industria = () => {
   const lojasFiltradas = lojasDisponiveis.filter(loja => {
     const matchBusca = loja.nome.toLowerCase().includes(busca.toLowerCase()) ||
                       loja.cidade.toLowerCase().includes(busca.toLowerCase());
-    const matchEstado = !filtroEstado || loja.estado === filtroEstado;
-    const matchCidade = !filtroCidade || loja.cidade === filtroCidade;
+    const matchEstado = filtroEstado === "" || filtroEstado === "todos" || loja.estado === filtroEstado;
+    const matchCidade = filtroCidade === "" || filtroCidade === "todas" || loja.cidade === filtroCidade;
     
     return matchBusca && matchEstado && matchCidade;
   });
@@ -149,7 +149,7 @@ const Industria = () => {
                     <SelectValue placeholder="Todos os estados" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="">Todos os estados</SelectItem>
+                    <SelectItem value="todos">Todos os estados</SelectItem>
                     {estados.map(estado => (
                       <SelectItem key={estado} value={estado}>{estado}</SelectItem>
                     ))}
@@ -164,7 +164,7 @@ const Industria = () => {
                     <SelectValue placeholder="Todas as cidades" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="">Todas as cidades</SelectItem>
+                    <SelectItem value="todas">Todas as cidades</SelectItem>
                     {cidades.map(cidade => (
                       <SelectItem key={cidade} value={cidade}>{cidade}</SelectItem>
                     ))}
