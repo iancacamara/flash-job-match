@@ -6,7 +6,9 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useState } from "react";
 import Welcome from "./pages/Welcome";
-import AuthPage from "./pages/AuthPage";
+import CandidateAuth from "./pages/CandidateAuth";
+import CompanyAuth from "./pages/CompanyAuth";
+import RecruiterAuth from "./pages/RecruiterAuth";
 import OnboardingFlow from "./pages/OnboardingFlow";
 import CandidateDashboard from "./pages/CandidateDashboard";
 import CompanyDashboardNew from "./pages/CompanyDashboardNew";
@@ -33,15 +35,9 @@ const App = () => {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Welcome />} />
-            <Route 
-              path="/auth" 
-              element={
-                <AuthPage 
-                  setUserType={setUserType} 
-                  setIsAuthenticated={setIsAuthenticated}
-                />
-              } 
-            />
+            <Route path="/candidate-auth" element={<CandidateAuth />} />
+            <Route path="/company-auth" element={<CompanyAuth />} />
+            <Route path="/recruiter-auth" element={<RecruiterAuth />} />
             <Route 
               path="/onboarding" 
               element={
@@ -51,14 +47,8 @@ const App = () => {
                 />
               } 
             />
-            <Route 
-              path="/dashboard" 
-              element={
-                userType === 'freelancer' ? 
-                <CandidateDashboard /> : 
-                <CompanyDashboardNew />
-              } 
-            />
+            <Route path="/candidate-dashboard" element={<CandidateDashboard />} />
+            <Route path="/company-dashboard" element={<CompanyDashboardNew />} />
             <Route path="/recruiter" element={<RecruiterDashboard />} />
             <Route path="/job/:id" element={<JobDetails />} />
             <Route path="/profile" element={<Profile userType={userType} />} />

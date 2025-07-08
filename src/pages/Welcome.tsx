@@ -90,8 +90,8 @@ const Welcome = () => {
             {/* Role Selection Cards */}
             <div className="grid grid-cols-3 gap-4 mb-12 animate-fade-in" style={{animationDelay: '0.8s'}}>
               <Card 
-                className="bg-blue-500/20 border border-blue-400/30 cursor-pointer transition-all transform"
-                onClick={() => handleRoleSelection('freelancer')}
+                className="bg-blue-500/20 border border-blue-400/30 cursor-pointer"
+                onClick={() => navigate('/candidate-auth')}
               >
                 <CardContent className="p-4 text-center">
                   <div className="text-2xl mb-2">👤</div>
@@ -100,8 +100,8 @@ const Welcome = () => {
               </Card>
 
               <Card 
-                className="bg-green-500/20 border border-green-400/30 cursor-pointer transition-all transform"
-                onClick={() => handleRoleSelection('company')}
+                className="bg-green-500/20 border border-green-400/30 cursor-pointer"
+                onClick={() => navigate('/company-auth')}
               >
                 <CardContent className="p-4 text-center">
                   <div className="text-2xl mb-2">🏢</div>
@@ -110,8 +110,8 @@ const Welcome = () => {
               </Card>
 
               <Card 
-                className="bg-purple-500/20 border border-purple-400/30 cursor-pointer transition-all transform"
-                onClick={() => navigate('/recruiter')}
+                className="bg-purple-500/20 border border-purple-400/30 cursor-pointer"
+                onClick={() => navigate('/recruiter-auth')}
               >
                 <CardContent className="p-4 text-center">
                   <div className="text-2xl mb-2">🎯</div>
