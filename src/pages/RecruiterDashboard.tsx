@@ -175,7 +175,7 @@ const RecruiterDashboard = () => {
   };
 
   const handleLogout = () => {
-    navigate('/auth');
+    navigate('/');
   };
 
   const handleProfile = () => {
@@ -438,7 +438,7 @@ const RecruiterDashboard = () => {
                             </PromoterProfile>
                             <Button 
                               size="sm" 
-                              className="bg-green-500/30 text-green-300 border-green-500/50 hover:bg-green-500/50"
+                              className="bg-green-500/30 text-green-300 border-green-500/50"
                               onClick={() => handleApprove(candidate.id)}
                             >
                               <CheckCircle className="h-3 w-3 mr-1" />
@@ -447,7 +447,7 @@ const RecruiterDashboard = () => {
                             <Button 
                               size="sm" 
                               variant="outline"
-                              className="border-red-500/50 text-red-300 bg-red-500/10 hover:bg-red-500/20"
+                              className="border-red-500/50 text-red-300 bg-red-500/10"
                               onClick={() => handleReject(candidate.id)}
                             >
                               <XCircle className="h-3 w-3 mr-1" />

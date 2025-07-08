@@ -110,7 +110,7 @@ const Welcome = () => {
               >
                 <CardContent className="p-4 text-center">
                   <div className="text-2xl mb-2">🏢</div>
-                  <h3 className="text-white font-semibold">Acionar</h3>
+                  <h3 className="text-white font-semibold">Empresa</h3>
                 </CardContent>
               </Card>
 

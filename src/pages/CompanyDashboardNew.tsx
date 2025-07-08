@@ -188,7 +188,7 @@ const CompanyDashboardNew = () => {
   };
 
   const handleLogout = () => {
-    navigate('/auth');
+    navigate('/');
   };
 
   const handleProfile = () => {
@@ -457,7 +457,7 @@ const CompanyDashboardNew = () => {
                             className="bg-gradient-to-r from-primary to-secondary flex-1"
                             onClick={() => handleContractPromoter(promoter.id)}
                           >
-                            Contratar
+                            Acionar
                           </Button>
                           <PromoterProfile promoter={promoter}>
                             <Button size="sm" variant="outline" className="border-white/30 text-white bg-white/10">
